@@ -5,9 +5,13 @@ Team Name: Undetermined
 
 Team Members:
 Andrew Hum | huma3
+
 William Lei | leim5
+
 Arshan Khan | khana172
+
 Jame Tran | tranj52
+
 
 
 This project is a reimplementation of several simple python games. Along with the redesign of these games we are designing a launcher
