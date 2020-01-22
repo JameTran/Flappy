@@ -1,17 +1,16 @@
 # Project Name
 
-<<<<<<< HEAD
 Team Name: Undetermined
 
 Team Members:
 
-Andrew Hum | huma3
+    Andrew Hum | huma3
 
-William Lei | leim5
+    William Lei | leim5
 
-Arshan Khan | khana172
+    Arshan Khan | khana172
 
-Jame Tran | tranj52
+    Jame Tran | tranj52
 
 
 
@@ -30,4 +29,3 @@ When working, do not directly make change to master branch.
 Branch off master and then later merge back to master branch.
 
 Do not merge codes that does not functions fully to master branch.
->>>>>>> ab174bc813933281ee54ff8767b6c763e0011a18
