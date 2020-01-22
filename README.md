@@ -16,9 +16,11 @@ for these minigames to select which game the user would like to play.
 
 The folders and files for this project are as follows:
 
-Doc - Documentation for the project
-Code - Implementation
-=======
+    Doc - Documentation for the project
+    Code - Implementation
+
+
+
 Group project for SFWRENG 3XA3
 
 When working, do not directly make change to master branch.
