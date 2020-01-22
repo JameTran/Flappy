@@ -3,10 +3,10 @@
 Team Name: Undetermined
 
 Team Members:
-    Andrew Hum | huma3
-    William Lei | leim5
-    Arshan Khan | khana172
-    Jame Tran | tranj52
+    Andrew Hum | huma3  
+    William Lei | leim5  
+    Arshan Khan | khana172  
+    Jame Tran | tranj52  
 
 
 
