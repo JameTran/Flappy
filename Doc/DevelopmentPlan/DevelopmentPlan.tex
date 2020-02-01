@@ -26,6 +26,7 @@
 \textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
 \midrule
 1/29/2020 & Andrew Hum & Rough draft of sections 1 - 3\\
+1/30/2020 & William Lei & Sections 4, 7\\
 Date2 & Name(s) & Description of changes\\
 ... & ... & ...\\
 \bottomrule
@@ -55,13 +56,20 @@ The teams primary means of communication is through a group chat on Facebook. Th
 
 \section{Git Workflow Plan}
 
-
+The git workflow of the team will be centralized and branch based. There will a total of 6 branches: master; development; and a personal branch for each team member.\\
+The master branch is the central and main branch, it will always contains production ready code. Team member cannot directly commit changes to the master branch, as it can only be updated by merging changes from the development branch. The main branch will be labelled by a version number along with a title, which will be updated after every merge.\\
+The development branch is the main branch that will be used for the development of the project. It is initialized by branching off master and can be reset to master when needed. Similar to master branch, team members cannot directly commit to this branch, as it can only be updated by merging from their personal branch.\\
+Each team member will have a personal branch which only that person have the permission to commit to. This is the branch that the team members commit their code to during the development.\\
+Each member can update development branch anytime by merging their personal branch if the code in their personal branch is up to date with the changes made in development branch (by other team members) and fully operational. When a milestone or a certain checkpoint is met, upon the agreement of all team members, the master will then be updated by merging from development branch, and its label will be updated with a newer version number and a new title.
 
 \section{Proof of Concept Demonstration Plan}
 
 \section{Technology}
 
 \section{Coding Style}
+
+PEP 8 will be used as the coding style for this project. The detail style guide can be found on the official website of Python at \url{http://www.python.org/dev/peps/pep-0008}.\\
+Doxygen will be used as the documentation and commenting style guide for this project. The detail style guide can be found on the official website of Doxygen at \url{http://www.doxygen.nl/}.
 
 \section{Project Schedule}
 
