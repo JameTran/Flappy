@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Mini Game Hub" company="McMaster University, SFWRENG 3XA3" webLink="http://https://gitlab.cas.mcmaster.ca/khana172/3xa3-project/" view-date="2020-01-19" view-index="0" gantt-divider-location="300" resource-divider-location="300" version="2.8.10" locale="en_US">
+<?xml version="1.0" encoding="UTF-8"?><project name="Mini Game Hub" company="McMaster University, SFWRENG 3XA3" webLink="http://https://gitlab.cas.mcmaster.ca/khana172/3xa3-project/" view-date="2020-01-26" view-index="0" gantt-divider-location="300" resource-divider-location="300" version="2.8.10" locale="en_US">
     <description><![CDATA[Group project for SFWRENG 3XA3
 Members:
 Arshan Khan
@@ -6,14 +6,14 @@ Andrew Hum
 William Lei
 Jame Tran]]></description>
     <view zooming-state="default:4" id="gantt-chart">
-        <field id="tpd3" name="Name" width="167" order="0"/>
-        <field id="tpd4" name="Begin date" width="65" order="1"/>
+        <field id="tpd3" name="Name" width="165" order="0"/>
+        <field id="tpd4" name="Begin date" width="64" order="1"/>
         <field id="tpd5" name="End date" width="64" order="2"/>
         <timeline><![CDATA[41]]></timeline>
     </view>
     <view id="resource-table">
-        <field id="0" name="Name" width="210" order="0"/>
-        <field id="1" name="Default role" width="86" order="1"/>
+        <field id="0" name="Name" width="208" order="0"/>
+        <field id="1" name="Default role" width="85" order="1"/>
     </view>
     <!-- -->
     <calendars>
@@ -50,12 +50,19 @@ Jame Tran]]></description>
         <task id="28" name="Requirements Document Revision 0" color="#8cb6ce" meeting="true" start="2020-02-07" duration="0" complete="0" thirdDate="2020-01-17" thirdDate-constraint="0" priority="4" expand="true"/>
         <task id="32" name="Write SRS" color="#8cb6ce" meeting="false" start="2020-02-03" duration="5" complete="0" thirdDate="2020-01-21" thirdDate-constraint="0" priority="2" expand="true">
             <task id="34" name="Define Project Drivers" color="#8cb6ce" meeting="false" start="2020-02-03" duration="1" complete="0" thirdDate="2020-01-21" thirdDate-constraint="0" priority="2" expand="true"/>
-            <task id="36" name="Define Function &amp; Non-Functional Requirements" color="#8cb6ce" meeting="false" start="2020-02-04" duration="4" complete="0" thirdDate="2020-01-21" thirdDate-constraint="0" priority="2" expand="true"/>
+            <task id="36" name="Define Function &amp; Non-Functional Requirements" color="#8cb6ce" meeting="false" start="2020-02-04" duration="2" complete="0" thirdDate="2020-01-21" thirdDate-constraint="0" priority="2" expand="true"/>
+            <task id="54" name="Define Project Issues &amp; Appendix" color="#8cb6ce" meeting="false" start="2020-02-05" duration="2" complete="0" thirdDate="2020-01-20" thirdDate-constraint="0" priority="2" expand="true"/>
+            <task id="57" name="Final Revision" color="#8cb6ce" meeting="false" start="2020-02-07" duration="1" complete="0" thirdDate="2020-02-06" thirdDate-constraint="0" expand="true"/>
         </task>
         <task id="6" name="Proof of Concept Demo" color="#8cb6ce" meeting="true" start="2020-02-14" duration="0" complete="0" thirdDate="2020-02-13" thirdDate-constraint="0" priority="4" expand="true">
             <notes><![CDATA[6%]]></notes>
         </task>
-        <task id="27" name="Build Proof of Concept" color="#8cb6ce" meeting="false" start="2020-02-03" duration="10" complete="0" thirdDate="2020-01-17" thirdDate-constraint="0" priority="2" expand="true"/>
+        <task id="27" name="Build Proof of Concept" color="#8cb6ce" meeting="false" start="2020-02-03" duration="10" complete="0" thirdDate="2020-01-17" thirdDate-constraint="0" priority="2" expand="true">
+            <task id="59" name="Learn how to create graphics" color="#8cb6ce" meeting="false" start="2020-02-03" duration="2" complete="0" thirdDate="2020-01-20" thirdDate-constraint="0" expand="true"/>
+            <task id="61" name="Build game launcher" color="#8cb6ce" meeting="false" start="2020-02-05" duration="4" complete="0" thirdDate="2020-01-20" thirdDate-constraint="0" expand="true"/>
+            <task id="63" name="Work on game one" color="#8cb6ce" meeting="false" start="2020-02-07" duration="3" complete="0" thirdDate="2020-01-27" thirdDate-constraint="0" expand="true"/>
+            <task id="80" name="Complete Proof of Concept" color="#8cb6ce" meeting="false" start="2020-02-12" duration="3" complete="0" thirdDate="2020-01-27" thirdDate-constraint="0" priority="4" expand="true"/>
+        </task>
         <task id="8" name="Test Plan Revision 0" color="#8cb6ce" meeting="true" start="2020-02-28" duration="0" complete="0" thirdDate="2020-02-13" thirdDate-constraint="0" priority="4" expand="true">
             <notes><![CDATA[5%]]></notes>
         </task>
@@ -66,7 +73,10 @@ Jame Tran]]></description>
         <task id="10" name="Design &amp; Document Revision 0" color="#8cb6ce" meeting="true" start="2020-03-13" duration="0" complete="0" thirdDate="2020-03-05" thirdDate-constraint="0" priority="4" expand="true">
             <notes><![CDATA[5%]]></notes>
         </task>
-        <task id="45" name="Begin Design &amp; Document Revision" color="#8cb6ce" meeting="false" start="2020-03-02" duration="10" complete="0" thirdDate="2020-02-14" thirdDate-constraint="0" priority="2" expand="true"/>
+        <task id="45" name="Begin Design &amp; Document Revision" color="#8cb6ce" meeting="false" start="2020-03-02" duration="10" complete="0" thirdDate="2020-02-14" thirdDate-constraint="0" priority="2" expand="true">
+            <task id="88" name="Walkthrough template with group" color="#8cb6ce" meeting="false" start="2020-03-02" duration="1" complete="0" thirdDate="2020-01-27" thirdDate-constraint="0" expand="true"/>
+            <task id="92" name="Work on document" color="#8cb6ce" meeting="false" start="2020-03-03" duration="9" complete="0" thirdDate="2020-01-27" thirdDate-constraint="0" priority="2" expand="true"/>
+        </task>
         <task id="12" name="Revision 0 Demo" color="#8cb6ce" meeting="true" start="2020-03-16" duration="0" complete="0" thirdDate="2020-03-05" thirdDate-constraint="0" priority="4" expand="true">
             <notes><![CDATA[6%]]></notes>
         </task>
@@ -91,11 +101,46 @@ Jame Tran]]></description>
     </resources>
     <allocations>
         <allocation task-id="24" resource-id="0" function="1" responsible="true" load="25.0"/>
+        <allocation task-id="63" resource-id="0" function="1" responsible="false" load="20.0"/>
+        <allocation task-id="36" resource-id="0" function="1" responsible="false" load="20.0"/>
+        <allocation task-id="34" resource-id="0" function="1" responsible="false" load="25.0"/>
+        <allocation task-id="54" resource-id="0" function="1" responsible="true" load="25.0"/>
+        <allocation task-id="57" resource-id="0" function="1" responsible="false" load="15.0"/>
+        <allocation task-id="80" resource-id="0" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="41" resource-id="0" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="43" resource-id="0" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="88" resource-id="0" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="92" resource-id="0" function="1" responsible="true" load="100.0"/>
         <allocation task-id="22" resource-id="1" function="1" responsible="true" load="50.0"/>
         <allocation task-id="24" resource-id="1" function="1" responsible="true" load="25.0"/>
+        <allocation task-id="63" resource-id="1" function="1" responsible="true" load="20.0"/>
+        <allocation task-id="34" resource-id="1" function="1" responsible="true" load="25.0"/>
+        <allocation task-id="36" resource-id="1" function="1" responsible="false" load="20.0"/>
+        <allocation task-id="54" resource-id="1" function="1" responsible="false" load="25.0"/>
+        <allocation task-id="57" resource-id="1" function="1" responsible="false" load="15.0"/>
+        <allocation task-id="80" resource-id="1" function="1" responsible="false" load="100.0"/>
+        <allocation task-id="41" resource-id="1" function="1" responsible="false" load="100.0"/>
+        <allocation task-id="43" resource-id="1" function="1" responsible="false" load="100.0"/>
+        <allocation task-id="92" resource-id="1" function="1" responsible="false" load="100.0"/>
         <allocation task-id="22" resource-id="2" function="1" responsible="true" load="50.0"/>
         <allocation task-id="24" resource-id="2" function="1" responsible="false" load="25.0"/>
+        <allocation task-id="61" resource-id="2" function="1" responsible="true" load="80.0"/>
+        <allocation task-id="57" resource-id="2" function="1" responsible="false" load="15.0"/>
+        <allocation task-id="54" resource-id="2" function="1" responsible="false" load="10.0"/>
+        <allocation task-id="80" resource-id="2" function="1" responsible="false" load="100.0"/>
+        <allocation task-id="41" resource-id="2" function="1" responsible="false" load="100.0"/>
+        <allocation task-id="43" resource-id="2" function="1" responsible="false" load="70.0"/>
+        <allocation task-id="88" resource-id="2" function="1" responsible="false" load="100.0"/>
+        <allocation task-id="92" resource-id="2" function="1" responsible="false" load="100.0"/>
         <allocation task-id="24" resource-id="3" function="1" responsible="false" load="25.0"/>
+        <allocation task-id="63" resource-id="3" function="1" responsible="false" load="20.0"/>
+        <allocation task-id="36" resource-id="3" function="1" responsible="false" load="20.0"/>
+        <allocation task-id="54" resource-id="3" function="1" responsible="false" load="25.0"/>
+        <allocation task-id="57" resource-id="3" function="1" responsible="false" load="15.0"/>
+        <allocation task-id="80" resource-id="3" function="1" responsible="false" load="100.0"/>
+        <allocation task-id="41" resource-id="3" function="1" responsible="false" load="100.0"/>
+        <allocation task-id="43" resource-id="3" function="1" responsible="false" load="100.0"/>
+        <allocation task-id="92" resource-id="3" function="1" responsible="false" load="100.0"/>
     </allocations>
     <vacations/>
     <previous/>
