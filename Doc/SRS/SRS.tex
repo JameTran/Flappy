@@ -3,6 +3,8 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{hyperref}
+\usepackage{float}
+\usepackage{graphicx}
 \hypersetup{
     colorlinks,
     citecolor=black,
@@ -11,18 +13,20 @@
     urlcolor=blue
 }
 \usepackage[round]{natbib}
+\usepackage{array}
 
 \title{SE 3XA3: Software Requirements Specification\\Title of Project}
 
-\author{Team \#, Team Name
-		\\ Student 1 name and macid
-		\\ Student 2 name and macid
-		\\ Student 3 name and macid
+\author{Team \#104
+		\\ Andrew Hum, 400138826
+		\\ Arshan Khan, 400145605
+		\\ Jame Tran, 400144141
+		\\ William Lei, 400125240
 }
 
 \date{\today}
 
-\input{../Comments}
+%\input{../Comments}
 
 \begin{document}
 
@@ -38,7 +42,7 @@
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
-Date 1 & 1.0 & Notes\\
+2/3/2020 & 1.0 & Project Drivers and Project Issues\\
 Date 2 & 1.1 & Notes\\
 \bottomrule
 \end{tabularx}
@@ -48,26 +52,46 @@ Date 2 & 1.1 & Notes\\
 
 \pagenumbering{arabic}
 
-This document describes the requirements for ....  The template for the Software
-Requirements Specification (SRS) is a subset of the Volere
-template~\citep{RobertsonAndRobertson2012}.  If you make further modifications
-to the template, you should explicity state what modifications were made.
+This document describes the requirements for ....  The template for the Software Requirements Specification (SRS) is a subset of the Volere template~\citep{RobertsonAndRobertson2012}.  If you make further modifications to the template, you should explicitly state what modifications were made.
 
 \section{Project Drivers}
 
 \subsection{The Purpose of the Project}
 
+For all time, humans have played games for entertainment, as a pass-time, or to relieve stress. In the last forty years, humans have had the ability to create games on the computer as well. Over time, these games have only improved in their complexity and design, as well as generated billions of dollars in revenue for the entire gaming industry. Our focus is not on profit however, we care most about giving the players a seamless, satisfying experience when playing the mini games. Thus, we are focusing on making visual and difficulty enhancements to the pre-existing mini games.
+
 \subsection{The Stakeholders}
 
 \subsubsection{The Client}
 
+The client(s) for \textbf{Mini-Hub???} are Dr. Asghar Bokhari and the SFWRENG 3XA3 Teaching Assistants. As clients, they will administer the development of \textbf{Mini-Hub???}. They will also determine the degree to which the product delivers on the requirements.
+
 \subsubsection{The Customers}
+
+The intended customers of \textbf{Mini-Hub???} are any individuals with the ability to download the product online. This includes a child, up to an elder. \textbf{Mini-Hub???} is created to entertain its users and give them a joyful experience.
 
 \subsubsection{Other Stakeholders}
 
+All other stakeholders include all current developers as well as any future developers who wish to improve upon the project themselves.
+
 \subsection{Mandated Constraints}
 
+\textbf{Mini-Hub???} is to be built under the following constraints
+
+\begin{itemize}
+    \item The product must run successfully on at least Windows and MacOS.
+    \item The product must be able to be installed in less than 1 hour by only installing the executable file.
+    \item The product must not require any specialized hardware which the common user may not have.
+    \item The product must free of cost to all users.
+    \item The product must be sufficiently complete by March 20, 2020.
+    \item The product must contain at least one playable mini-game.
+    \item Development of the product must not exceed \$0.
+    \item The mini-game(s) must have a visual and/or difficulty improvement to be considered "updated".
+\end{itemize}
+
 \subsection{Naming Conventions and Terminology}
+
+**** SET SHORTER/SINGLE NAMES FOR EVERYTHING. E.G. CALLING THE WHOLE SYSTEM/PRODUCT/ETC. ONE NAME ***
 
 \subsection{Relevant Facts and Assumptions}
 
@@ -77,13 +101,121 @@ User characteristics should go under assumptions.
 
 \subsection{The Scope of the Work and the Product}
 
+The Current Situation:
+
+\begin{itemize}
+    \item Currently no launcher. To run the games you need to install the code from using Ubuntu, and running each game individually.
+    \item Maze: a minimal 2-dimensional maze with one preset maze that is generated that can be navigated through single mouse clicks with little-to-no difficulty.
+    \item Flappy: a simplistic game where the user utilizes the mouse-click to prevent their character from colliding with randomly generated objects, and loses when the collide
+    \item Pong: a very simple version of the classic game Pong. It is a two-player game that has contains minimal physics aspect as well as poor graphics and poor performance.
+\end{itemize}
+
 \subsubsection{The Context of the Work}
 
 \subsubsection{Work Partitioning}
 
+\begin{table}[H]
+\caption{Work Partitioning Events}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Event Number & Event Name & Input & Output \\
+\hline
+1 & Selecting/Launching a Game & Mouse/Keyboard & Selected Game \\
+\hline
+2 & Accessing the Leader-boards & Mouse/Keyboard & Display Leader-board\\
+\hline
+3 & Playing the Maze & Keyboard & Final Score\\
+\hline
+4 & Playing Flappy & Keyboard & Final Score\\
+\hline
+5 & Playing Pong & Keyboard & Final Score\\
+\hline
+\end{tabular}
+\end{center}
+\label{default}
+\end{table}%
+
+\begin{table}[H]
+\caption{Work Partitioning Summaries}
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+Event Number & Summary\\
+\hline
+1 & Based on the user’s input, launch the specified game\\
+\hline
+2 & If the user chooses to access the leader-board, a list of the high\\ &scores will be listed and will have the option to be sorted by each\\ &game.\\
+\hline
+3 & The user will select the difficulty of the maze and navigate their\\ &object through the maze using the keyboard. Once completed the system\\ &will provide the user with their final score which is the time it took\\ &to complete the maze.\\
+\hline
+4 & The user will start a new game and use the space-bar to avoid\\ &obstacles. The system will provide their final score once they collide\\ &with an obstacle based on the time elapsed.\\
+\hline
+5 & The user will use the keyboard to play against an opponent controlled\\ &by the system to try to score against them. They will play till\\ &either they or their opponent reaches a desired score. \\&The system will then display the final score and record their score.\\
+\hline
+\end{tabular}
+\end{center}
+\label{default}
+\end{table}%
+
+
 \subsubsection{Individual Product Use Cases}
 
+\begin{figure}[H] %  figure placement: here, top, bottom, or page
+    \centering
+    \includegraphics[width=6in]{Images/UseCaseDiagram.png} 
+    \caption{Use Case Diagram}
+    \label{fig:example}
+ \end{figure}
+ 
+
 \subsection{Functional Requirements}
+    BE1. The user wants to play a game
+    \begin{itemize}
+    \item FR1. The system shall provide the user with several different mini-game options
+    \item FR2. The system shall launch the desired mini-game in the same window
+    \item FR3. The system shall provide an option to close the application
+    \end{itemize}
+    BE2. The user wants to view their scores
+    \begin{itemize}
+        \item FR4. The system shall provide the user with the ability to view the leader-boards from the launcher
+        \item FR5. The system shall provide the user with the ability to sort their scores based on game
+        \item FR6. The system shall provide the user the ability to view the current game’s leader-boards from the game home screen
+    \end{itemize}
+    BE3. The user wants to play Maze
+    \begin{itemize}
+        \item FR7. The system shall provide the user with different          difficulty levels
+        \item FR8. The system shall record the user’s current score based on the time elapsed
+        \item FR9. The system shall randomly generate mazes based on difficulty
+        \item FR10. The system shall provide a home button to exit the game at any time
+        \item FR11. The system shall display the user’s current score and high score once the complete the maze
+        \item FR12. The user shall be able to control the object’s movement with the keyboard
+        \item FR13. The system shall provide an option to proceed to another maze once completed
+        \item FR14. The system shall provide an option to return to the launcher
+    \end{itemize}
+    BE4. The user wants to play Flappy
+    \begin{itemize}
+        \item FR15. The system shall provide the user with the option to start a new game
+        \item FR16. The user shall use the space-bar to control their character
+        \item FR17. The system shall randomly generate objects to interfere with the character
+        \item FR18. The system shall increase speed as the time elapsed increases
+        \item FR19. The system shall generate more objects as the time elapsed increases
+        \item FR20. The system shall provide the user with the final time elapsed once the game is over
+        \item FR21. The system shall provide the option to view the score boards for Flappy
+        \item FR22. The system shall provide the user the option to play again
+        \item FR23. The system shall provide the user with the option to return to the launcher
+    \end{itemize}
+    BE5. The user wants to play Pong
+    \begin{itemize}
+        \item FR24. The system shall provide the user with the option to play alone or with a friend
+        \item FR25. The user shall use the keyboard to navigate their object
+        \item FR26. The system shall add a point to the side that scores
+        \item FR27. The system shall require a final score to play up to
+        \item FR28. The system shall end the game once the final score is reached by either side
+        \item FR29. The system shall provide the option to play again 
+        \item FR30. The system shall provide the option to return to the launcher
+    \end{itemize}
+
 
 \section{Non-functional Requirements}
 
@@ -112,23 +244,79 @@ issues that should be considered for every engineering project.
 
 \subsection{Open Issues}
 
+The following describes issues that has been raised , but have not yet solved:
+\begin{enumerate}
+    \item The mini-games are currently using turtle as the graphic library, but the functionality turtle provides is very basic as it is designed as a introduction library for python beginners. Therefore a different graphic library is needed and the codes must be adjusted to use the new graphic library, preferably before any further development is done (this reduces the complexity of switching libraries).
+\end{enumerate}
+
 \subsection{Off-the-Shelf Solutions}
+
+As some of the mini-games are based on commonly spread ideas, there is a decent amount of similar games out there, such as pac-man, flappy bird, pong, etc.
 
 \subsection{New Problems}
 
+Our project provide a all-in-one package to some of the common mini-games, with a standalone executable launcher providing access to multiple common mini-games without the need of external libraries and internet connection on computers.
+
 \subsection{Tasks}
+
+\begin{center}
+\begin{tabular}{ |c|c| } 
+\hline
+\textbf{Task} & \textbf{Timeline}\\
+\hline
+Launcher Model Implementation and  & February 13\textsuperscript{th}\\
+Partial Graphic Library Adaptation &\\
+\hline
+Adopt New Graphic Library & February 23\textsuperscript{th}\\
+\hline
+Launcher Development and Game Remake & March 15\textsuperscript{th}\\
+\hline
+Testing and Revision & March 29\textsuperscript{th}\\
+\hline
+\end{tabular}
+\end{center}
+
+\textcolor{white}{...}\\ %remove awkward indent
+Task 1: Basic model for launcher and partially modify the mini-game to adapt with new graphic library (at least modify the main menu).\\
+Task 2: Finish the adaptation to the new graphic library.\\
+Task 3: Finish development of the launcher and remake the mini-games to provide more functionality to each mini-game.\\
+Task 4: Test the launcher and mini-game, fix bugs found during testing and optimizes the mini-games.
 
 \subsection{Migration to the New Product}
 
+Not applicable.
+
 \subsection{Risks}
+
+Risks are inherent in the development of any product. The following information highlights possible risks for this project:
+\begin{itemize}
+    \item Complexity of Graphic Library
+    \item Over-estimated Project Size
+    \item Difficult Testing
+    \item Bad Programming Practices
+    \item Improper Git Usage
+\end{itemize}
 
 \subsection{Costs}
 
+There is no monetary cost to this project as all resources are free of charge. The original code this project is based on is a open-source project, and all technologies required in the development of the project such as graphic libraries and programming tools are all free, resulting in no monetary cost.\\
+The labour cost required for this project is relatively high, as each team member will require to dedicate around 5 to 7 hours minimum per week in the development of this project.
+
 \subsection{User Documentation and Training}
+
+As the product of this project is planned to be compiled into a standalone executable, there will be no standalone user's manual due to the assumption that user understand how to open a standalone executable.\\
+With each mini-game having different controls and playing method, there will be a help section integrated into each mini-game containing information needed.
 
 \subsection{Waiting Room}
 
+As this project only re-made part of the mini-games in the original open source project, the future plan will be remaking all mini-games in the original open source project and integrate them into the launcher.
+
 \subsection{Ideas for Solutions}
+
+The following are purposed solution to some of the issues stated in section 4.1:
+\begin{itemize}
+    \item Two libraries, tkinter and pygame, have been proposed to be used as the replacement of the original turtle library. Both libraries are suitable as they provides enough functionality for current and future (planned) developments. Currently those two are being debated on the trade-offs between functionality and complexity of the library.
+\end{itemize}
 
 \bibliographystyle{plainnat}
 
