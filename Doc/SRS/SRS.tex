@@ -35,7 +35,18 @@
 \pagenumbering{roman}
 \tableofcontents
 \listoftables
+
+\begin{itemize}
+\item Table 1: Revision History
+\item Table 2: Work Partitioning Events
+\item Table 3: Work Partitioning Event Summaries
+\end{itemize}
+
 \listoffigures
+
+\begin{itemize}
+    \item Figure 1: System Use Case Diagram
+\end{itemize}
 
 \begin{table}[bp]
 \caption{\bf Revision History}
@@ -43,7 +54,8 @@
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
 2/3/2020 & 1.0 & Project Drivers and Project Issues\\
-Date 2 & 1.1 & Notes\\
+2/8/2020 & 1.1 & Completed Functional Requirements\\
+
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -52,7 +64,7 @@ Date 2 & 1.1 & Notes\\
 
 \pagenumbering{arabic}
 
-This document describes the requirements for ....  The template for the Software Requirements Specification (SRS) is a subset of the Volere template~\citep{RobertsonAndRobertson2012}.  If you make further modifications to the template, you should explicitly state what modifications were made.
+%This document describes the requirements for ....  The template for the Software Requirements Specification (SRS) is a subset of the Volere template~\citep{RobertsonAndRobertson2012}.  If you make further modifications to the template, you should explicitly state what modifications were made.
 
 \section{Project Drivers}
 
@@ -64,11 +76,13 @@ For all time, humans have played games for entertainment, as a pass-time, or to 
 
 \subsubsection{The Client}
 
-The client(s) for \textbf{Mini-Hub???} are Dr. Asghar Bokhari and the SFWRENG 3XA3 Teaching Assistants. As clients, they will administer the development of \textbf{Mini-Hub???}. They will also determine the degree to which the product delivers on the requirements.
+\begin{itemize}
+    \item The client(s) for the product are Dr. Asghar Bokhari and the SFWRENG 3XA3 Teaching Assistants. As clients, they will administer the development of the product. They will also determine the degree to what the product delivers on the requirements.
+\end{itemize}
 
 \subsubsection{The Customers}
 
-The intended customers of \textbf{Mini-Hub???} are any individuals with the ability to download the product online. This includes a child, up to an elder. \textbf{Mini-Hub???} is created to entertain its users and give them a joyful experience.
+The intended customers of the product are any individuals with the ability to download the product online. This includes a child, up to an elder. The product is created to entertain its users and give them a joyful experience.
 
 \subsubsection{Other Stakeholders}
 
@@ -76,7 +90,7 @@ All other stakeholders include all current developers as well as any future deve
 
 \subsection{Mandated Constraints}
 
-\textbf{Mini-Hub???} is to be built under the following constraints
+The system is to be built under the following constraints
 
 \begin{itemize}
     \item The product must run successfully on at least Windows and MacOS.
@@ -119,6 +133,8 @@ The Current Situation:
 \begin{table}[H]
 \caption{Work Partitioning Events}
 \begin{center}
+\setlength{\tabcolsep}{3pt}
+\resizebox{\linewidth}{!}{%
 \begin{tabular}{|c|c|c|c|}
 \hline
 Event Number & Event Name & Input & Output \\
@@ -133,14 +149,17 @@ Event Number & Event Name & Input & Output \\
 \hline
 5 & Playing Pong & Keyboard & Final Score\\
 \hline
-\end{tabular}
+\end{tabular}%
+}
 \end{center}
-\label{default}
+\label{wpe}
 \end{table}%
 
 \begin{table}[H]
-\caption{Work Partitioning Summaries}
+\caption{Work Partitioning Event Summaries}
 \begin{center}
+\setlength{\tabcolsep}{3pt}
+\resizebox{\linewidth}{!}{%
 \begin{tabular}{|c|c|}
 \hline
 Event Number & Summary\\
@@ -155,9 +174,10 @@ Event Number & Summary\\
 \hline
 5 & The user will use the keyboard to play against an opponent controlled\\ &by the system to try to score against them. They will play till\\ &either they or their opponent reaches a desired score. \\&The system will then display the final score and record their score.\\
 \hline
-\end{tabular}
+\end{tabular}%
+}
 \end{center}
-\label{default}
+\label{wps}
 \end{table}%
 
 
@@ -166,7 +186,7 @@ Event Number & Summary\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=6in]{Images/UseCaseDiagram.png} 
-    \caption{Use Case Diagram}
+    \caption{System Use Case Diagram}
     \label{fig:example}
  \end{figure}
  
@@ -181,12 +201,12 @@ Event Number & Summary\\
     BE2. The user wants to view their scores
     \begin{itemize}
         \item FR4. The system shall provide the user with the ability to view the leader-boards from the launcher
-        \item FR5. The system shall provide the user with the ability to sort their scores based on game
+        \item FR5. The system shall provide the user with the ability to sort their scores based on the game
         \item FR6. The system shall provide the user the ability to view the current game’s leader-boards from the game home screen
     \end{itemize}
     BE3. The user wants to play Maze
     \begin{itemize}
-        \item FR7. The system shall provide the user with different          difficulty levels
+        \item FR7. The system shall provide the user with different difficulty levels
         \item FR8. The system shall record the user’s current score based on the time elapsed
         \item FR9. The system shall randomly generate mazes based on difficulty
         \item FR10. The system shall provide a home button to exit the game at any time
@@ -210,11 +230,11 @@ Event Number & Summary\\
     BE5. The user wants to play Pong
     \begin{itemize}
         \item FR24. The system shall provide the user with the option to play alone or with a friend
-        \item FR25. The user shall use the keyboard to navigate their object
+        \item FR25. The user(s) shall use the keyboard to navigate their paddle(s)
         \item FR26. The system shall add a point to the side that scores
         \item FR27. The system shall require a final score to play up to
         \item FR28. The system shall end the game once the final score is reached by either side
-        \item FR29. The system shall provide the option to play again 
+        \item FR29. The system shall provide the option to play again
         \item FR30. The system shall provide the option to return to the launcher
     \end{itemize}
 
@@ -307,7 +327,7 @@ The labour cost required for this project is relatively high, as each team membe
 \subsection{User Documentation and Training}
 
 As the product of this project is planned to be compiled into a standalone executable, there will be no standalone user's manual due to the assumption that user understand how to open a standalone executable.\\
-With each mini-game having different controls and playing method, there will be a help section integrated into each mini-game containing information needed.
+With each mini-game having different controls and playing method, there will be a help section integrated into each mini-game containing help information.
 
 \subsection{Waiting Room}
 
@@ -317,7 +337,7 @@ As this project only re-made part of the mini-games in the original open source 
 
 The following are purposed solution to some of the issues stated in section 4.1:
 \begin{itemize}
-    \item Two libraries, tkinter and pygame, have been proposed to be used as the replacement of the original turtle library. Both libraries are suitable as they provides enough functionality for current and future (planned) developments. Currently those two are being debated on the trade-offs between functionality and complexity of the library.
+    \item Two libraries, tkinter and pygame, have been proposed to be used as the replacement of the original turtle library. Both libraries are suitable as they provide enough functionality for current and future (planned) developments. Currently those two are being debated on the trade-offs between functionality and complexity of the library.
 \end{itemize}
 
 \bibliographystyle{plainnat}
