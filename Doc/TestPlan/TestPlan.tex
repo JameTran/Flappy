@@ -12,17 +12,17 @@
 }
 \usepackage[round]{natbib}
 
-\title{SE 3XA3: Test Plan\\Title of Project}
+\title{SE 3XA3: Test Plan\\Mini-Arcade}
 
-\author{Team \#, Team Name
-		\\ Student 1 name and macid
-		\\ Student 2 name and macid
-		\\ Student 3 name and macid
+\author{Team \#104
+		\\ Andrew Hum, 400138826
+		\\ Arshan Khan, 400145605
+		\\ Jame Tran, 400144141
+		\\ William Lei, 400125240
 }
-
 \date{\today}
 
-\input{../Comments}
+% \input{../Comments}
 
 \begin{document}
 
@@ -38,7 +38,7 @@
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
-Date 1 & 1.0 & Notes\\
+2/24/2020 & 1.0 & Andrew and Arshan divided the project into workable parts for group members and began the rough draft of sections 2, 5, 6\\
 Date 2 & 1.1 & Notes\\
 \bottomrule
 \end{tabularx}
@@ -59,7 +59,7 @@ This document ...
 \subsection{Acronyms, Abbreviations, and Symbols}
 	
 \begin{table}[hbp]
-\caption{\textbf{Table of Abbreviations}} \label{Table}
+\caption{\textbf{Table of Abbreviations}} \label{Abbrev}
 
 \begin{tabularx}{\textwidth}{p{3cm}X}
 \toprule
@@ -73,7 +73,7 @@ Abbreviation2 & Definition2\\
 \end{table}
 
 \begin{table}[!htbp]
-\caption{\textbf{Table of Definitions}} \label{Table}
+\caption{\textbf{Table of Definitions}} \label{Defs}
 
 \begin{tabularx}{\textwidth}{p{3cm}X}
 \toprule
@@ -222,8 +222,12 @@ How test will be performed:
 
 	
 \section{Comparison to Existing Implementation}	
-				
+	
+	There are several tests that compare the new project to the Existing Implementation of the project.
+	
 \section{Unit Testing Plan}
+
+    The pytest library will be used for the unit testing of our project.
 		
 \subsection{Unit testing of internal functions}
 		
@@ -247,5 +251,14 @@ Their values are defined in this section for easy maintenance.
 \subsection{Usability Survey Questions?}
 
 This is a section that would be appropriate for some teams.
+A possible set of questions to ask beta testers would include:
+\begin{itemize}
+    \item What game did you play first?
+    \item What did you think of that game?
+    \item How long did you play?
+    \item Would you play again?
+    \item Did you play any other games?
+    \item Was it easy to get started?
+\end{itemize}
 
 \end{document}
