@@ -20,7 +20,7 @@
 		\\ Jame Tran, 400144141
 		\\ William Lei, 400125240
 }
-\date{February 28, 2020}
+\date{\today}
 
 % \input{../Comments}
 
@@ -38,8 +38,9 @@
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
-2/24/2020 & 1.0 & Andrew and Arshan divided the project into workable parts for group members and began the rough draft of sections 2, 5, 6\\
-2/26/2020 & 2.0 & Andrew and Arshan completed section 1 and 2\\
+2/24/2020 & 1.0 & Andrew and Arshan divided the project into workable parts for group members and began the rough draft of sections 1, 2, 5\\
+2/26/2020 & 1.1 & Andrew completed sections 1 and 5\\
+2/27/2020 & 1.2 & Andrew revised sections 1 and 5 for grammatical errors\\
 Date 2 & 1.1 & Notes\\
 \bottomrule
 \end{tabularx}
@@ -53,11 +54,11 @@ Date 2 & 1.1 & Notes\\
 
 \subsection{Purpose}
 
-The purpose for testing our project is to verify that it meets the requirements outlined in the 'Software Requirements Specification' and ensure that it is implemented correctly.
+The purpose of testing our project is to verify that it meets the requirements outlined in the 'Software Requirements Specification' and ensure that it is implemented correctly.
 
 \subsection{Scope}
 
-The test plan develops a baseline for testing the functionality and correctness of Mini-Arcade. It's core objective is to verify that the games run correctly and efficiently all with a single click utilizing the launcher. The test plan documents will highlight what is to be tested of our project, testing methods and what resources we will use to test our software.
+The test plan develops a baseline for testing the functionality and correctness of Mini-Arcade. Its core objective is to verify that the games run correctly and efficiently all with a single click utilizing the launcher. The test plan documents will highlight what is to be tested of our project, testing methods and what resources we will use to test our software.
 
 \subsection{Acronyms, Abbreviations, and Symbols}
 	
@@ -232,15 +233,15 @@ How test will be performed:
 	
 \section{Unit Testing Plan}
 
-The pytest library will also be used for the unit testing of our project.
+The pytest library will be used for the unit testing of our project.
 		
 \subsection{Unit testing of internal functions}
 
-To unit test the project, hard-coded, expected inputs will be given to the individual functions and methods. These functions and methods will then provide output, and we will check that these are the expected output given our scenarios. As games are more difficult to completely test with unit tests, we will only test the functions that can be tested by providing an expected and unexpected output with simple input values. To cover a wide range of scenarios, the input variables will test both expected output, and reaction to incorrect/unexpected input values. There will be no need for stubs or drivers to test our project. To ensure high-quality coverage, we will be using testing coverage metrics. Our goal is to cover a minimum of 60\% of the project with unit tests alone, derived by the total lines of code in the project divided by the number of lines covered by the test cases.
+To efficiently use unit-testing for our project, we will use hard-coded, expected, and unexpected, inputs for individual functions and methods. These functions and methods will then provide output, and we will verify that the resulting output is correct or that the program handles the unexpected input correctly. For example, telling the game that the game was won, and the expected output should be the end-game screen. As games are more difficult to completely test with unit tests, we will only test the functions that can be tested by providing an expected and unexpected output with input values relating to a current state or completed event. To cover a wide range of scenarios, the input variables will test both expected output, and reaction to incorrect/unexpected input values. There will be no need for stubs or drivers to test our project. To ensure high-quality coverage, we will be using testing coverage metrics. Our goal is to cover a minimum of 60\% of the project with unit tests alone, derived by the total lines of code in the project divided by the number of lines covered by the test cases.
 	
 \subsection{Unit testing of output files}	
 
-In-depth testing of the output files using unit testing will be not applicable for our project, and any unit tests to test output files would prove to be not useful.
+In-depth testing of the output files using unit testing will be not applicable for our project, and any unit tests to test output files would prove to be not useful and ineffective in both coverage and effective use of time.
 
 \bibliographystyle{plainnat}
 
