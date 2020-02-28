@@ -33,7 +33,7 @@
 \listoftables
 \listoffigures
 
-\begin{table}[bp]
+\begin{table}[hbp]
 \caption{\bf Revision History}
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
@@ -98,7 +98,7 @@ This document will outline a detailed testing plan with the tools that will be u
 	
 \subsection{Software Description}
 
-The software is a launcher for a selection of games for the user to play. These games are updated from their original versions to be more visually pleasing and challenging.
+The software is a launcher for a selection of games for the user to play. These games are updated from their original versions to be more challenging and visually pleasing.
 
 \subsection{Test Team}
 
@@ -106,14 +106,15 @@ The test team is composed of all team members: Andrew Hum, Arshan Khan, Jame Tra
 
 \subsection{Automated Testing Approach}
 
-The tests will be automated by pytest because it is very popular and allows "assert rewriting".
+The tests will be automated by Pytest because it is a very popular test automation platform and provides detailed assertion error messages.
 
 \subsection{Testing Tools}
+The main tool in our testing will be Pytest as it can cover a wide range of tests. Most of the testing will be done through the IDE but some testing will be done by asking users to install and use the system.
 
 \subsection{Testing Schedule}
 		
 See Gantt Chart at the following url: \\
-\href{run:../../ProjectSchedule/3XA3-ProjSched.gan}{../../ProjectSchedule/3XA3-ProjSched.gan}. 
+\url{file://./../../ProjectSchedule/3XA3-ProjSched.pdf} 
 
 \section{System Test Description}
 	
@@ -475,7 +476,7 @@ How test will be performed:
 	
 \section{Unit Testing Plan}
 
-The pytest library will be used for the unit testing of our project.
+The Pytest library will be used for the unit testing of our project.
 		
 \subsection{Unit testing of internal functions}
 
@@ -500,7 +501,7 @@ This is where you can place additional information.
 The definition of the test cases will call for SYMBOLIC\_CONSTANTS.
 Their values are defined in this section for easy maintenance.
 
-\subsection{Usability Survey Questions?}
+\subsection{Usability Survey Questions}
 
 This is a section that would be appropriate for some teams.
 A possible set of questions to ask beta testers would include:
@@ -511,6 +512,7 @@ A possible set of questions to ask beta testers would include:
     \item Would you play again?
     \item Did you play any other games?
     \item Was it easy to get started?
+    \item How would you improve the experience?
 \end{itemize}
 
 \end{document}
