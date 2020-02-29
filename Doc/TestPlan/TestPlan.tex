@@ -42,7 +42,7 @@
 2/26/2020 & 1.1 & Andrew completed sections 1 and 5\\
 2/27/2020 & 1.2 & Andrew revised sections 1 and 5 for grammatical errors\\
 2/27/2020 & 1.3 & William completed section 3.1\\
-2/27/2020 & 1.4 & Jame completed section 3.2\\
+2/27/2020 & 1.4 & Jame completed section 3.2 and section 4\\
 2/28/2020 & 2.0 & All completed the final draft\\
 \bottomrule
 \end{tabularx}
@@ -508,40 +508,40 @@ Input: The user will be asked to install the program.
 
 Output: The majority of users are able to install the program without outside assistance.
 
-How test will be performed: Either a group of users will be asked to perform the task or the task will be iterated multiple times. Program installation success and the amount of time it took will be recorded. Test is considered successful if 80\% of users are able to install the program without assistance. This test will be repeated on a wide variety of computers with varying hardware and operating systems.
+How test will be performed: Either a group of users will be asked to perform the task or the task will be iterated multiple times. Program installation success and the amount of time it took will be recorded. Test is considered successful if 80\% of users are able to install the program without assistance. This test will be repeated on a wide variety of computers with varying hardware and operating systems
 \end{enumerate}
 
 \section{Tests for Proof of Concept}
 
 \subsection{Area of Testing1}
 		
-\paragraph{Title for Test}
+\paragraph{Since many of the above tests for non-functional requirements also cover issues in the Proof of Concept, these tests will focus on testing external modules}
 
 \begin{enumerate}
 
-\item{test-id1\\}
+\item{PC-1\\}
 
-Type: Functional, Dynamic, Manual, Static etc.
+Type: FDM
 					
-Initial State: 
+Initial State: A computer with Python 3 installed, the source code for the projects and pyinstaller module installed.
 					
-Input: 
+Input: The user will create an executable of the source files using pyinstaller.
 					
-Output: 
+Output: A working executable file will be created.
 					
-How test will be performed: 
+How test will be performed: A sample python file will be used for testing. The user will create an executable using pyinstaller, and run the executable. Success will be counted if the executable program is able to display game functionality. This test will be repeated across a wide range of computers.
 					
 \item{test-id2\\}
 
-Type: Functional, Dynamic, Manual, Static etc.
+Type: FDM
 					
-Initial State: 
+Initial State: A computer with VSCode and Python 3 installed.
 					
-Input: 
+Input: The user will attempt to install the Pygame module
 					
-Output: 
+Output: The Pygame module will be available for use in VSCode
 					
-How test will be performed: 
+How test will be performed: The user will use Pip to install the Pygame module in a virtual environment. The user will then attempt to import the Pygame module, and run a sample program that uses its functionality. If the program is able to run and display full functionality, the test is a success. This test will be repeated across a wide range of computers.
 
 \end{enumerate}
 
