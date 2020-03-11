@@ -70,14 +70,13 @@
 
 Decomposing a system into modules is a commonly accepted approach to developing
 software.  A module is a work assignment for a programmer or programming
-team~\citep{ParnasEtAl1984}.  We advocate a decomposition
-based on the principle of information hiding~\citep{Parnas1972a}.  This
+team. We advocate a decomposition based on the principle of information hiding.  This
 principle supports design for change, because the ``secrets'' that each module
 hides represent likely future changes.  Design for change is valuable in SC,
 where modifications are frequent, especially during initial development as the
 solution space is explored.  
 
-Our design follows the rules layed out by \citet{ParnasEtAl1984}, as follows:
+Our design follows the rules layed out, as follows:
 \begin{itemize}
 \item System details that are likely to change independently should be the
   secrets of separate modules.
@@ -87,7 +86,7 @@ Our design follows the rules layed out by \citet{ParnasEtAl1984}, as follows:
 \end{itemize}
 
 After completing the first stage of the design, the Software Requirements
-Specification (SRS), the Module Guide (MG) is developed~\citep{ParnasEtAl1984}. The MG
+Specification (SRS), the Module Guide (MG) is developed. The MG
 specifies the modular structure of the system and is intended to allow both
 designers and maintainers to easily identify the parts of the software.  The
 potential readers of this document are as follows:
@@ -133,11 +132,12 @@ adapted here is called design for
 change.
 
 \begin{description}
-\item[\refstepcounter{acnum} \actheacnum \label{acHardware}:] The specific
-  hardware on which the software is running.
-\item[\refstepcounter{acnum} \actheacnum \label{acInput}:] The format of the
-  initial input data.
-\item ...
+\item[\refstepcounter{acnum} \actheacnum \label{acHardware}:] 
+The specific hardware on which the software is running.
+\item[\refstepcounter{acnum} \actheacnum \label{acInput}:] 
+    The format of the initial input data.
+\item[\refstepcounter{acnum} \actheacnum \label{acSample}:]
+    ...
 \end{description}
 
 \subsection{Unlikely Changes} \label{SecUchange}
@@ -150,14 +150,31 @@ will potentially need to be modified. Hence, it is not intended that these
 decisions will be changed.
 
 \begin{description}
-\item[\refstepcounter{ucnum} \uctheucnum \label{ucIO}:] Input/Output devices
-  (Input: File and/or Keyboard, Output: File, Memory, and/or Screen).
-\item[\refstepcounter{ucnum} \uctheucnum \label{ucInput}:] There will always be
-  a source of input data external to the software.
-\item ...
+\item[\refstepcounter{ucnum} \uctheucnum \label{ucIO}:]
+    Input/Output devices (Input: File and/or Keyboard, Output: File, Memory, and/or Screen).
+\item[\refstepcounter{ucnum} \uctheucnum \label{ucInput}:]
+    There will always be a source of input data external to the software.
+\item[\refstepcounter{ucnum} \uctheucnum \label{ucSample}:]
+    ...
 \end{description}
 
 \section{Module Hierarchy} \label{SecMH}
+
+\begin{description}
+\item [\refstepcounter{mnum} \mthemnum \label{mHH}:] Hardware-Hiding Module
+\item [\refstepcounter{mnum} \mthemnum \label{mLM}:] \textit{Launcher Modules}
+\item [\refstepcounter{mnum} \mthemnum \label{mMGM}:] Maze Generator (Maze)
+\item [\refstepcounter{mnum} \mthemnum \label{mSTM}:] Score Tracking (Maze)
+\item [\refstepcounter{mnum} \mthemnum \label{mDGM}:] Draw Game (Maze) 
+\item [\refstepcounter{mnum} \mthemnum \label{mPMM}:] Player Movement (Maze)
+\item [\refstepcounter{mnum} \mthemnum \label{mMSM}:] Menu and Settings (Maze) 
+\item [\refstepcounter{mnum} \mthemnum \label{mBTP}:] Ball Trajectory (Pong)
+\item [\refstepcounter{mnum} \mthemnum \label{mSTP}:] Score Tracking (Pong) 
+\item [\refstepcounter{mnum} \mthemnum \label{mDGP}:] Draw Game (Pong)
+\item [\refstepcounter{mnum} \mthemnum \label{mPMP}:] Player Movement (Pong)
+\item [\refstepcounter{mnum} \mthemnum \label{mMSP}:] Menu and Settings (Pong)
+\item [\refstepcounter{mnum} \mthemnum \label{mFM}:] \textit{Flappy Modules}
+\end{description}
 
 \newpage
 
@@ -171,7 +188,7 @@ decisions will be changed.
 {Hardware-Hiding Module} & ~ \\
 \midrule
 
-\multirow{7}{0.3\textwidth}{Behaviour-Hiding Module} & ~\\
+\multirow{1}{0.3\textwidth}{Behaviour-Hiding Module} & ?\\
 & \textit{Launcher Modules}\\
 & Draw Game (Maze)\\
 & Player Movement (Maze)\\
@@ -180,17 +197,15 @@ decisions will be changed.
 & Player Movement (Pong)\\
 & Menu and Settings (Pong)\\ 
 & \textit{Flappy Modules}\\
-& ~ \\
 \midrule
 
-\multirow{7}{0.3\textwidth}{Software Decision Module} & ~\\
+\multirow{1}{0.3\textwidth}{Software Decision Module} & {?}\\
 & \textit{Launcher Modules}\\
-& Maze Generator\\
+& Maze Generator (Maze)\\
 & Score Tracking (Maze)\\ 
-& Ball Trajectory\\
-& Score Tracking (Pong)\\ 
+& Ball Trajectory (Pong)\\
+& Score Tracking (Pong) \\ 
 & \textit{Flappy Modules}\\
-& ~ \\
 \bottomrule
 
 \end{tabular}
@@ -207,7 +222,7 @@ between requirements and modules is listed in Table \ref{TblRT}.
 \section{Module Decomposition} \label{SecMD}
 
 Modules are decomposed according to the principle of ``information hiding''
-proposed by \citet{ParnasEtAl1984}. The \emph{Secrets} field in a module
+proposed by . The \emph{Secrets} field in a module
 decomposition is a brief statement of the design decision hidden by the
 module. The \emph{Services} field specifies \emph{what} the module will do
 without documenting \emph{how} to do it. For each module, a suggestion for the
@@ -242,19 +257,51 @@ selected.
   documents. This module serves as a communication layer between the
   hardware-hiding module and the software decision module. The programs in this
   module will need to change if there are changes in the SRS.
-\item[Implemented By:] --
+\item[Implemented By:] N/A
 \end{description}
 
-\subsubsection{Player Movement (Maze) Module (\mref{mInput})}
-
+\subsubsection{Draw Game (Maze) Module (\mref{mDGM})}
 \begin{description}
-\item[Secrets:]The format and structure of the input data.
-\item[Services:]Converts the input data into the data structure used by the
-  input parameters module.
-\item[Implemented By:] [Your Program Name Here]
+\item[Secrets:]
+\item[Services:]
+\item[Implemented By:] Mini-Arcade, Python Libraries, pygame
 \end{description}
 
-\subsubsection{Etc.}
+\subsubsection{Player Movement (Maze) Module (\mref{mPMM})}
+\begin{description}
+\item[Secrets:]
+\item[Services:]
+\item[Implemented By:] Mini-Arcade, Python Libraries, pygame
+\end{description}
+
+\subsubsection{Menu and Settings (Maze) Module (\mref{mMSM})}
+\begin{description}
+\item[Secrets:]
+\item[Services:]
+\item[Implemented By:] Mini-Arcade, Python Libraries, pygame
+\end{description}
+
+\subsubsection{Draw Game (Pong) Module (\mref{mDGP})}
+\begin{description}
+\item[Secrets:]
+\item[Services:]
+\item[Implemented By:] Mini-Arcade, Python Libraries, pygame
+\end{description}
+
+\subsubsection{Player Movement (Pong) Module (\mref{mPMP})}
+\begin{description}
+\item[Secrets:]
+\item[Services:]
+\item[Implemented By:] Mini-Arcade, Python Libraries, pygame
+\end{description}
+
+\subsubsection{Menu and Settings (Pong) Module (\mref{mMSP})}
+\begin{description}
+\item[Secrets:]
+\item[Services:]
+\item[Implemented By:] Mini-Arcade, Python Libraries, pygame
+\end{description}
+
 
 
 \subsection{Software Decision Module}
@@ -267,10 +314,37 @@ selected.
   do not provide direct interaction with the user. 
   % Changes in these modules are more likely to be motivated by a desire to
   % improve performance than by externally imposed changes.
-\item[Implemented By:] --
+\item[Implemented By:] N/A
 \end{description}
 
-\subsubsection{Etc.}
+\subsubsection{Maze Generator (Maze) Module (\mref{mMGM})}
+\begin{description}
+\item[Secrets:]
+\item[Services:]
+\item[Implemented By:] Mini-Arcade, Python Libraries
+\end{description}
+
+\subsubsection{Score Tracking (Maze) Module (\mref{mSTM})}
+\begin{description}
+\item[Secrets:]
+\item[Services:]
+\item[Implemented By:] Mini-Arcade, Python Libraries
+\end{description}
+
+\subsubsection{Ball Trajectory (Pong) Module (\mref{mBTP})}
+\begin{description}
+\item[Secrets:]
+\item[Services:]
+\item[Implemented By:] Mini-Arcade, Python Libraries
+\end{description}
+
+\subsubsection{Score Tracking (Pong) Module (\mref{mSTP})}
+\begin{description}
+\item[Secrets:]
+\item[Services:]
+\item[Implemented By:] Mini-Arcade, Python Libraries
+\end{description}
+
 \section{Traceability Matrix} \label{SecTM}
 \newpage
 % the table should use mref, the requirements should be named, use something
@@ -341,17 +415,7 @@ NFR12 & \\
 \textbf{AC} & \textbf{Modules}\\
 \midrule
 \acref{acHardware} & \mref{mHH}\\
-\acref{acInput} & \mref{mInput}\\
-\acref{acParams} & \mref{mParams}\\
-\acref{acVerify} & \mref{mVerify}\\
-\acref{acOutput} & \mref{mOutput}\\
-\acref{acVerifyOut} & \mref{mVerifyOut}\\
-\acref{acODEs} & \mref{mODEs}\\
-\acref{acEnergy} & \mref{mEnergy}\\
-\acref{acControl} & \mref{mControl}\\
-\acref{acSeqDS} & \mref{mSeqDS}\\
-\acref{acSolver} & \mref{mSolver}\\
-\acref{acPlot} & \mref{mPlot}\\
+\acref{acInput} & ..\\
 \bottomrule
 \end{tabular}
 \caption{Trace Between Anticipated Changes and Modules}
@@ -361,7 +425,7 @@ NFR12 & \\
 \section{Use Hierarchy Between Modules} \label{SecUse}
 
 In this section, the uses hierarchy between modules is
-provided. \citet{Parnas1978} said of two programs A and B that A {\em uses} B if
+provided. Parnas said of two programs A and B that A {\em uses} B if
 correct execution of B may be necessary for A to complete the task described in
 its specification. That is, A {\em uses} B if there exist situations in which
 the correct functioning of A depends upon the availability of a correct
