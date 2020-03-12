@@ -59,6 +59,7 @@
 3/9/2020 & 1.0 & Arshan and Andrew created document\\
 3/11/2020 & 1.1 & Arshan added modules to section 3\\
 3/11/2020 & 1.2 & Andrew completed section 1, and sections 2, 3, 5, 6 where Maze modules and changes were relevant.\\
+3/12/2020 & 1.3 & Arshan added Gantt chart and completed sections 2, 3, 5, 6 wherever Pong was relevant.\\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -98,7 +99,7 @@ change.
 \item[\refstepcounter{acnum} \actheacnum \label{acInput}:] The format of the input data.
 \item[\refstepcounter{acnum} \actheacnum \label{acScore}:] The format and calculation of the score.
 \item[\refstepcounter{acnum} \actheacnum \label{acGraphics}:] The details/style of the in-game graphics and the graphical user interface.
-\item[\refstepcounter{acnum} \actheacnum \label{acCharacter}:] Character customization.
+\item[\refstepcounter{acnum} \actheacnum \label{acCharacter}:] Player customization.
 \item[\refstepcounter{acnum} \actheacnum \label{acTheme}:] Theme customization.
 \item[\refstepcounter{acnum} \actheacnum \label{acMazeAlg}:] The efficiency and variability of the maze generation algorithm
 \item[\refstepcounter{acnum} \actheacnum \label{acSettings}:] Create more options to configure the game (adjust sound, adjust brightness)
@@ -117,8 +118,8 @@ change.
 \begin{description}
 \item [\refstepcounter{mnum} \mthemnum \label{mHH}:] Hardware-Hiding Module
 \item [\refstepcounter{mnum} \mthemnum \label{mLM}:] \textit{Launcher Modules}
+\item [\refstepcounter{mnum} \mthemnum \label{mSM}:] \textit{Scoreboard Modules}
 \item [\refstepcounter{mnum} \mthemnum \label{mMGM}:] Maze Generator (Maze)
-\item [\refstepcounter{mnum} \mthemnum \label{mGSM}:] Game State (Maze)
 \item [\refstepcounter{mnum} \mthemnum \label{mSTM}:] Score Tracking (Maze)
 \item [\refstepcounter{mnum} \mthemnum \label{mDGM}:] Draw Game (Maze) 
 \item [\refstepcounter{mnum} \mthemnum \label{mPMM}:] Player Movement (Maze)
@@ -157,7 +158,6 @@ change.
 \multirow{1}{0.3\textwidth}{Software Decision Module} & {?}\\
 & \textit{Launcher Modules}\\
 & Maze Generator (Maze)\\
-& Game State (Maze)\\
 & Score Tracking (Maze)\\ 
 & Ball Trajectory (Pong)\\
 & Score Tracking (Pong) \\ 
@@ -239,22 +239,22 @@ selected.
 
 \subsubsection{Draw Game (Pong) Module (\mref{mDGP})}
 \begin{description}
-\item[Secrets:]
-\item[Services:]
+\item[Secrets:] Graphics and Opponent Movement
+\item[Services:] Draws the current state of the game including the player's position, the ball's position, the opponent's position, and the score (received from Score Tracking (Pong) Module).
 \item[Implemented By:] Mini-Arcade, Python Libraries, pygame
 \end{description}
 
 \subsubsection{Player Movement (Pong) Module (\mref{mPMP})}
 \begin{description}
-\item[Secrets:]
-\item[Services:]
+\item[Secrets:] Input
+\item[Services:] Allows the movement of the player's paddle on-screen from keyboard inputs.
 \item[Implemented By:] Mini-Arcade, Python Libraries, pygame
 \end{description}
 
 \subsubsection{Menu and Settings (Pong) Module (\mref{mMSP})}
 \begin{description}
-\item[Secrets:]
-\item[Services:]
+\item[Secrets:] Graphics
+\item[Services:] Allows the user to navigate the game's features (How-to-Play, Settings, tc.) or return to the launcher.
 \item[Implemented By:] Mini-Arcade, Python Libraries, pygame
 \end{description}
 
@@ -280,14 +280,6 @@ selected.
 \item[Implemented By:] Mini-Arcade, Python Libraries
 \end{description}
 
-\subsubsection{Maze Generator (Maze) Module (\mref{mGSM})}
-\begin{description}
-\item[Secrets:] Inputs
-\item[Services:] Determines the state of the game to decide which action to take
-\item[Implemented By:] Mini-Arcade, Python Libraries
-\end{description}
-
-
 \subsubsection{Score Tracking (Maze) Module (\mref{mSTM})}
 \begin{description}
 \item[Secrets:] Points
@@ -297,15 +289,15 @@ selected.
 
 \subsubsection{Ball Trajectory (Pong) Module (\mref{mBTP})}
 \begin{description}
-\item[Secrets:]
-\item[Services:]
+\item[Secrets:] Algorithm
+\item[Services:] Handles the trajectory of the ball as well as the speed based on the desired difficulty.
 \item[Implemented By:] Mini-Arcade, Python Libraries
 \end{description}
 
 \subsubsection{Score Tracking (Pong) Module (\mref{mSTP})}
 \begin{description}
-\item[Secrets:]
-\item[Services:]
+\item[Secrets:] Points
+\item[Services:] Keeps track of how many points are scored by the opponent and the player.
 \item[Implemented By:] Mini-Arcade, Python Libraries
 \end{description}
 
@@ -324,15 +316,15 @@ FR1 & \\
 FR2 & \\
 FR3 & \\
 FR4 & \\ 
-FR5 & \mref{mSTM}\\
-FR6 & \mref{mSTM}\\
+FR5 & \mref{mSTM}, \mref{mSTP}\\
+FR6 & \mref{mSTM}, \mref{mSTP}\\
 FR7 & \mref{mMSM}\\ 
 FR8 & \mref{mSTM}\\
 FR9 & \mref{mMGM}, \mref{mDGM}\\
 FR10 & \mref{mMSM}\\
-FR11 & \mref{mSTM}, \mref{mDGM}, \mref{mGSM}\\
+FR11 & \mref{mSTM}, \mref{mDGM}\\
 FR12 & \mref{mPMM}, \mref{mDGM}\\
-FR13 & \mref{mMSM}, \mref{mMGM}, \mref{mDGM}, \mref{mGSM}\\
+FR13 & \mref{mMSM}, \mref{mMGM}, \mref{mDGM}\\
 FR14 & \mref{mMSM}\\ 
 FR15 & \\
 FR16 & \\
@@ -343,13 +335,13 @@ FR12 & \\
 FR21 & \\
 FR22 & \\
 FR23 & \\
-FR24 & \\ 
-FR25 & \\
-FR26 & \\
-FR27 & \\ 
-FR28 & \\
-FR29 & \\
-FR30 & \\
+FR24 & \mref{mMSP}\\ 
+FR25 & \mref{mPMP}, \mref{mDGP}\\
+FR26 & \mref{mBTP}, \mref{mSTP}, \mref{mDGP}\\
+FR27 & \mref{mMSP}\\ 
+FR28 & \mref{mBTP}, \mref{mSTP}, \mref{mDGP}\\
+FR29 & \mref{mDGP}, \mref{mMSP}\\
+FR30 & \mref{mMSP}\\
 \bottomrule
 \end{tabular}
 \caption{Trace Between Functional Requirements and Modules}
@@ -365,18 +357,18 @@ FR30 & \\
 \toprule
 \textbf{Req.} & \textbf{Modules}\\
 \midrule
-NFR1 & \mref{mDGM}, \mref{mPMM}\\
-NFR2 & \mref{mDGM}\\
-NFR3 & \mref{mMSM}\\
-NFR4 & \mref{mPMM}, \mref{mMSM}\\
-NFR5 & \mref{mMGM}, \mref{mDGM}\\
-NFR6 & \mref{mPMM}, \mref{mMSM}, \mref{mDGM}\\
+NFR1 & \mref{mDGM}, \mref{mPMM}, \mref{mDGP}, \mref{mPMP}\\
+NFR2 & \mref{mDGM}, \mref{mDGP}, \mref{mMSP}\\
+NFR3 & \mref{mMSM}, \mref{mMSP}\\
+NFR4 & \mref{mPMM}, \mref{mMSM}, \mref{mPMP}, \mref{mMSP}\\
+NFR5 & \mref{mMGM}, \mref{mDGM}, \mref{mDGP}\\
+NFR6 & \mref{mPMM}, \mref{mMSM}, \mref{mDGM}, \mref{mPMP}, \mref{mMSP}, \mref{mDGP}\\
 NFR7 & \\
-NFR8 & \mref{mMGM}, \mref{mSTM}, \mref{mDGM}, \mref{mPMM}, \mref{mMSM}, \mref{mGSM}\\
-NFR9 & \mref{mPMM}, \mref{mMSM}\\
-NFR10 & \mref{mDGM}, \mref{mMSM}\\
-NFR11 & \mref{mMGM}, \mref{mSTM}, \mref{mDGM}, \mref{mPMM}, \mref{mMSM}, \mref{mGSM}\\
-NFR12 & \mref{mMGM}, \mref{mSTM}, \mref{mDGM}, \mref{mPMM}, \mref{mMSM}, \mref{mGSM}\\
+NFR8 & \mref{mMGM}, \mref{mSTM}, \mref{mDGM}, \mref{mPMM}, \mref{mMSM}, \mref{mBTP}, \mref{mSTP}, \mref{mDGP}, \mref{mPMP}, \mref{mMSP}\\
+NFR9 & \mref{mPMM}, \mref{mMSM}, \mref{mPMP}, \mref{mMSP}\\
+NFR10 & \mref{mDGM}, \mref{mMSM}, \mref{mDGP}, \mref{mMSP}\\
+NFR11 & \mref{mMGM}, \mref{mSTM}, \mref{mDGM}, \mref{mPMM}, \mref{mMSM}, \mref{mBTP}, \mref{mSTP}, \mref{mDGP}, \mref{mPMP}, \mref{mMSP}\\
+NFR12 & \mref{mMGM}, \mref{mSTM}, \mref{mDGM}, \mref{mPMM}, \mref{mMSM}, \mref{mBTP}, \mref{mSTP}, \mref{mDGP}, \mref{mPMP}, \mref{mMSP}\\
 \bottomrule
 \end{tabular}
 \caption{Trace Between Non Functional Requirements and Modules}
@@ -391,13 +383,13 @@ NFR12 & \mref{mMGM}, \mref{mSTM}, \mref{mDGM}, \mref{mPMM}, \mref{mMSM}, \mref{m
 \textbf{AC} & \textbf{Modules}\\
 \midrule
 \acref{acHH} & \mref{mHH}\\
-\acref{acInput} & \mref{mPMM}\\
-\acref{acScore} & \mref{mSTM}\\
-\acref{acGraphics} & \mref{mDGM}, \mref{mMSM}\\
-\acref{acCharacter} & \mref{mDGM}\\
-\acref{acTheme} & \mref{mDGM}, \mref{mMSM}\\
+\acref{acInput} & \mref{mPMM}, \mref{mPMP}\\
+\acref{acScore} & \mref{mSTM}, \mref{mSTP}\\
+\acref{acGraphics} & \mref{mDGM}, \mref{mMSM}, \mref{mDGP}, \mref{mMSP}\\
+\acref{acCharacter} & \mref{mDGM}, \mref{mDGP}\\
+\acref{acTheme} & \mref{mDGM}, \mref{mMSM}, \mref{mDGP}, \mref{mMSP}\\
 \acref{acMazeAlg} & \mref{mMGM}\\
-\acref{acSettings} & \mref{mMSM}\\
+\acref{acSettings} & \mref{mMSM}, \mref{mDGP}\\
 \bottomrule
 \end{tabular}
 \caption{Trace Between Anticipated Changes and Modules}
@@ -426,10 +418,11 @@ because they use modules from the lower levels.
 \end{figure}
 
 \section{Gantt Schedule} \label{SeCSched}
-See Gantt Chart at the following url:
-%\url{../../ProjectSchedule/3XA3-ProjSched.pdf}\\
-%\includegraphics[width=14cm]{TestPlan/GanttRev2.png}\\
-%\includegraphics[width=14cm]{TestPlan/GanttRevB2.png}
+See Gantt Chart at the following url: \url{../../ProjectSchedule/3XA3-ProjSched.pdf}\\
+\\
+\includegraphics[width=16cm]{MG/GanttChartRev3.png}\\
+\\
+\includegraphics[width=16cm]{MG/GanttResourcesRev3.png}
 
 
 %\section*{References}
