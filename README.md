@@ -20,7 +20,6 @@ The folders and files for this project are as follows:
     Code - Implementation
 
 
-
 Group project for SFWRENG 3XA3
 
 When working, do not directly make change to master branch.
@@ -28,3 +27,9 @@ When working, do not directly make change to master branch.
 Branch off master and then later merge back to master branch.
 
 Do not merge codes that does not functions fully to master branch.
+
+
+**To Install:**
+Open the Windows Start Menu and search for Powershell (you may need to run this "as administrator"). 
+Next, type "pip install pygame" to install the necessary libraries (Python 3.8 is required)
+... <uncomplete>
