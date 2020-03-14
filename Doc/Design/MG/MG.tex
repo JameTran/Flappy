@@ -60,6 +60,8 @@
 3/11/2020 & 1.1 & Arshan added modules to section 3\\
 3/11/2020 & 1.2 & Andrew updated section 1, and sections 2, 3, 5, 6 where Maze modules and changes were relevant.\\
 3/12/2020 & 1.3 & Arshan added Gantt chart and updated sections 2, 3, 5, 6 wherever Pong was relevant.\\
+3/12/2020 & 1.4 & William updated section 2, 3, 5, 6, 7.\\
+3/13/2020 & 2.0 & All completed the final draft.\\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -70,19 +72,19 @@
 
 \section{Introduction}
 \subsection{Overview}
-Mini-Arcade is the re-implementation of three simple open-source Python games: Maze, Pong and Flappy. These games can be accessed through a simple easy-to-use launcher. These games are to be completely re-designed with improved functionality, graphics and performance.
+Mini-Arcade is the re-implementation of three simple open-source Python games: Maze, Pong, and Flappy. These games can be accessed through a simple easy-to-use launcher. These games are to be completely re-designed with improved functionality, graphics and performance.
 \subsection{Context}
-This document is the Module Guide (MG). This document is developed based upon the Software Requirements Specification (SRS) developed earlier. The SRS highlighted the functional and non-functional requirements of our system to ensure a thorough and correct solution. The MG focuses on the concept of modular decomposition to develop and display the modular structure of our project. After this document, the Module Interface Specification (MIS) will be created. The purpose of the MIS is to provide in-depth explanations of each modules individual syntax (exported access programs) and semantics (state variables, environment variables, assumptions and access program semantics).
+This document is the Module Guide (MG) and is developed based upon the Software Requirements Specification (SRS) developed earlier. The SRS highlighted the functional and non-functional requirements of our system to ensure a thorough and correct solution. The MG focuses on the concept of modular decomposition to develop and display the modular structure of our project. After this document, the Module Interface Specification (MIS) will be created. The purpose of the MIS is to provide in-depth explanations of each modules individual syntax (exported access programs) and semantics (state variables, environment variables, assumptions and access program semantics).
 \subsection{Design Principles}
 The design principle guiding the module decomposition is Information Hiding. The use of this principle is important in module decomposition as it supports design for change, which is the concept of allowing each module to be modified often. This principle also supports the low-coupling, independence of modules, and high-cohesion, strong relation of elements, between the modules.
 \subsection{Document Structure}
 The document's structure is as follows. 
 \begin{itemize}
     \item Section \ref{SecChange} lists the anticipated and unlikely changes of the software requirements 
-    \item Section \ref{SecMH} summarizes the decomposition of modules by Hardware-Hiding, Behaviour-Hiding and Software Decision
+    \item Section \ref{SecMH} summarizes the decomposition of modules by Hardware-Hiding, Behaviour-Hiding, and Software Decision
     \item Section \ref{SecConnection} identifies the connections between the requirements of our project and the modules
     \item Section \ref{SecMD} gives a detailed description of the module decomposition
-    \item Section \ref{SecTM} includes three traceability matrices. The first matrix checks the completeness of the design in regards to the Functional Requirements provided in the SRS. The second matrix checks the completeness of the design in regards to the Non-Functional Requirements provided in the SRS. The last matrix highlights the relations between the anticipated changes and the modules
+    \item Section \ref{SecTM} includes three traceability matrices. The first matrix checks the completeness of the design in regards to the Functional Requirements provided in the SRS. The second matrix checks the completeness of the design in regards to the Non-Functional Requirements provided in the SRS. The last matrix highlights the relations between the anticipated changes and the modules.
     \item Section \ref{SecUse} describes the use relation between modules
 \end{itemize}  
 
@@ -103,12 +105,14 @@ change.
 \item[\refstepcounter{acnum} \actheacnum \label{acTheme}:] Theme customization.
 \item[\refstepcounter{acnum} \actheacnum \label{acMazeAlg}:] The efficiency and variability of the maze generation algorithm
 \item[\refstepcounter{acnum} \actheacnum \label{acSettings}:] Create more options to configure the game (adjust sound, adjust brightness)
+\item[\refstepcounter{acnum} \actheacnum \label{acGames}:] The number of mini-games that can be launched from the launcher
+\item[\refstepcounter{acnum} \actheacnum \label{acBoardSize}:] The number of high scores being kept for each game
 \end{description}
 
 \subsection{Unlikely Changes} \label{SecUchange}
 
 \begin{description}
-\item[\refstepcounter{ucnum} \uctheucnum \label{ucIO}:] Input/Output devices (Input: File, Keyboard, Mouse, Output: File, Memory, Screen).
+\item[\refstepcounter{ucnum} \uctheucnum \label{ucIO}:] Input/Output devices (Input: File, Keyboard, Mouse; Output: File, Memory, Screen).
 \item[\refstepcounter{ucnum} \uctheucnum \label{ucInput}:] There will always be a source of input data external to the software.
 \item[\refstepcounter{ucnum} \uctheucnum \label{ucPurpose}:] The purpose of the program to provide an easy and accessible way to launch mini-games.
 \end{description}
@@ -117,8 +121,8 @@ change.
 
 \begin{description}
 \item [\refstepcounter{mnum} \mthemnum \label{mHH}:] Hardware-Hiding Module
-\item [\refstepcounter{mnum} \mthemnum \label{mLM}:] \textit{Launcher Modules}
-\item [\refstepcounter{mnum} \mthemnum \label{mSM}:] \textit{Scoreboard Modules}
+\item [\refstepcounter{mnum} \mthemnum \label{mLM}:] Launcher Modules
+\item [\refstepcounter{mnum} \mthemnum \label{mSM}:] Scoreboard Modules
 \item [\refstepcounter{mnum} \mthemnum \label{mMGM}:] Maze Generator (Maze)
 \item [\refstepcounter{mnum} \mthemnum \label{mSTM}:] Score Tracking (Maze)
 \item [\refstepcounter{mnum} \mthemnum \label{mDGM}:] Draw Game (Maze) 
@@ -133,7 +137,8 @@ change.
 \item [\refstepcounter{mnum} \mthemnum \label{mSTF}:] Score Tracking (Flappy)
 \item [\refstepcounter{mnum} \mthemnum \label{mMGF}:] Map Generation (Flappy)
 \item [\refstepcounter{mnum} \mthemnum \label{mDGF}:] Draw Game (Flappy)
-\item [\refstepcounter{mnum} \mthemnum \label{mPMF}:] Player Movement (Flappy)
+\item [\refstepcounter{mnum} \mthemnum \label{mPMF}:] Player Movement (Flappy) 
+\item [\refstepcounter{mnum} \mthemnum \label{mMSF}:] Menu and Settings (Flappy)
 
 \end{description}
 
@@ -149,24 +154,28 @@ change.
 {Hardware-Hiding Module} & ~ \\
 \midrule
 
-\multirow{1}{0.3\textwidth}{Behaviour-Hiding Module} & ?\\
-& \textit{Launcher Modules}\\
+\multirow{1}{0.3\textwidth}{Behaviour-Hiding Module}
+& Launcher Modules\\
+& Scoreboard Modules\\
 & Draw Game (Maze)\\
 & Player Movement (Maze)\\
 & Menu and Settings (Maze)\\ 
 & Draw Game (Pong)\\
 & Player Movement (Pong)\\
 & Menu and Settings (Pong)\\ 
-& \textit{Flappy Modules}\\
+& Draw Game (Flappy)\\
+& Player Movement (Flappy) \\
+
 \midrule
 
-\multirow{1}{0.3\textwidth}{Software Decision Module} & {?}\\
-& \textit{Launcher Modules}\\
+  \multirow{1}{0.3\textwidth}{Software Decision Module}
 & Maze Generator (Maze)\\
 & Score Tracking (Maze)\\ 
 & Ball Trajectory (Pong)\\
 & Score Tracking (Pong) \\ 
-& \textit{Flappy Modules}\\
+& Bird Trajectory (Flappy)\\
+& Score Tracking (Flappy)\\
+& Map Generation (Flappy)\\
 \bottomrule
 
 \end{tabular}
@@ -183,7 +192,7 @@ between requirements and modules is listed in Table \ref{TblFRT} and \ref{TblNFR
 \section{Module Decomposition} \label{SecMD}
 
 Modules are decomposed according to the principle of ``information hiding''
-proposed by . The \emph{Secrets} field in a module
+proposed by the lecture content. The \emph{Secrets} field in a module
 decomposition is a brief statement of the design decision hidden by the
 module. The \emph{Services} field specifies \emph{what} the module will do
 without documenting \emph{how} to do it. For each module, a suggestion for the
@@ -221,6 +230,20 @@ selected.
 \item[Implemented By:] N/A
 \end{description}
 
+\subsubsection{Launcher Module (\mref{mLM})}
+\begin{description}
+\item[Secrets:] Graphics
+\item[Services:] Draws the launcher and links to each mini-game
+\item[Implemented By:] Mini-Arcade, Python Libraries, pygame
+\end{description}
+
+\subsubsection{Scoreboard Module (\mref{mSM})}
+\begin{description}
+\item[Secrets:] Graphics and score data
+\item[Services:] Read/write score data from file, update score data and display them to the screen
+\item[Implemented By:] Mini-Arcade, Python Libraries, pygame
+\end{description}
+
 \subsubsection{Draw Game (Maze) Module (\mref{mDGM})}
 \begin{description}
 \item[Secrets:] Graphics
@@ -244,7 +267,7 @@ selected.
 
 \subsubsection{Draw Game (Pong) Module (\mref{mDGP})}
 \begin{description}
-\item[Secrets:] Graphics and Opponent Movement
+\item[Secrets:] Graphics
 \item[Services:] Draws the current state of the game including the player's position, the ball's position, the opponent's position, and the score (received from Score Tracking (Pong) Module).
 \item[Implemented By:] Mini-Arcade, Python Libraries, pygame
 \end{description}
@@ -259,7 +282,21 @@ selected.
 \subsubsection{Menu and Settings (Pong) Module (\mref{mMSP})}
 \begin{description}
 \item[Secrets:] Graphics
-\item[Services:] Allows the user to navigate the game's features (How-to-Play, Settings, tc.) or return to the launcher.
+\item[Services:] Allows the user to navigate the game's features (How-to-Play, Settings, etc.) or return to the launcher.
+\item[Implemented By:] Mini-Arcade, Python Libraries, pygame
+\end{description}
+
+\subsubsection{Draw Game (Flappy) Module (\mref{mDGF})}
+\begin{description}
+\item[Secrets:] Graphics
+\item[Services:] Draws the current state of the game, including the player's position, the pipe's position, and the score.
+\item[Implemented By:] Mini-Arcade, Python Libraries, pygame
+\end{description}
+
+\subsubsection{Player Movement (Flappy) Module (\mref{mPMF})}
+\begin{description}
+\item[Secrets:] Input
+\item[Services:] Allows the movement of the player's bird on-screen from keyboard inputs.
 \item[Implemented By:] Mini-Arcade, Python Libraries, pygame
 \end{description}
 
@@ -302,7 +339,21 @@ selected.
 \subsubsection{Score Tracking (Pong) Module (\mref{mSTP})}
 \begin{description}
 \item[Secrets:] Points
-\item[Services:] Keeps track of how many points are scored by the opponent and the player.
+\item[Services:] Keeps track of how many points are scored by the opponent and the player 
+\item[Implemented By:] Mini-Arcade, Python Libraries
+\end{description}
+
+\subsubsection{Score Tracking (Flappy) Module (\mref{mSTF})}
+\begin{description}
+\item[Secrets:] Points
+\item[Services:] Keeps track of how many points are scored by the player 
+\item[Implemented By:] Mini-Arcade, Python Libraries
+\end{description}
+
+\subsubsection{Map Generation (Flappy) Module (\mref{mMGF})}
+\begin{description}
+\item[Secrets:] Algorithm
+\item[Services:] Handles the distribution of the obtacles in the game.
 \item[Implemented By:] Mini-Arcade, Python Libraries
 \end{description}
 
@@ -317,29 +368,29 @@ selected.
 \toprule
 \textbf{Req.} & \textbf{Modules}\\
 \midrule
-FR1 & \\
-FR2 & \\
-FR3 & \\
-FR4 & \\ 
-FR5 & \mref{mSTM}, \mref{mSTP}\\
-FR6 & \mref{mSTM}, \mref{mSTP}\\
+FR1 & \mref{mLM}\\
+FR2 & \mref{mLM}\\
+FR3 & \mref{mLM}\\
+FR4 & \mref{mLM}, \mref{mSM}\\ 
+FR5 & \mref{mSM}, \mref{mSTM}, \mref{mSTP}\\
+FR6 & \mref{mSM}, \mref{mSTM}, \mref{mSTP}\\
 FR7 & \mref{mMSM}\\ 
 FR8 & \mref{mSTM}\\
 FR9 & \mref{mMGM}, \mref{mDGM}\\
 FR10 & \mref{mMSM}\\
-FR11 & \mref{mSTM}, \mref{mDGM}\\
+FR11 & \mref{mSM}, \mref{mSTM}, \mref{mDGM}\\
 FR12 & \mref{mPMM}, \mref{mDGM}\\
 FR13 & \mref{mMSM}, \mref{mMGM}, \mref{mDGM}\\
 FR14 & \mref{mMSM}\\ 
-FR15 & \\
-FR16 & \\
-FR17 & \\ 
-FR18 & \\
-FR19 & \\
-FR12 & \\
-FR21 & \\
-FR22 & \\
-FR23 & \\
+FR15 & \mref{mMSF}\\
+FR16 & \mref{mPMF}\\
+FR17 & \mref{mMGF} \\
+FR18 & \mref{mMGF}\\
+FR19 & \mref{mSTF}\\
+FR20 & \mref{mMSF}\\
+FR21 & \mref{mSM} \\
+FR22 & \mref{mMSF}\\
+FR23 & \mref{mMSF}\\
 FR24 & \mref{mMSP}\\ 
 FR25 & \mref{mPMP}, \mref{mDGP}\\
 FR26 & \mref{mBTP}, \mref{mSTP}, \mref{mDGP}\\
@@ -362,18 +413,18 @@ FR30 & \mref{mMSP}\\
 \toprule
 \textbf{Req.} & \textbf{Modules}\\
 \midrule
-NFR1 & \mref{mDGM}, \mref{mPMM}, \mref{mDGP}, \mref{mPMP}\\
-NFR2 & \mref{mDGM}, \mref{mDGP}, \mref{mMSP}\\
-NFR3 & \mref{mMSM}, \mref{mMSP}\\
-NFR4 & \mref{mPMM}, \mref{mMSM}, \mref{mPMP}, \mref{mMSP}\\
-NFR5 & \mref{mMGM}, \mref{mDGM}, \mref{mDGP}\\
-NFR6 & \mref{mPMM}, \mref{mMSM}, \mref{mDGM}, \mref{mPMP}, \mref{mMSP}, \mref{mDGP}\\
-NFR7 & \\
-NFR8 & \mref{mMGM}, \mref{mSTM}, \mref{mDGM}, \mref{mPMM}, \mref{mMSM}, \mref{mBTP}, \mref{mSTP}, \mref{mDGP}, \mref{mPMP}, \mref{mMSP}\\
-NFR9 & \mref{mPMM}, \mref{mMSM}, \mref{mPMP}, \mref{mMSP}\\
-NFR10 & \mref{mDGM}, \mref{mMSM}, \mref{mDGP}, \mref{mMSP}\\
-NFR11 & \mref{mMGM}, \mref{mSTM}, \mref{mDGM}, \mref{mPMM}, \mref{mMSM}, \mref{mBTP}, \mref{mSTP}, \mref{mDGP}, \mref{mPMP}, \mref{mMSP}\\
-NFR12 & \mref{mMGM}, \mref{mSTM}, \mref{mDGM}, \mref{mPMM}, \mref{mMSM}, \mref{mBTP}, \mref{mSTP}, \mref{mDGP}, \mref{mPMP}, \mref{mMSP}\\
+NFR1 & \mref{mDGM}, \mref{mPMM}, \mref{mDGP}, \mref{mPMP}, \mref{mMSF}\\
+NFR2 & \mref{mLM}, \mref{mSM}, \mref{mDGM}, \mref{mDGP}, \mref{mMSP}\\ \mref{mMSF}\\
+NFR3 & \mref{mLM}, \mref{mSM}, \mref{mMSM}, \mref{mMSP}, \mref{mMSF}\\
+NFR4 & \mref{mPMM}, \mref{mMSM}, \mref{mPMP}, \mref{mMSP}, \mref{mPMF}\\
+NFR5 & \mref{mLM}, \mref{mSM}, \mref{mMGM}, \mref{mDGM}, \mref{mDGP}, \mref{mMGF}, \mref{mDGF}\\
+NFR6 & \mref{mLM}, \mref{mSM}, \mref{mPMM}, \mref{mMSM}, \mref{mDGM}, \mref{mPMP}, \mref{mMSP}, \mref{mDGP}, \mref{mDGF}, \mref{mPMF}, \mref{mDGF}\\
+NFR7 & \mref{mHH}, \mref{mLM}\\
+NFR8 & \mref{mLM}, \mref{mSM}, \mref{mMGM}, \mref{mSTM}, \mref{mDGM}, \mref{mPMM}, \mref{mMSM}, \mref{mBTP}, \mref{mSTP}, \mref{mDGP}, \mref{mPMP}, \mref{mMSP}
+NFR9 & \mref{mSM}, \mref{mPMM}, \mref{mMSM}, \mref{mPMP}, \mref{mMSP}, \mref{mSTF}, \mref{mMGF}, \mref{mDGF}, \mref{mPMF}, \mref{mMSF} \\
+NFR10 & \mref{mLM}, \mref{mSM}, \mref{mDGM}, \mref{mMSM}, \mref{mDGP}, \mref{mMSP}, \mref{mSTF}, \mref{mMGF}, \mref{mDGF}, \mref{mPMF}, \mref{mMSF} \\
+NFR11 & \mref{mLM}, \mref{mSM}, \mref{mMGM}, \mref{mSTM}, \mref{mDGM}, \mref{mPMM}, \mref{mMSM}, \mref{mBTP}, \mref{mSTP}, \mref{mDGP}, \mref{mPMP}, \mref{mMSP}, \mref{mSTF}, \mref{mMGF}, \mref{mDGF}, \mref{mPMF}, \mref{mMSF} \\
+NFR12 & \mref{mLM}, \mref{mSM}, \mref{mMGM}, \mref{mSTM}, \mref{mDGM}, \mref{mPMM}, \mref{mMSM}, \mref{mBTP}, \mref{mSTP}, \mref{mDGP}, \mref{mPMP}, \mref{mMSP}, \mref{mSTF}, \mref{mMGF}, \mref{mDGF}, \mref{mPMF}, \mref{mMSF} \\
 \bottomrule
 \end{tabular}
 \caption{Trace Between Non Functional Requirements and Modules}
@@ -390,11 +441,13 @@ NFR12 & \mref{mMGM}, \mref{mSTM}, \mref{mDGM}, \mref{mPMM}, \mref{mMSM}, \mref{m
 \acref{acHH} & \mref{mHH}\\
 \acref{acInput} & \mref{mPMM}, \mref{mPMP}\\
 \acref{acScore} & \mref{mSTM}, \mref{mSTP}\\
-\acref{acGraphics} & \mref{mDGM}, \mref{mMSM}, \mref{mDGP}, \mref{mMSP}\\
+\acref{acGraphics} & \mref{mLM}, \mref{mSM}, \mref{mDGM}, \mref{mMSM}, \mref{mDGP}, \mref{mMSP}\\
 \acref{acCharacter} & \mref{mDGM}, \mref{mDGP}\\
 \acref{acTheme} & \mref{mDGM}, \mref{mMSM}, \mref{mDGP}, \mref{mMSP}\\
 \acref{acMazeAlg} & \mref{mMGM}\\
 \acref{acSettings} & \mref{mMSM}, \mref{mDGP}\\
+\acref{acGames} & \mref{mLM}\\
+\acref{acBoardSize} & \mref{mSM}\\
 \bottomrule
 \end{tabular}
 \caption{Trace Between Anticipated Changes and Modules}
@@ -404,27 +457,37 @@ NFR12 & \mref{mMGM}, \mref{mSTM}, \mref{mDGM}, \mref{mPMM}, \mref{mMSM}, \mref{m
 
 \section{Use Hierarchy Between Modules} \label{SecUse}
 
-In this section, the uses hierarchy between modules is
-provided. Parnas said of two programs A and B that A {\em uses} B if
-correct execution of B may be necessary for A to complete the task described in
-its specification. That is, A {\em uses} B if there exist situations in which
-the correct functioning of A depends upon the availability of a correct
-implementation of B.  Figure \ref{FigUH} illustrates the use relation between
-the modules. It can be seen that the graph is a directed acyclic graph
-(DAG). Each level of the hierarchy offers a testable and usable subset of the
-system, and modules in the higher level of the hierarchy are essentially simpler
-because they use modules from the lower levels.
-
 \begin{figure}[H]
 \centering
-%\includegraphics[width=0.7\textwidth]{UsesHierarchy.png}
+\includegraphics[width=0.6\textwidth]{MG/Overall Modules.png}
 \caption{Use hierarchy among modules}
 \label{FigUH}
 \end{figure}
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{MG/Maze Modules.png}
+\caption{Use hierarchy among Maze modules}
+\label{FigUHM}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{MG/Pong Modules.png}
+\caption{Use hierarchy among Pong modules}
+\label{FigUHP}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{MG/Flappy Modules.png}
+\caption{Use hierarchy among Flappy modules}
+\label{FigUHF}
+\end{figure}
+
+\newpage 
+
 \section{Gantt Schedule} \label{SeCSched}
-See Gantt Chart at the following url: \url{../../ProjectSchedule/3XA3-ProjSched.pdf}\\
-\\
 \includegraphics[width=16cm]{MG/GanttChartRev3.png}\\
 \\
 \includegraphics[width=16cm]{MG/GanttResourcesRev3.png}
