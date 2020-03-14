@@ -57,6 +57,9 @@
 \midrule
 3/9/2020 & 1.0 & Arshan and Andrew created document and sections\\
 3/11/2020 & 1.1 & Andrew completed all modules relevant to Maze\\
+3/12/2020 & 1.2 & Arshan updated all modules relevant to Pong\\
+3/12/2020 & 1.3 & William completed modules relevant to launcher and scoreboard.\\
+3/13/2020 & 1.4 & Jame completed modules relevant to Flappy
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -71,23 +74,26 @@
     \midrule
         {Hardware-Hiding Module} & ~ \\
     \midrule
-        \multirow{1}{0.3\textwidth}{Behaviour-Hiding Module} & ?\\
-        & \textit{Launcher Modules}\\
+        \multirow{1}{0.3\textwidth}{Behaviour-Hiding Module}
+        & Launcher Modules\\
+        & Scoreboard Modules\\
         & Draw Game (Maze)\\
         & Player Movement (Maze)\\
         & Menu and Settings (Maze)\\ 
         & Draw Game (Pong)\\
         & Player Movement (Pong)\\
         & Menu and Settings (Pong)\\ 
-        & \textit{Flappy Modules}\\
+        & Draw Game (Flappy)\\
+        & Player Movement (Flappy)
+        Menu and Settings (Flappy)\\
     \midrule
-        \multirow{1}{0.3\textwidth}{Software Decision Module} & {?}\\
-        & \textit{Launcher Modules}\\
+        \multirow{1}{0.3\textwidth}{Software Decision-Hiding Module}
         & Maze Generator (Maze)\\
         & Score Tracking (Maze)\\ 
         & Ball Trajectory (Pong)\\
         & Score Tracking (Pong) \\ 
-        & \textit{Flappy Modules}\\
+        & Map Generator (Flappy)\\
+        & Score Tracking (Flappy)\\
     \bottomrule
 \end{tabular}
 \caption{Module Hierarchy}
@@ -98,16 +104,143 @@
 		\subsection{Interface Syntax}
 		\subsubsection{Exported Access Programs}
 		\begin{tabular}[pos]{|c|c|c|c|}
+			\hline
+			\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+			displayLauncher & - & GUI & - \\ \hline
+			launchGame & integer & - & - \\ \hline
+			launchScoreboard & - & - & - \\ \hline
 		\end{tabular}
-		
 		\subsection{Interface Semantics}
 		\subsubsection{State Variables}
-		
-		\subsubsection{Environmental Variables}
-		
+		None
 		\subsubsection{Assumptions}
-		
+		None
 		\subsubsection{Access Program Semantics}
+		
+		displayLauncher():
+		
+		Input: None
+		
+		Transition: draws the launcher to the output window and display it.
+		
+		Output: the launcher's UI to the screen.
+		
+		Exceptions: None\\
+		\\
+		launchGame(gameID):
+		
+		Input: integer representing the game to be launched
+		
+		Transition: call the drawInterface function of the mini-game (depending on the input integer).
+		
+		Output: None
+		
+		Exceptions: None\\
+		\\
+		launchScoreboard():
+		
+		Input: None
+		
+		Transition: call the drawScoreboard function of the scoreboard.
+		
+		Output: None
+		
+		Exceptions: None
+	
+	
+
+\section{MIS of Scoreboard Module}
+		\subsection{Interface Syntax}
+		\subsubsection{Exported Access Programs}
+		\begin{tabular}[pos]{|c|c|c|c|}
+			\hline
+			\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+			drawScoreboard & integer & GUI & - \\ \hline
+			changeGame & integer & - & - \\ \hline
+			exitScoreBoard & - & - & - \\ \hline
+			readData & - & - & FileNotFound, FileCannotRead \\ \hline
+			writeData & - & FileSystem & FileCannotWrite \\ \hline
+			updateScore & integer, integer & - & - \\ \hline
+			highScore & integer & integer & - \\ \hline
+		\end{tabular}
+		\subsection{Interface Semantics}
+		\subsubsection{State Variables}
+		displayGame: integer - representing the game the scoreboard will be displayed for.\\
+		exitScreen: integer - which screen will it display when it exits.\\
+		scores: array of arrays of integer - each array stores high scores of a game in descending order.
+		\subsubsection{Assumptions}
+		The input to each function (integers) are in appropriate range.
+		\subsubsection{Access Program Semantics}
+		
+		drawScoreboard(screenID):
+		
+		Input: integer representing which screen was displayed before scoreboard.
+		
+		Transition: set the value of exitScreen to screenID, and draws the scoreboard to the output window and display it,
+		
+		Output: the scoreboard's UI to the screen.
+		
+		Exceptions: None\\
+		\\
+		changeGame(gameID):
+		
+		Input: integer representing the game the scoreboard is displayed for.
+		
+		Transition: Change the value of displayGame to the value of gameID.
+		
+		Output: None
+		
+		Exceptions: None\\
+		\\
+		exitScoreboard():
+		
+		Input: None
+		
+		Transition: call the appropriate draw function (such as displayLauncher, or drawInterface of a minigame) depending on the exitScreen variable.
+		
+		Output: None
+		
+		Exceptions: None\\
+		\\
+		readData():
+		
+		Input: None
+		
+		Transition: reads data for a dedicated file are store them in scores.
+		
+		Output: None
+		
+		Exceptions: FileNotFound - cannot find the file to be read, FileCannotRead - unable to read the file\\
+		\\
+		writeData():
+		
+		Input: None
+		
+		Transition: write the values in scores to a dedicated file.
+		
+		Output: the dedicated file to file system of the computer.
+		
+		Exceptions: FileCannotWrite - unable to write to file\\
+		\\
+		updateScore(gameID, score):
+		
+		Input: first integer representing which game the score is from, second integer representing the score to be updated.
+		
+		Transition: search for the first element in the appropriate array in scores(depending on the value of gameID) that is smaller than score, if not found, do nothing. Otherwise, save the score into that location in the array and move every value starting at that position to the next index.
+		
+		Output: None
+		
+		Exceptions: None\\
+		\\
+		highScore(gameID):
+		
+		Input: integer representing a mini-game
+		
+		Transition: Return the highest score of the inputted mini-game (gameID).
+		
+		Output: The highest score of the mini-game
+		
+		Exceptions: None
 	
 	
 	
@@ -125,13 +258,16 @@
 		
 		\subsection{Interface Semantics}
 		\subsubsection{State Variables}
-		cellWalls: array of integers - representing walls around the current cell
+		cellWalls: array of integers - representing walls around the current cell\\
 		mazeWalls: array of Cell - representing the layout of the maze
+		
+		\subsubsection{Environment Variables}
+		None
 		
 		\subsubsection{Assumptions}
 		Variables should be set before trying to access them \\ 
 		Constructor Cell will be called before genWalls or Maze can be called \\
-	    Constructor Maze will be called before genMaze can be called \\
+	    Constructor Maze will be called before genMaze can be called
 		
 		\subsubsection{Access Program Semantics}
 		Cell(id, gridLength):
@@ -139,6 +275,8 @@
 		Input: two integers representing the cell ID and the maze dimensions
 		
 		Transition: initializes the Cell object
+		
+		Output: None
 		
 		Exceptions: Invalid Input they are not positive integers\\
 		\\
@@ -148,6 +286,8 @@
 		
 		Transition: adds integers corresponding to neighbouring cells to cellWalls
 		
+		Output: None
+		
 		Exceptions: None\\
 		\\
 		Maze(size):
@@ -155,6 +295,8 @@
 		Input: integer representing the size of the maze
 		
 		Transition: initializes the Maze Object
+		
+		Output: None
 		
 		Exceptions: Invalid Input size is not a positive integer\\
 		\\
@@ -166,9 +308,10 @@
 		
 		and manipulates mazeWalls to represent the remaining walls of the maze
 		
+		Output: None
+		
 		Exceptions: None\\
-		\\
-
+        \\
 \section{MIS of Score Tracking (Maze) Module}
 		\subsection{Interface Syntax}
 		\subsubsection{Exported Access Programs}
@@ -182,6 +325,8 @@
 		\subsection{Interface Semantics}
 		\subsubsection{State Variables}
 		score: float - represents the user's score once the maze is completed
+		\subsubsection{Environment Variables}
+		None
 		\subsubsection{Assumptions}
 		Variables should be set before trying to access them
 		
@@ -192,13 +337,20 @@
 		
 		Transition: saves the score to the maze scores file
 		
+		Output: None
+		
 		Exceptions: Invalid Input if the input is not a positive float \\
 		\\
 		checkRank(time):
 		
+		Input: a float value representing the total elapsed time during the game
+		
+		Transition: None
+		
 		Output: the user's current rank based upon previous scores
 		
-		Exceptions: Invalid Input if the input is not a positive float \\
+		Exceptions: Invalid Input if the input is not a positive float\\
+		\\
 
 \section{MIS of Draw Game (Maze) Module}
 		\subsection{Interface Syntax}
@@ -215,17 +367,19 @@
 		\subsubsection{State Variables}
 		charPos: x,y - coordinates of the character's current position\\
 		timeElapsed: float - represents the current time elapsed
-		\subsubsection{State Variables}
+		\subsubsection{Environment Variables}
 		keyDown: captures which key is currently being pressed down
 		\subsubsection{Assumptions}
 		Variables should be set before trying to access them \\ 
-		Maze must be properly initialized before drawTime can be called \\
+		Maze must be properly initialized before drawTime can be called
 		
 		\subsubsection{Access Program Semantics}
 		
 		drawMaze(Maze):
 		
 		Input: Maze object used to draw the layout
+		
+		Transition: None
 		
 		Output: draws the maze to the output window
 		
@@ -244,6 +398,8 @@
 		showTime(time):
 		
 		Input: a float representing the current time elapsed
+		
+		Transition: None
 		
 		Output: a clock on the output window representing the current time elapsed
 		
@@ -311,7 +467,6 @@
 		
 		Exceptions: None\\
 		\\
-		
 \section{MIS of Menu and Settings (Maze) Module}
 		\subsection{Interface Syntax}
 		\subsubsection{Exported Access Programs}
@@ -340,6 +495,8 @@
 		
 		Input: an integer representing the game's current state
 		
+		Transition: None
+		
 		Output: draws the interface corresponding to the current state to the output window
 		
 		Exceptions: Invalid Input if the input doesn't correspond to a game state\\
@@ -352,44 +509,549 @@
 		
 		Output: integer representing the current state of the game based on the mouse
 		
-		Exceptions: Invalid Input if the coordinates are not part of the window\\
-		\\
+		Exceptions: Invalid Input if the coordinates are not part of the window
 		
 	
-\section{MIS of Pong Module}
-	\subsection{Interface Syntax}
+\section{MIS of Ball Tracking Module}
+		\subsection{Interface Syntax}
 		\subsubsection{Exported Access Programs}
-		\begin{table}[!htbp]
-		\begin{tabular}{|c|c|c|c|}
+		\begin{tabular}[pos]{|c|c|c|c|}
 			\hline
-			Name & In & Out & Exceptions \\ \hline
-
+			\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+			Ball & integer, integer, integer, [integer, integer] & None & Invalid Input \\ \hline
+			ballColor & integer, integer, integer & (integer, integer, integer) & Invalid Input \\ \hline
+			checkBounds & None & None & None \\ \hline
+			scoreGoal & None & None & None \\ \hline
+			resetBall & None & None & None \\ \hline
+			drawBall & None & None & None \\ \hline
 		\end{tabular}
-	\end{table}
 		
-	\subsection{Interface Semantics}
+		\subsection{Interface Semantics}
 		\subsubsection{State Variables}
-		\subsubsection{Environmental Variables}
+		ballCenter\_x: int - horizontal coordinate of the ball \\
+		ballCenter\_y: int - vertical coordinate of the ball
+		
 		\subsubsection{Assumptions}
+		Variables should be set before trying to access them \\ 
+		Ball is never created outside the visible area \\
+		Top, left, right, and bottom of ball can be calculated with ballCenter\_x and ballCenter\_y \\
+		Ball is initiated before other methods are called
+		
 		\subsubsection{Access Program Semantics}
+		Ball(x, y, size, color, movement):
+		
+		Input: integers for (x,y) position of the ball, its size, and the (x,y) speed of the ball
+		
+		Transition: initializes the Ball object
+		
+		Exceptions: Invalid Input if they are neither integers nor positive\\
+		\\
+		ballColor():
+		
+		Input: three integers each equivalent to a red, green, or blue color value
+		
+		Transition: converts the three integers into a color tuple to create the ball's color
+		
+		Output: color tuple based on desired ball color
+		
+		Exceptions: Invalid Input if numbers are not positive integers or not in between 0 and 255\\	
+		\\
+		checkBounds():
+		
+		Input: None
+		
+		Transition: flip vertical speed at vertical bound collision, hold still at horizontal bounds 
+		
+		Exceptions: None\\	
+		\\
+		scoreGoal():
+		
+		Input: None
+		
+		Transition: ball at right bound is +1, ball at left bound is -1
+		
+		Exceptions: Invalid Input size is not a positive integer\\
+		\\
+		resetBall():
+		
+		Input: None
+		
+		Transition: moves the ball back to the center of the screen (after a side has scored)
+		
+		Exceptions: None\\
+		\\
+		drawBall():
+	    
+		Input: None
+		
+		Transition: displays the ball to the screen
+		
+		Exceptions: None
 
-
-\section{MIS of Flappy Module}
-	\subsection{Interface Syntax}
+\section{MIS of Score Tracking (Pong) Module}
+		\subsection{Interface Syntax}
 		\subsubsection{Exported Access Programs}
+		\begin{tabular}[pos]{|c|c|c|c|}
+			\hline
+			\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+			saveScore & integer, integer & [integer, integer] & Invalid Input \\ \hline
+			checkRank & [integer, integer] & integer & Invalid Input \\ \hline
+		\end{tabular}
 		
-	\begin{tabular}[pos]{|c|c|c|c|}
-	\hline
-	\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ 
-	\hline
-					
-	\end{tabular}		
+		\subsection{Interface Semantics}
+		\subsubsection{State Variables}
+		playerScore: int - scores earned by main player \\
+		opponentScore: int - scores earned by secondary/computer player
 		
-	\subsection{Interface Semantics}
+		\subsubsection{Assumptions}
+		Variables should be set before trying to access them \\
+		saveScore is only called after a game is over
+		
+		\subsubsection{Access Program Semantics}
+		saveScore(playerScore, opponentScore):
+		
+		Input: two integers representing the scores obtained by the players
+		
+		Transition: converts two scores into an array
+		
+		Output: a 1x2 integer array containing the two scores
+		
+		Exceptions: Invalid Input if the inputs are not positive integers \\
+		\\
+		checkRank([playerScore, opponentScore]):
+		
+		Input: 1x2 integer array containing the main and secondary player's score
+		
+		Transition: None
+		
+		Output: the games current rank based upon previous scores
+		
+		Exceptions: Invalid Input if the input is not a positive integer array of the right size
+
+\section{MIS of Draw Game (Pong) Module}
+		\subsection{Interface Syntax}
+		\subsubsection{Exported Access Programs}
+		\begin{tabular}[pos]{|c|c|c|c|}
+			\hline
+			\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+			drawPong & Ball & GUI & Invalid Input \\ \hline
+			drawSprites & Paddle & GUI & None \\ \hline
+			showScore & scoreGoal & GUI & None \\ \hline
+		\end{tabular}
+		
+		\subsection{Interface Semantics}
+		\subsubsection{State Variables}
+		gameOver: bool - determines if game has ended or not; keeps current match running \\
+		playerOne: Paddle - movement of main player \\
+		playerTwo: Paddle - movement of secondary player \\
+		score: int - keeps track of total points earned \\
+		fps: int - keeps track of the number of times (per second) to refresh the game's state
+		
+		\subsubsection{Access Program Semantics}
+		
+		drawPong(Ball):
+		
+		Input: Ball object to move around
+		
+		Transition: None
+		
+		Output: draws the ball to the output window
+		
+		Exceptions: Invalid Input if the object is not of type Ball\\
+		\\
+		drawSprites(Paddle):
+		
+		Input: Paddle from Player Movement (Pong) Module
+		
+		Transition: None
+		
+		Output: primary player's paddle from Player Movement (Pong) Module drawn on-screen
+		
+		Exceptions: Invalid input if the Paddle does not yet exist\\
+		\\
+		showScore(scoreGoal):
+		
+		Input: scoreGoal is a notifier of score change
+		
+		Transition: positive notifier means primary player scored, negative means secondary player scored
+		
+		Output: two numbers shown on screen representing each player's score
+		
+		Exceptions: Invalid Input if the input is not an integer
+		
+\section{MIS of Player Movement (Pong) Module}
+		\subsection{Interface Syntax}
+		\subsubsection{Exported Access Programs}
+		\begin{tabular}[pos]{|c|c|c|c|}
+			\hline
+			\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+			Paddle & integer, integer, color & None & Invalid Input \\ \hline
+			checkBounds & None & None & None \\ \hline
+			movePaddle & None & None & None \\ \hline
+			drawPaddle & None & None & None \\ \hline
+		\end{tabular}
+		
+		\subsection{Interface Semantics}
+		\subsubsection{State Variables}
+		paddleCenter\_x: int - horizontal coordinate of a paddle
+		
+		\subsubsection{Environment Variables}
+		None
+		\subsubsection{Assumptions}
+		Variables should be set before trying to access them \\ 
+		The four corners of a paddle can be calculated from paddleCenter\_x and paddleCenter\_y \\
+		
+		\subsubsection{Access Program Semantics}
+		Paddle(integer, integer, integer, color):
+		
+		Input: 2 integers for the paddle's position and a color tuple defining the paddle's color
+		
+		Transition: initializes a Paddle object
+		
+		Output: None
+		
+		Exceptions: None\\
+		\\
+		movePaddle():
+		
+		Input: None
+		
+		Transition: moves the paddle (up or down) based on the keyboard input
+		
+		Output: paddle's vertical coordinate increases or decreases
+		
+		Exceptions: None\\
+		\\
+    	drawPaddle():
+		
+		Input: None
+		
+		Transition: recalculate the position of a paddle
+		
+		Output: displays the paddle to the screen
+		
+		Exceptions: None
+		
+\section{MIS of Menu and Settings (Pong) Module}
+		\subsection{Interface Syntax}
+		\subsubsection{Exported Access Programs}
+		\begin{tabular}[pos]{|c|c|c|c|}
+			\hline
+			\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+			drawInterface & integer & GUI & - \\ \hline
+			checkEvent & float, float, boolean & integer & Invalid Input \\ \hline
+			
+		\end{tabular}
+		
+		\subsection{Interface Semantics}
+		\subsubsection{State Variables}
+		currState: int - represents the game's current state
+		
+		\subsubsection{Environment Variables}
+		mousePos: the mouse/pointer's current position\\
+		mouseEvent: captures a mouse event 
+		\subsubsection{Assumptions}
+		Variables should be set before trying to access them \\ 
+		If no event is chosen, checkEvent returns a default value 0 \\
+		If currState is 0, drawInterface does not change \\
+		
+		\subsubsection{Access Program Semantics}
+		drawInterface(currState):
+		
+		Input: an integer representing the game's current state
+		
+		Transition: None
+		
+		Output: draws the interface corresponding to the current state to the output window
+		
+		Exceptions: Invalid Input if the input doesn't correspond to a game state\\
+		\\
+		checkEvent(xpos, ypos, clicked):
+		
+		Input: float values of the mouse's position on the screen and if the mouse has been clicked
+		
+		Transition: determines if the current position represents a specified event
+		
+		Output: integer representing the current state of the game based on the mouse
+		
+		Exceptions: Invalid Input if the coordinates are not part of the window
+
+
+\section{MIS of Score Tracking (Flappy) Module}
+		\subsection{Interface Syntax}
+		\subsubsection{Exported Access Programs}
+		\begin{tabular}[pos]{|c|c|c|c|}
+			\hline
+			\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+			saveScore & integer, integer & None & Invalid Input \\ \hline
+			checkRank & integer & integer & Invalid Input \\ \hline
+		\end{tabular}
+		
+		\subsection{Interface Semantics}
+		\subsubsection{State Variables}
+		playerScore: float - total time elapsed during the game \\
+		
+		\subsubsection{Assumptions}
+		Variables should be set before trying to access them \\
+		saveScore is only called after a game is over
+		
+		\subsubsection{Access Program Semantics}
+		saveScore(playerScore):
+		
+		Input: one float representing the score obtained by the player. 
+		
+		Transition: saves the score to the flappy scores file
+		
+		Output: None
+		
+		Exceptions: Invalid Input if the input are not positive float \\
+		\\
+		checkRank([playerScore]):
+		
+		Input: a integer value representing the user's score during the game.
+		
+		Transition: None
+		
+		Output: the user's current rank based upon previous scores
+		
+		Exceptions: Invalid Input if the input is not a positive integer
+		
+\section{MIS of Map Generation (Flappy) Module}
+		\subsection{Interface Syntax}
+		\subsubsection{Exported Access Programs}
+		\begin{tabular}[pos]{|c|c|c|c|}
+			\hline
+			\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+			topPipe & [integer, integer, integer] & - & Invalid Input \\ \hline
+			bottomPipe & [integer, integer, integer] & - & Invalid Input \\ \hline
+			pipeDist & - & [integer, integer, integer] & Invalid Input \\ \hline
+			
+		\end{tabular}
+		
+		\subsection{Interface Semantics}
+		\subsubsection{State Variables}
+		topPipePos: int, int - representing the top pipe's current position as coordinates (x,y)
+		
+		bottomPipePos: int, int - representing the bottom pipes's current position as coordinates (x,y)
+		\subsubsection{Environment Variables}
+		
+		
+		\subsubsection{Assumptions}
+		Variables should be set before trying to access them \\ 
+		
+		
+		\subsubsection{Access Program Semantics}
+		
+		
+		topPipe([integer, integer, size]):
+		
+		Input: three integer array representing the top's X and Y position, as well as the length of the pipe. Top pipe's location are centered at the top base of the pipe.
+
+		
+		Transition: initializes the topPipe object
+		
+		Output: None
+		
+		Exceptions: Invalid input if size exceeds the game window\\
+		
+		bottomPipe([integer, integer, size]):
+		
+		Input: three integer array representing the top's X and Y position, as well as the length of the pipe. 
+
+		
+		Transition: initializes the bottomPipe object
+		
+		Output: None
+		
+		Exceptions: Invalid input if size exceeds the game window\\
+		
+		pipeDist():
+		
+		Input: None
+		
+		Transition: None
+		
+		Output: three integer array with randomly chosen integers for x, y and the size.
+		
+		Exceptions: None\\
+		
+		
+\section{MIS of Draw Game (Flappy) Module}
+		\subsection{Interface Syntax}
+		\subsubsection{Exported Access Programs}
+		\begin{tabular}[pos]{|c|c|c|c|}
+			\hline
+			\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+			drawTopPipe & topPipe & GUI & Invalid Input \\ \hline
+			drawBottomPipe & bottomPipe & GUI & Invalid Input \\ \hline
+			drawBird & bird & GUI & Invalid Input \\ \hline
+			drawScore & score & GUI & Invalid Input \\ \hline
+			
+		\end{tabular}
+		
+		\subsection{Interface Semantics}
 		\subsubsection{State Variables}
 		
-		\subsubsection{Environmental Variables}
+		\subsubsection{Environment Variables}
+		
+		
 		\subsubsection{Assumptions}
+		Variables should be set before trying to access them \\ 
+		
+		
 		\subsubsection{Access Program Semantics}
+		
+		
+		drawTopPipe(topPipe):
+		
+		Input: topPipe object to move around
+
+		
+		Transition: None
+		
+		Output: draws the topPipe to the output window
+		
+		Exceptions: Invalid input if input is not of type topPipe\\
+		
+		drawbottomPipe(bottomPipe):
+		
+		Input: bottomPipe object to move around
+
+		
+		Transition: None
+		
+		Output: draws the bottomPipe to the output window
+		
+		Exceptions: Invalid input if input is not of type bottomPipe\\
+		
+		drawBird(bird):
+		
+		Input: bird object to move around
+		
+		Transition: None
+		
+		Output: draws the bird object to the output window
+		
+		Exceptions: Invalid input if input is not of type bird\\
+		
+		showScore(score):
+		Input: score is a notifier of score change
+		
+		Transition: Increases score by one
+		
+		Output: draws the current score to the output window
+		
+		Exceptions: Invalid input if input is not of type integer\\
+		
+		
+\section{MIS of Player Movement (Flappy) Module}
+		\subsection{Interface Syntax}
+		\subsubsection{Exported Access Programs}
+		\begin{tabular}[pos]{|c|c|c|c|}
+			\hline
+			\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+			Bird & [integer, integer] & None & Invalid Input \\ \hline
+			moveBird & bottomPipe & None & Invalid Input \\ \hline
+			updateBird & [integer, integer] & None & Invalid Input \\ \hline
+
+			
+		\end{tabular}
+		
+		\subsection{Interface Semantics}
+		\subsubsection{State Variables}
+		birdCenter\_pos: [int, int] - x,y of the player's bird
+		
+		\subsubsection{Environment Variables}
+		
+		
+		\subsubsection{Assumptions}
+		Variables should be set before trying to access them \\ 
+		
+		
+		\subsubsection{Access Program Semantics}
+		
+		
+		Bird([integer, integer]):
+		
+		Input: two integer array representing the bird's X and Y position
+
+		
+		Transition: initializes the Bird object
+		
+		Output: None
+		
+		Exceptions: None \\
+		
+		moveBird():
+		
+		Input: None
+
+		
+		Transition: moves the bird up based on the keyboad input
+		
+		Output: bird's vertical coordinate increases
+		
+		Exceptions: None \\
+		
+		updateBird([integer, integer]):
+		
+		Input: [integer, integer] with new bird positions
+
+		
+		Transition: initializes the Bird object
+		
+		Output: None
+		
+		Exceptions: None \\
+		
+\section{MIS of Menu and Settings (Flappy) Module}
+		\subsection{Interface Syntax}
+		\subsubsection{Exported Access Programs}
+		\begin{tabular}[pos]{|c|c|c|c|}
+			\hline
+			\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+			drawInterface & integer & GUI & - \\ \hline
+			checkEvent & float, float, boolean & integer & Invalid Input \\ \hline
+			
+		\end{tabular}
+		
+		\subsection{Interface Semantics}
+		\subsubsection{State Variables}
+		currState: int - represents the game's current state
+		
+		\subsubsection{Environment Variables}
+		mousePos: the mouse/pointer's current position\\
+		mouseEvent: captures a mouse event 
+		\subsubsection{Assumptions}
+		Variables should be set before trying to access them \\ 
+		If no event is chosen, checkEvent returns a default value 0 \\
+		If currState is 0, drawInterface does not change \\
+		
+		\subsubsection{Access Program Semantics}
+		drawInterface(currState):
+		
+		Input: an integer representing the game's current state
+		
+		Transition: None
+		
+		Output: draws the interface corresponding to the current state to the output window
+		
+		Exceptions: Invalid Input if the input doesn't correspond to a game state\\
+		\\
+		checkEvent(xpos, ypos, clicked):
+		
+		Input: float values of the mouse's position on the screen and if the mouse has been clicked
+		
+		Transition: determines if the current position represents a specified event
+		
+		Output: integer representing the current state of the game based on the mouse
+		
+		Exceptions: Invalid Input if the coordinates are not part of the window
+		
+		
+		
+		
+		
+
 		
 \end{document}
