@@ -10,8 +10,10 @@ from maze import MazeGame
 class Launcher :
 
     #Static Variables
-    Maze = MazeGame.MazeGame()
+    gameTitle = ["Maze", "Flappy", "Pong"]
+    games = [MazeGame.MazeGame(), None, None]
     
+
     
 ##################################################################################################################################
     
@@ -21,8 +23,6 @@ class Launcher :
     @staticmethod
     def displayLauncher():
         # Declare Variables
-        gameTitle = ["Maze", "Flappy", "Pong"]
-        games = [Launcher.Maze, "Flappy", "Pong"]
         index = None
         game = None
         userInput = None
@@ -30,15 +30,17 @@ class Launcher :
         # Main loop
         while True:
             print("Please enter the number representing the option you wish to select:")
-            for index, game in enumerate(gameTitle):
+            for index, game in enumerate(Launcher.gameTitle):
                 print("\t" + str(index+1) + ": " + game)
             print("\t0: Exit\n")
-            userInput = input()
-            if userInput == "0":
+            userInput = int(input())
+            if userInput == 0:
                 print("\nExiting\n\n")
                 break
-            elif userInput >= 1 and userInput <=3:
-                print("\nRunning " + gameTitle[userInput-1] + "\n\n")
+            elif userInput == 1:
+                Launcher.games[userInput-1].on_execute()
+            elif userInput >= 2 and userInput <=3:
+                print("\nRunning " + Launcher.gameTitle[userInput-1] + "\n\n")
             else:
                 print("\n\nInvalid number, please enter a valid number.\n\n")
 
