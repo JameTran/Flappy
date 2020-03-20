@@ -4,41 +4,50 @@
 
 # Importation
 import pygame
+from .maze.MazeGame import MazeGame
 
 # Class Definition
-class Launcher:
+class Launcher :
+
+    #Static Variables
+    Maze = MazeGame()
+    
+    
+##################################################################################################################################
+    
+    
+    
+    # Displaying the launcher
+    @staticmethod
+    def displayLauncher():
+        # Declare Variables
+        gameTitle = ["Maze", "Flappy", "Pong"]
+        games = [Maze, "Flappy", "Pong"]
+        index = None
+        game = None
+        userInput = None
+
+        # Main loop
+        while True:
+            print("Please enter the number representing the option you wish to select:")
+            for index, game in enumerate(gameTitle):
+                print("\t" + str(index+1) + ": " + game)
+            print("\t0: Exit\n")
+            userInput = input()
+            if userInput == "0":
+                print("\nExiting\n\n")
+                break
+            elif userInput >= 1 and userInput <=3:
+                print("\nRunning " + gameTitle[userInput-1] + "\n\n")
+            else:
+                print("\n\nInvalid number, please enter a valid number.\n\n")
+
 
 
 ##################################################################################################################################
 
 
+
+# Main
 if __name__ == "__main__":
-
-    # Declare Variables
-    games = ["Maze", "Flappy", "Pong"]
-    index = None
-    game = None
-    userInput = None
-
-    # Main loop
-    while True:
-        print("Please enter the number representing the option you wish to select:")
-        for index, game in enumerate(games):
-            print("\t" + str(index+1) + ": " + game)
-        print("\t0: Exit")
-        print("\n")
-        userInput = input()
-        print("\n")
-        if userInput == "0":
-            print("Exiting")
-            break
-        elif userInput == "1":
-            print("Running Maze")
-        elif userInput == "2":
-            print("Running Flappy")
-        elif userInput == "3":
-            print("Running Pong")
-        else:
-            print("\n")
-            print("Invalid number, please enter a valid number.")
-        print("\n\n")
+    Launcher.displayLauncher()
