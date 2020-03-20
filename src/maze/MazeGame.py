@@ -1,5 +1,5 @@
 import pygame
-import genMaze
+from maze import genMaze
 from pygame.locals import *
 
 black = (0, 0, 0)

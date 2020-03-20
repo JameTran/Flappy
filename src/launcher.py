@@ -4,13 +4,13 @@
 
 # Importation
 import pygame
-from .maze.MazeGame import MazeGame
+from maze import MazeGame
 
 # Class Definition
 class Launcher :
 
     #Static Variables
-    Maze = MazeGame()
+    Maze = MazeGame.MazeGame()
     
     
 ##################################################################################################################################
@@ -22,7 +22,7 @@ class Launcher :
     def displayLauncher():
         # Declare Variables
         gameTitle = ["Maze", "Flappy", "Pong"]
-        games = [Maze, "Flappy", "Pong"]
+        games = [Launcher.Maze, "Flappy", "Pong"]
         index = None
         game = None
         userInput = None
