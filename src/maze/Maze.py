@@ -18,13 +18,14 @@ class Maze(object):
         pass
 
     def genMaze (self):
-        
         visited = [self.startingNode.id]
         self.startingCell.isVisited = True
         
-
         while (len(cells)):
             randWall = random.choice(visited)
             self.cells[randWall].isVisited = True
+
+    def drawMaze(self):
+        pygame.draw.rect(screen, colour, pygame.Rect())
             
 
