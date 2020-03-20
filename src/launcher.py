@@ -2,6 +2,11 @@
 # By Mengxi (William) Lei
 # Created 2020/02/11, Last Modified 2020/02/11
 
+# Importation
+import pygame
+
+# Class Definition
+class Launcher:
 
 
 ##################################################################################################################################
