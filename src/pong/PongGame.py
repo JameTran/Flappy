@@ -63,88 +63,84 @@ def aimove(ai,ball):
 
 
 #The main function of our program
-def PongGame():
-    if __name__ == '__main__':
-        gameOver = False #Sets the initial state of the game
-        paddle = Paddle(int(width/10),int(height/2),int(width/90),int(height/8),light_grey) #creating an object for the user's paddle
-        ai = Paddle(int(width - width/10),int(height/2),int(width/90),int(height/8),enemy_red) #creating an object for the ai's paddle
-        ball = Ball(int(width/2),int(height/2),12,amber,[6,6]) #creating an object for the ball
+def playGame():
+    gameOver = False #Sets the initial state of the game
+    paddle = Paddle(int(width/10),int(height/2),int(width/90),int(height/8),light_grey) #creating an object for the user's paddle
+    ai = Paddle(int(width - width/10),int(height/2),int(width/90),int(height/8),enemy_red) #creating an object for the ai's paddle
+    ball = Ball(int(width/2),int(height/2),12,amber,[6,6]) #creating an object for the ball
 
-        while not gameOver: #running our game loop
-            for event in pygame.event.get(): #checks for various events in pygame, like keypress, mouse movement, etc
-                if event.type == pygame.QUIT: #checks, if the user has clicked the close button
-                    quit()                    #quits the program
+    while not gameOver: #running our game loop
+        for event in pygame.event.get(): #checks for various events in pygame, like keypress, mouse movement, etc
+            if event.type == pygame.QUIT: #checks, if the user has clicked the close button
+                quit()                    #quits the program
 
-                if event.type == pygame.KEYDOWN: #checks whether a key has been pressed or not
-                    if event.key == pygame.K_UP: #If user has pressed the UP key
-                        paddle.movement[1] = -8  #Paddle moves upwards
-                    elif event.key == pygame.K_DOWN: #If user has pressed the down key
-                        paddle.movement[1] = 8       #Paddle moves downwards
-                if event.type == pygame.KEYUP:    #If the user lifts the key
-                    paddle.movement[1] = 0        #Paddle stops moving
+            if event.type == pygame.KEYDOWN: #checks whether a key has been pressed or not
+                if event.key == pygame.K_UP: #If user has pressed the UP key
+                    paddle.movement[1] = -8  #Paddle moves upwards
+                elif event.key == pygame.K_DOWN: #If user has pressed the down key
+                    paddle.movement[1] = 8       #Paddle moves downwards
+            if event.type == pygame.KEYUP:    #If the user lifts the key
+                paddle.movement[1] = 0        #Paddle stops moving
 
-            aimove(ai,ball) #moves the ai's paddle
+        aimove(ai,ball) #moves the ai's paddle
 
-            screen.fill(bg) #fills the entire screen with bg color
+        screen.fill(bg) #fills the entire screen with bg color
 
-            #welcomeScreen() #presents the introductory screen
+        #welcomeScreen() #presents the introductory screen
 
-            #drawing user's paddle, ai's paddle and ball
-            paddle.drawPaddle()
-            ai.drawPaddle()
-            ball.draw()
+        #drawing user's paddle, ai's paddle and ball
+        paddle.drawPaddle()
+        ai.drawPaddle()
+        ball.draw()
 
-            #displaying the points scored by the user and ai
-            displaytext(str(paddle.points),20,width/8,25,(255,255,255))
-            displaytext(str(ai.points),20,width - width/8,25,(255,255,255))
+        #displaying the points scored by the user and ai
+        displaytext(str(paddle.points),20,width/8,25,(255,255,255))
+        displaytext(str(ai.points),20,width - width/8,25,(255,255,255))
 
-            """
-            using pygame.sprite.collide_mask function to check for 'pixel perfect' collision
-            between user's and ai's paddle with the ball
-            The collision is based on the real world concept of perfectly elastic collisions.
-            hence, whenever the ball strikes the paddle (placed vertically), the horizontal velocity is reversed,
-            while the vertical velocity is equal to the relative velocity of ball w.r.t the paddle.
-            In order to add some randomness, some error is introduced to the relative velocity of the ball and the paddle, i.e
-            The paddle's velocity is multiplied by a factor between 0.5 to 1 before calculating the relative velocity.
-            """
-            if pygame.sprite.collide_mask(paddle,ball):
-                ball.movement[0] = -1*ball.movement[0]
-                ball.movement[1] = ball.movement[1] - int(0.1*random.randrange(5,10)*paddle.movement[1])
-                if ball.movement[1] > ball.maxspeed:
-                    ball.movement[1] = ball.maxspeed
-                if ball.movement[1] < -1*ball.maxspeed:
-                    ball.movement[1] = -1*ball.maxspeed
+        """
+        using pygame.sprite.collide_mask function to check for 'pixel perfect' collision
+        between user's and ai's paddle with the ball
+        The collision is based on the real world concept of perfectly elastic collisions.
+        hence, whenever the ball strikes the paddle (placed vertically), the horizontal velocity is reversed,
+        while the vertical velocity is equal to the relative velocity of ball w.r.t the paddle.
+        In order to add some randomness, some error is introduced to the relative velocity of the ball and the paddle, i.e
+        The paddle's velocity is multiplied by a factor between 0.5 to 1 before calculating the relative velocity.
+        """
+        if pygame.sprite.collide_mask(paddle,ball):
+            ball.movement[0] = -1*ball.movement[0]
+            ball.movement[1] = ball.movement[1] - int(0.1*random.randrange(5,10)*paddle.movement[1])
+            if ball.movement[1] > ball.maxspeed:
+                ball.movement[1] = ball.maxspeed
+            if ball.movement[1] < -1*ball.maxspeed:
+                ball.movement[1] = -1*ball.maxspeed
 
-            if pygame.sprite.collide_mask(ai,ball):
-                ball.movement[0] = -1*ball.movement[0]
-                ball.movement[1] = ball.movement[1] - int(0.1*random.randrange(5,10)*ai.movement[1])
-                if ball.movement[1] > ball.maxspeed:
-                    ball.movement[1] = ball.maxspeed
-                if ball.movement[1] < -1*ball.maxspeed:
-                    ball.movement[1] = -1*ball.maxspeed
+        if pygame.sprite.collide_mask(ai,ball):
+            ball.movement[0] = -1*ball.movement[0]
+            ball.movement[1] = ball.movement[1] - int(0.1*random.randrange(5,10)*ai.movement[1])
+            if ball.movement[1] > ball.maxspeed:
+                ball.movement[1] = ball.maxspeed
+            if ball.movement[1] < -1*ball.maxspeed:
+                ball.movement[1] = -1*ball.maxspeed
 
-            #checks whether user or ai scored a point and increments accordingly
-            if ball.score == 1:
-                ai.points += 1
-                ball.score = 0
-            elif ball.score == -1:
-                paddle.points += 1
-                ball.score = 0
+        #checks whether user or ai scored a point and increments accordingly
+        if ball.score == 1:
+            ai.points += 1
+            ball.score = 0
+        elif ball.score == -1:
+            paddle.points += 1
+            ball.score = 0
 
-            #updating the states of user's paddle, ai's paddle and ball
-            paddle.movePaddle()
-            ball.scoreGoal()
-            ai.movePaddle()
+        #updating the states of user's paddle, ai's paddle and ball
+        paddle.movePaddle()
+        ball.scoreGoal()
+        ai.movePaddle()
 
-            #updating the entire display"""
-            pygame.display.update()
+        #updating the entire display"""
+        pygame.display.update()
 
-            #adding the time delay based on the number of 'Frames per Second'
-            clock.tick(FPS)
+        #adding the time delay based on the number of 'Frames per Second'
+        clock.tick(FPS)
 
-        #Exiting the program by safely quitting pygame
-        pygame.quit()
-        quit()
-
-#calling our main function
-PongGame()
+    #Exiting the program by safely quitting pygame
+    pygame.quit()
+    quit()
