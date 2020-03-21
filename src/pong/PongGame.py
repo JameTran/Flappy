@@ -2,8 +2,8 @@ import sys
 import random
 import pygame
 from pygame.locals import *
-from Ball import *
-from Paddle import *
+from pong.Ball import *
+from pong.Paddle import *
 
 #initializing pygame
 pygame.init()

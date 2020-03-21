@@ -6,13 +6,14 @@
 import pygame
 import thorpy
 from maze import MazeGame
+from pong import PongGame
 
 # Class Definition
 class Launcher:
 
     #Static Variables
     gameTitle = ["Maze", "Flappy", "Pong"]
-    games = [MazeGame.MazeGame(), None, None]
+    games = [MazeGame.MazeGame(), None, PongGame]
     
 
     
@@ -72,8 +73,10 @@ class Launcher:
     def launchGame(game):
         if game == 0:
             Launcher.games[game].on_execute()
-        elif game >= 1 and game <=2:
+        elif game == 1:
             print("\nRunning " + Launcher.gameTitle[game] + "\n\n")
+        else:
+            Launcher.games[game].playGame()
 
 
 
