@@ -63,7 +63,7 @@ def aimove(ai,ball):
 
 
 #The main function of our program
-def MazeGame():
+def PongGame():
     if __name__ == '__main__':
         gameOver = False #Sets the initial state of the game
         paddle = Paddle(int(width/10),int(height/2),int(width/90),int(height/8),light_grey) #creating an object for the user's paddle
@@ -147,4 +147,4 @@ def MazeGame():
         quit()
 
 #calling our main function
-MazeGame()
+PongGame()
