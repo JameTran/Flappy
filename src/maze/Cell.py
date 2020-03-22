@@ -11,8 +11,7 @@ class Cell(object):
         self.id = id 
         self.gridLength = gridLength
         self.isVisited = False
-        self.cellWalls = []
-        self.adjCells = []
+        self.walls = []
         self.genWalls()
     
     ## @brief Identifies the walls of the current cell and appends it to the cellWalls
@@ -25,13 +24,13 @@ class Cell(object):
         rightWall = self.id + 1
         
         if (topWall >= 0): # checks if cell is in the top row
-            self.cellWalls.append(topWall)
+            self.walls.append((self.id, topWall))
        	if (bottomWall < self.gridLength ** 2): # checks if cell is in the bottom row
-            self.cellWalls.append(bottomWall)
+            self.walls.append((self.id, bottomWall))
         if ((leftWall // self.gridLength) == (self.id // self.gridLength)):
-            self.cellWalls.append(leftWall)
+            self.walls.append((self.id,leftWall))
         if ((rightWall // self.gridLength) == (self.id // self.gridLength)):
-            self.cellWalls.append(rightWall) 
+            self.walls.append((self.id,rightWall))
 
-testCell = Cell(0, 10)
-print(random.choice(testCell.cellWalls))
+#testCell = Cell(0, 10)
+#print(random.choice(testCell.cellWalls))
