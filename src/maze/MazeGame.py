@@ -1,6 +1,6 @@
 import pygame
-import Maze
-import Player
+from maze import Maze
+from maze import Player
 from pygame.locals import *
 
 size = 15
