@@ -3,7 +3,7 @@ from maze import Maze
 from maze import Player
 from pygame.locals import *
 
-size = 15
+size = 25
 
 class MazeGame:
     def __init__(self):

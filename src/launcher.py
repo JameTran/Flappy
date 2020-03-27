@@ -1,17 +1,18 @@
 # Launcher module of the program. This is the module that will be responsible for launching the mini-games
 # By Mengxi (William) Lei
-# Created 2020/02/11, Last Modified 2020/03/20
+# Created 2020/02/11, Last Modified 2020/03/27
 
 # Importation
 import pygame
 import thorpy
 from maze import MazeGame
 from pong import PongGame
+import Scoreboard
 
 # Class Definition
 class Launcher:
 
-    #Static Variables
+    # Static Constants
     gameTitle = ["Maze", "Flappy", "Pong"]
     games = [MazeGame.MazeGame(), None, PongGame]
     
@@ -70,13 +71,13 @@ class Launcher:
 
     # Launch the given game
     @staticmethod
-    def launchGame(game):
-        if game == 0:
-            Launcher.games[game].on_execute()
-        elif game == 1:
-            print("\nRunning " + Launcher.gameTitle[game] + "\n\n")
+    def launchGame(gameID):
+        if gameID == 0:
+            Launcher.games[gameID].on_execute()
+        elif gameID == 1:
+            print("\nRunning " + Launcher.gameTitle[gameID] + "\n\n")
         else:
-            Launcher.games[game].playGame()
+            Launcher.games[gameID].playGame()
 
 
 
