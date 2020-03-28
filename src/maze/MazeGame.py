@@ -1,7 +1,10 @@
 import pygame
 import time
-from maze import Maze
-from maze import Player
+from datetime import datetime
+import Maze 
+import Player
+#from maze import Maze
+#from maze import Player
 from pygame.locals import *
 
 class MazeGame:
@@ -12,6 +15,7 @@ class MazeGame:
         self.currState = "menu"
         self.maze = Maze.Maze()
         self.player = Player.Player()
+        self.completionTime, self.startTime, self.pauseTime = 0, 0, 0
 
     def on_init(self):
         pygame.init()
@@ -47,14 +51,17 @@ class MazeGame:
                 if (state == "easyMaze"):
                     self.maze.setMaze(15)
                     self.player.setPlayer(self.maze.size, self.maze.allRect)
+                    self.startTime = time.time()
                     self.currState = "maze"
                 elif (state == "mediumMaze"):
                     self.maze.setMaze(25)
                     self.player.setPlayer(self.maze.size, self.maze.allRect)
+                    self.startTime = time.time()
                     self.currState = "maze"
                 elif (state == "hardMaze"):
                     self.maze.setMaze(30)
                     self.player.setPlayer(self.maze.size, self.maze.allRect)
+                    self.startTime = time.time()
                     self.currState = "maze"
         else:
             pygame.draw.rect(self._display_surf, ic,(x,y,w,h))
@@ -62,7 +69,7 @@ class MazeGame:
         textSurf, textRect = self.text_objects(msg, self.buttonFont)
         textRect.center = ((x + (w / 2)), (y + (h / 2)))
         self._display_surf.blit(textSurf, textRect)   
-    
+
     def menuScreen(self): 
         self._display_surf.fill((255, 255, 255))
         titleText = self.titleFont.render("M A Z E", True, (0, 0, 0))
@@ -105,12 +112,21 @@ class MazeGame:
         self.maze.draw(self._display_surf)
         pygame.draw.rect(self._display_surf, (0, 255, 0), self.player.goal)
         pygame.draw.rect(self._display_surf, (255, 100, 0), self.player.rect)
+        timeText = self.buttonFont.render(str(round((time.time() - self.startTime), 2)), True, (0, 0, 0))
+        self._display_surf.blit(timeText, (10, 10))
         pygame.display.flip()
     
     def victoryScreen(self):
         self._display_surf.fill((255, 255, 255))
-        victoryText = self.typeFont.render("CONGRATULATIONS! You completed the maze!", True, (0, 0, 0))
-        self._display_surf.blit(victoryText, (640 - (victoryText.get_width() // 2), 400 - (victoryText.get_height() // 2)))
+        victoryText1 = self.titleFont.render("VICTORY", True, (0, 0,0))
+        victoryText2 = self.buttonFont.render("Fastest Time: ", True, (0, 0, 0))
+        victoryText3 = self.buttonFont.render("Completion Time: ", True, (0, 0, 0))
+        timeText = self.buttonFont.render(str(round(self.completionTime, 2)), True, (0, 0, 0))
+        self._display_surf.blit(victoryText1, (640 - (victoryText1.get_width() // 2), 100))
+        self._display_surf.blit(victoryText2, (640 - (victoryText2.get_width() // 2), 300))
+        self._display_surf.blit(timeText, (640 - (timeText.get_width() // 2), 350))
+        self._display_surf.blit(victoryText3, (640 - (victoryText3.get_width() // 2), 450))
+        self._display_surf.blit(timeText, (640 - (timeText.get_width() // 2), 500))
         self.button("MENU", 540, 650, 200, 50, (230, 230, 230), (200, 200, 200), "menu")
         pygame.display.flip()
 
@@ -157,6 +173,7 @@ class MazeGame:
                     self.player.move(0, 1)
                 
                 if (self.player.isWon == True):
+                    self.completionTime = time.time() - self.startTime
                     self.currState = "victory"
                 self.renderMaze()  
             while ((self.currState == "victory") and self._running):
