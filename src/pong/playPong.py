@@ -1,3 +1,3 @@
-from PongGame import playGame
+from MenuSettings import *
 
-playGame()
+main_menu()
