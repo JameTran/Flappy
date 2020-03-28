@@ -1,12 +1,12 @@
 # Setup Python ----------------------------------------------- #
 import pygame, sys
 from pygame.locals import *
-from PongGame import playGame
+from PongGame import *
  #initializing pygame
 pygame.init()
 
 #setting the FPS or number of Frames per Second
-FPS = 70
+FPS = 60
 
 #Setting the screen size
 scr_size = (width,height) = (1280,800)
@@ -26,22 +26,25 @@ ball_speed_y = 5
 
 
 #Declaring various color values
-BG = (5, 45, 60)
+BG = (5, 35, 60)
 BLUE = (66, 133, 244)
 HOVERBLUE = (36, 103, 214)
-GREEN = (61, 220, 132)
-HOVERGREEN = (31, 190, 102)
+GREEN10 = (61, 220, 132)
+HOVERGREEN10 = (31, 190, 102)
+GREEN = (0, 200, 0)
+HOVERGREEN = (0, 170, 0)
+ORANGE = (240, 130, 0)
+HOVERORANGE = (210, 100, 0)
+RED = (200, 30, 0)
+HOVERRED = (170, 0, 0)
 AMBER = (255, 191, 0)
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
-bg = (0,5,35)
-light_grey = (200,200,200)
-enemy_red = (200,5,0)
 
 screen = pygame.display.set_mode(scr_size)
 pygame.display.set_caption('Main Menu')
-numOfPlayers = -1
-difficulty = 1
+finalScore = -1
+diff = 1
 
 def displaytext(text,fontsize,x,y,color):
     font = pygame.font.SysFont('rockwell', fontsize, True)
@@ -62,29 +65,41 @@ def ball_animation():
     if ball.left <= 0 or ball.right >= width:
         ball_speed_x *= -1
 
-def changeNumberOfPlayers(x):
-    global displayPlayers, numOfPlayers
-    numOfPlayers = x
-    displayPlayers = ('Number of Players: ' + str(x))
+def changeFinalScore(x):
+    global displayFinalScore, finalScore
+    finalScore = x
+    displayFinalScore = ('Play up to: ' + str(x))
 
 def changeDifficulty(x):
-    global displayDifficulty, difficulty
-    difficulty = x
-    if (x == 1): level = 'EASY'
-    elif (x == 2): level = 'HARD'    
-    elif (x == 3): level = 'INSANE'
+    global displayDifficulty, diff
+    diff = x
+    if (x == 4): level = 'EASY'
+    elif (x == 6): level = 'HARD'    
+    elif (x == 8): level = 'INSANE'
     else: level = ''
     displayDifficulty = ('Difficulty: ' + str(level))
 
 def startGameAnimation():
     screen.fill(BG)
-    displaytext('WELCOME TO PONG', 100, middleX, middleY, WHITE)
+    fadeR = 5
+    fadeG = 35
+    fadeB = 60
+    timer = 20
+    while timer > 0:
+        screen.fill((fadeR, fadeG, fadeB))
+        fadeR = fadeR - int(5/20)
+        fadeG = fadeG - int(35/20)
+        fadeB = fadeB - int(60/20)
+        timer -= 1
+        pygame.display.update()
+        clock.tick(8)
+    displaytext('Welcome TO PONG', 100, middleX, middleY, WHITE)
     pygame.display.update()
-    clock.tick(0.5)
+    clock.tick(0.7)
 
 
 click = False
-displayPlayers = 'Select the number of players'
+displayFinalScore = 'Select the maximum score'
 displayDifficulty = 'Select difficulty'
 coverDifficulty = pygame.Rect(middleX - 200, middleY + 150, 800, 90)
 
@@ -94,79 +109,87 @@ def main_menu():
         screen.fill(BG)
  
         mx, my = pygame.mouse.get_pos()
-        displaytext('Press "ESC" to exit the game', 20, middleX, height-30, light_grey)
+        displaytext('Press "ESC" to exit the game', 20, middleX, height-30, WHITE)
 
         #BEGIN selection of difficulty
-        easyButton = pygame.Rect(middleX - 125, middleY + 55, 50, 50)
-        ecolor = BLUE
-        medButton = pygame.Rect(middleX - 25, middleY + 55, 50, 50)
-        mcolor = BLUE
-        hardButton = pygame.Rect(middleX + 75, middleY + 55, 50, 50)
-        hcolor = BLUE
+        easyButton = pygame.Rect(middleX - 125, middleY - 75, 50, 50)
+        ecolor = GREEN
+        medButton = pygame.Rect(middleX - 25, middleY - 75, 50, 50)
+        mcolor = ORANGE
+        hardButton = pygame.Rect(middleX + 75, middleY - 75, 50, 50)
+        hcolor = RED
         if easyButton.collidepoint((mx, my)):
-            ecolor = HOVERBLUE
+            ecolor = HOVERGREEN
             if click:
                 # game()
-                changeDifficulty(1)
+                changeDifficulty(4)
         if medButton.collidepoint((mx, my)):
-            mcolor = HOVERBLUE
+            mcolor = HOVERORANGE
             if click:
                 #options()
-                changeDifficulty(2)
+                changeDifficulty(6)
         if hardButton.collidepoint((mx, my)):
-            hcolor = HOVERBLUE
+            hcolor = HOVERRED
             if click:
                 #options()
-                changeDifficulty(3)
+                changeDifficulty(8)
         pygame.draw.rect(screen, ecolor, easyButton)
         pygame.draw.rect(screen, mcolor, medButton)
         pygame.draw.rect(screen, hcolor, hardButton)
-        displaytext('UwU', 18, middleX - 100, middleY + 80, WHITE)
-        displaytext('O-O', 18, middleX, middleY + 80, WHITE)
-        displaytext('X_X', 18, middleX + 100, middleY + 80, WHITE)
-        displaytext(displayDifficulty, 20, middleX, middleY + 30, WHITE)
+        displaytext('!', 18, middleX - 100, middleY - 50, WHITE)
+        displaytext('!!', 18, middleX, middleY - 50, WHITE)
+        displaytext('!!!', 18, middleX + 100, middleY - 50, WHITE)
+        displaytext(displayDifficulty, 20, middleX, middleY - 100, WHITE)
         #END selection of difficulty
 
         #BEGIN start button
-        startButton = pygame.Rect(middleX - 110, middleY + 160, 220, 80)
-        startColor = GREEN
-        beginColor = WHITE
-        if numOfPlayers < 0:
-            startColor = BG
-            beginColor = BG
+        startButton = pygame.Rect(middleX - 125, middleY + 160, 250, 80)
+        startColor = BG
+        beginColor = BG
+        if finalScore > 0:
+            startColor = GREEN10
+            beginColor = WHITE
+            coverDifficulty.x = 1280
         if startButton.collidepoint((mx, my)):
-            startColor = HOVERGREEN
+            startColor = HOVERGREEN10
             if click:
                 startGameAnimation()
-                playGame()
+                playGame(diff, finalScore)
         pygame.draw.rect(screen, startColor, startButton)
         displaytext('BEGIN', 50, middleX, middleY + 200, beginColor)
         #END start button
+        pygame.draw.rect(screen, BG, coverDifficulty)
         
-        # BEGIN selection of players buttons
-        onePButton = pygame.Rect(middleX - 75, middleY - 75, 50, 50)
-        p1color = BLUE
-        twoPButton = pygame.Rect(middleX + 25, middleY - 75, 50, 50)
-        p2color = BLUE
-        if onePButton.collidepoint((mx, my)):
-            p1color = HOVERBLUE
+        #BEGIN selection of final score
+        sevenButton = pygame.Rect(middleX - 125, middleY + 50, 50, 50)
+        color7 = BLUE
+        elevenButton = pygame.Rect(middleX - 25, middleY + 50, 50, 50)
+        color11 = BLUE
+        fifteenButton = pygame.Rect(middleX + 75, middleY + 50, 50, 50)
+        color15 = BLUE
+        if sevenButton.collidepoint((mx, my)):
+            color7 = HOVERBLUE
             if click:
                 # game()
-                coverDifficulty.x = 1280
-                changeNumberOfPlayers(1)
-        if twoPButton.collidepoint((mx, my)):
-            p2color = HOVERBLUE
+                changeFinalScore(7)
+        if elevenButton.collidepoint((mx, my)):
+            color11 = HOVERBLUE
             if click:
                 #options()
-                coverDifficulty.x = middleX - 200
-                changeNumberOfPlayers(2)
-        pygame.draw.rect(screen, p1color, onePButton)
-        pygame.draw.rect(screen, p2color, twoPButton)
-        pygame.draw.rect(screen, BG, coverDifficulty)
-        displaytext('I', 30, middleX - 50, middleY - 50, WHITE)
-        displaytext('II', 30, middleX + 50, middleY - 50, WHITE)
-        displaytext(displayPlayers, 20, middleX, middleY - 100, WHITE)
-        # END selection of players
+                changeFinalScore(11)
+        if fifteenButton.collidepoint((mx, my)):
+            color15 = HOVERBLUE
+            if click:
+                #options()
+                changeFinalScore(15)
+        pygame.draw.rect(screen, color7, sevenButton)
+        pygame.draw.rect(screen, color11, elevenButton)
+        pygame.draw.rect(screen, color15, fifteenButton)
+        displaytext('7', 20, middleX - 100, middleY + 75, WHITE)
+        displaytext('11', 20, middleX, middleY + 75, WHITE)
+        displaytext('15', 20, middleX + 100, middleY + 75, WHITE)
+        displaytext(displayFinalScore, 20, middleX, middleY + 25, WHITE)
+        #END selection of final score
 
         click = False
         for event in pygame.event.get():
@@ -190,38 +213,3 @@ def main_menu():
         pygame.display.update()
         clock.tick(70)
  
-def game():
-    running = True
-    while running:
-        screen.fill(BG)
-       
-        displaytext('game', 30, 100, 20, WHITE)
-        for event in pygame.event.get():
-            if event.type == QUIT:
-                pygame.quit()
-                sys.exit()
-            if event.type == KEYDOWN:
-                if event.key == K_ESCAPE:
-                    running = False
-       
-        pygame.display.update()
-        clock.tick(60)
- 
-def options():
-    running = True
-    while running:
-        screen.fill(BG)
- 
-        displaytext('options', 30, 20, 20, WHITE)
-        for event in pygame.event.get():
-            if event.type == QUIT:
-                pygame.quit()
-                sys.exit()
-            if event.type == KEYDOWN:
-                if event.key == K_ESCAPE:
-                    running = False
-       
-        pygame.display.update()
-        clock.tick(60)
- 
-main_menu()
