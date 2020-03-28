@@ -30,7 +30,7 @@ class Scoreboard:
     def drawScoreboard(gameName):
         
         # Declare variables
-        notFound = True
+        notFound = True #Boolean
         
         # Set value of displayGame and exitScreen
         for index, game in enumerate(Scoreboard.gameTitle):
@@ -55,6 +55,7 @@ class Scoreboard:
         # Declare variables
         application = None           #Application(thorpy)
         title = None                 #Text(thorpy)
+        content = None               #Text(thorpy)
         buttons = [None, None, None] #Clickable/Element(thorpy) Array
         quitButton = None            #Clickable(thorpy)
         painter1 = None              #Painters(thorpy)
@@ -62,6 +63,7 @@ class Scoreboard:
         buttonGroup = None           #Group(thorpy)
         menu = None                  #Menu(thorpy)
         background = None            #Background(thorpy)
+        contentString = None         #String
         
         # Create GUI and set theme
         application = thorpy.Application(size=(1280,800), caption="Mini-Arcade")
@@ -82,11 +84,18 @@ class Scoreboard:
         quitButton.set_font_size(17)
         quitButton.set_font_color_hover((57,197,187))
         
-        # Format the buttons
+        # Create texts
+        contentString = ""
+        for index, score in enumerate(Scoreboard.scores[Scoreboard.displayGame]):
+            contentString = contentString + str(index+1) + ": " + str(score) + "\n"
+        contentString += "\n\n"
+        content = thorpy.make_text(contentString, 20, (0,0,0))
+        
+        # Format the buttons and texts
         buttonGroup = thorpy.make_group(buttons)
 
         # Set background
-        background = thorpy.Background(color=(255,255,255), elements=[title, buttonGroup, quitButton])
+        background = thorpy.Background(color=(255,255,255), elements=[title, buttonGroup, content, quitButton])
         thorpy.store(background)
 
         # Create menu and display
@@ -105,7 +114,7 @@ class Scoreboard:
     # Change the game to be displayed
     @staticmethod
     def changeGame(gameID):
-        displayGame = gameID
+        Scoreboard.displayGame = gameID
         Scoreboard.drawBoard()
     
     
@@ -114,9 +123,9 @@ class Scoreboard:
     @staticmethod
     def exitScoreboard():
         if (Scoreboard.exitScreen < len(Scoreboard.gameTitle) and Scoreboard.exitScreen > -1):
-            Launcher.launchGame(Scoreboard.exitScreen)
+            Launcher.Launcher.launchGame(Scoreboard.exitScreen)
         else:
-            Launcher.displayLauncher()
+            Launcher.Launcher.displayLauncher()
 
 
 
@@ -129,8 +138,8 @@ class Scoreboard:
     def readData():
         
         # Declare variables
-        file = None
-        tempArray = None
+        file = None      #File
+        tempArray = None #String Array
         
         # Open file
         file = open(Scoreboard.fileName, "r")
@@ -152,8 +161,8 @@ class Scoreboard:
     def writeData():
         
         # Declare variables
-        file = None
-        tempString = None
+        file = None       #File
+        tempString = None #String
         
         # Open file
         file = open(Scoreboard.fileName, "w")
@@ -188,10 +197,10 @@ class Scoreboard:
     def updateScore(game, score):
     
         # Declare variables
-        gameID = None
-        scoreIndex = None
-        tempScore = None
-        length = None
+        gameID = None     #int
+        scoreIndex = None #int
+        tempScore = None  #int
+        length = None     #int
         
         # Find the index of the game
         for index, gameName in enumerate(Scoreboard.gameTitle):
@@ -224,6 +233,8 @@ class Scoreboard:
     # Create a buttton
     @staticmethod
     def createButton(title, index, painter1, painter2):
+    
+        print(index)
         
         # Declare Variables
         button = None  #Clickable(thorpy)

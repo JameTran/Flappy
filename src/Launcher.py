@@ -28,7 +28,7 @@ class Launcher:
 
         # Declare Variables
         index = None                 #int
-        game = None                  #string
+        game = None                  #String
         application = None           #Application(thorpy)
         buttons = [None, None, None] #Clickable(thorpy) Array
         scoreboardButton = None      #Clickable(thorpy)
@@ -131,5 +131,5 @@ class Launcher:
 
 # Main
 if __name__ == "__main__":
+    Scoreboard.Scoreboard.readData()
     Launcher.displayLauncher()
-    Scoreboard.readData()
