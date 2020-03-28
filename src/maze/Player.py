@@ -4,7 +4,12 @@ from pygame.locals import *
 
 class Player:
  
-    def __init__(self, size, walls):
+    def __init__(self):
+        self.size = 0
+        self.walls = []
+        self.isWon = False
+    
+    def setPlayer(self, size, walls):
         self.size = size
         self.playerPos()
         self.goalPos()

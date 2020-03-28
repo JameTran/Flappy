@@ -2,28 +2,30 @@ import pygame
 from pygame.locals import *
 import random
 import math
-from maze import Cell
+import Cell
+#from maze import Cell
 
 ## @brief This class creates the Maze object
 # @param None
 class Maze(object):
 
-    def __init__ (self, size):
+    def __init__ (self):
+        self.size = 0 # the dimension of one side of the maze
+        self.cells = []
+        self.startingCell = None
+        self.endingCell = None
+        self.mazeWalls = []
+        self.allRect = []
+
+
+    def setMaze(self, size):
         self.size = size # the dimension of one side of the maze
         self.cells = [Cell.Cell(i, size) for i in range (size ** 2)]
         self.startingCell = self.cells[0]
         self.endingCell = self.cells[size ** 2 - 1]
         self.mazeWalls = []
         self.allRect = []
-        self.genMazeWalls()
         self.genMaze()
-        self.transformWalls()
-
-    def genMazeWalls(self):
-        for i in range (self.size ** 2):
-            for j in (self.cells[i].walls):
-                if ((j[1], j[0]) not in self.mazeWalls):
-                    self.mazeWalls.append(j)
 
     def checkVisited(self, id):
         if (self.cells[id[0]].isVisited == False):
@@ -34,6 +36,11 @@ class Maze(object):
             return self.cells[id[1]]
         
     def genMaze (self):
+        # Generates maze walls
+        for i in range (self.size ** 2):
+            for j in (self.cells[i].walls):
+                if ((j[1], j[0]) not in self.mazeWalls):
+                    self.mazeWalls.append(j)
         # Initialize starting position
         self.startingCell.isVisited = True  
         wallList = [self.startingCell.walls[0], self.startingCell.walls[1]]
@@ -49,6 +56,7 @@ class Maze(object):
                         if (i[0] > i[1]): wallList.append((i[1], i[0]))
                         else: wallList.append(i)
             wallList.remove((currWall))
+        self.transformWalls()
 
     def transformWalls(self):
         l = 700 / self.size # wall length
