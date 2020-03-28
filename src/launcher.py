@@ -1,6 +1,6 @@
 # Launcher module of the program. This is the module that will be responsible for launching the mini-games
 # By Mengxi (William) Lei
-# Created 2020/02/11, Last Modified 2020/03/27
+# Created 2020/02/11, Last Modified 2020/03/28
 
 # Importation
 import pygame

@@ -1,20 +1,21 @@
 # Scoreboard module of the program. This is the module that will be responsible for launching the mini-games
 # By Mengxi (William) Lei
-# Created 2020/03/27, Last Modified 2020/03/27
+# Created 2020/03/27, Last Modified 2020/03/28
 
 # Importation
 import pygame
 import thorpy
+import Launcher
 
 # Class Definition
 class Scoreboard:
 
     # Static Constants
-    fileName = None
-    gameTitle = ["Maze", "Flappy", "Pong"]
+    fileName = "scores"
+    gameTitle = Launcher.gameTitle
     
     # Static Variables
-    scores = [[], [], []]
+    scores = []
     displayGame = None
     exitScreen = None
 
@@ -44,7 +45,10 @@ class Scoreboard:
     # Exit the scoreboard
     @staticmethod
     def exitScoreboard():
-        return
+        if (exitScreen < len(gameTitle)):
+            Launcher.launchGame(exitScreen)
+        else:
+            Launcher.displayLauncher()
 
 
 
@@ -55,14 +59,45 @@ class Scoreboard:
     # Read data from file
     @staticmethod
     def readData():
-        return
+        
+        # Declare variables
+        file = None
+        tempArray = None
+        
+        # Open file
+        file = open(fileName, "r")
+        
+        # Read the data
+        for game in gameTitle:
+            tempArray = file.readline().split()
+            scores.append([])
+            for element in tempArray:
+                scores[-1].append(int(element))
+        
+        # Close file
+        file.close()
 
 
 
     # Write data to file
     @staticmethod
     def writeData():
-        return
+        
+        # Declare variables
+        file = None
+        tempString = None
+        
+        # Open file
+        file = open(fileName, "w")
+        
+        # Write to file
+        for game in scores:
+            tempString = " ".join([str(element) for element in game])
+            tempString += "\n"
+            file.write(tempString)
+        
+        # Close file
+        file.close()
 
 
 

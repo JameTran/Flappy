@@ -1,9 +1,7 @@
 import pygame
 import time
-import Maze 
-import Player
-#from maze import Maze
-#from maze import Player
+from maze import Maze
+from maze import Player
 from pygame.locals import *
 
 class MazeGame:
