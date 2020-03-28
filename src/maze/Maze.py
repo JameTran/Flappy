@@ -2,8 +2,8 @@ import pygame
 from pygame.locals import *
 import random
 import math
-import Cell
-#from maze import Cell
+#import Cell
+from maze import Cell
 
 ## @brief This class creates the Maze object
 # @param None
