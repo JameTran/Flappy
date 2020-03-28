@@ -14,7 +14,7 @@ class Launcher:
 
     # Static Constants
     gameTitle = ["Maze", "Flappy", "Pong"]
-    games = [MazeGame.MazeGame(), None, playPong]
+    games = [MazeGame.MazeGame(), None, PongGame]
     
 
     
