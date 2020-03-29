@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"python.linting.pylintEnabled": true,
+		"python.linting.pycodestyleEnabled": true,
+		"python.linting.pylintArgs": [
+			"--extension-pkg-whitelist=pygame"
+		]
+	}
+}
