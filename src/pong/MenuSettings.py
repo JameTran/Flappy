@@ -171,7 +171,7 @@ def main_menu():
                 startColor = HOVERGREEN10
             if click:
                 startGameAnimation()
-                playGame(diff, finalScore)
+                mainGame(diff, finalScore)
         pygame.draw.rect(screen, startColor, startButton)
         displaytext('BEGIN', 50, middleX, middleY + 200, beginColor)
         #END start button
