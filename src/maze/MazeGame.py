@@ -268,7 +268,7 @@ class MazeGame:
             return (defaultScore + defaultTime[1] - int(tuple[1]))
         elif tuple[0] == "hard":
             return (defaultScore + defaultTime[2] - int(tuple[1]))
-        else
+        else:
             return 0
     
 if __name__ == "__main__" :
