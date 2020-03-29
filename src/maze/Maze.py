@@ -68,9 +68,9 @@ class Maze(object):
             wallList.remove((currWall))
         self.transformWalls()
 
-    ## @brief 
-    # @param
-    # @return
+    ## @brief Transforms the walls from prim's algorithm into tuples that represent the pygame rectangle command
+    # @param None
+    # @return None
     def transformWalls(self):
         l = 700 / self.size # wall length
         vo = 40 # vertical offset
@@ -102,9 +102,9 @@ class Maze(object):
                 rect = pygame.Rect(i[0] % self.size * l + ho, i[1] // self.size * l + vo, l + t, t)
                 self.allRect.append(rect)
   
-    ## @brief
-    # @param
-    # @return
+    ## @brief Draws the maze given the mazeWalls from the transform
+    # @param display_surf: the output window from the MazeGame
+    # @return None
     def draw(self, display_surf):
         for i in self.allRect: # Draw walls
             pygame.draw.rect(display_surf, (0, 0, 0), i)
