@@ -1,3 +1,4 @@
- from PongGame import playGame
+from pong.MenuSettings import main_menu
 
-playGame()
+def runPong():
+    main_menu()
