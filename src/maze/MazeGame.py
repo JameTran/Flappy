@@ -259,15 +259,15 @@ class MazeGame:
 
     # Transform from tuple to score
     @staticmethod
-    def tupleToScore(tuple, score):
+    def tupleToScore(tuple):
         defaultScore = 100
         defaultTime = [20, 60, 180]
         if tuple[0] == "easy":
-            return (defaultScore + defaultTime[0] - int(score))
+            return (defaultScore + defaultTime[0] - int(tuple[1]))
         elif tuple[0] == "medium":
-            return (defaultScore + defaultTime[1] - int(score))
+            return (defaultScore + defaultTime[1] - int(tuple[1]))
         elif tuple[0] == "hard":
-            return (defaultScore + defaultTime[2] - int(score))
+            return (defaultScore + defaultTime[2] - int(tuple[1]))
         else
             return 0
     
