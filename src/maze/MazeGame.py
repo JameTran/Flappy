@@ -1,10 +1,10 @@
 import pygame
 import time
 from datetime import datetime
-#import Maze 
-#import Player
-from maze import Maze
-from maze import Player
+import Maze 
+import Player
+#from maze import Maze
+#from maze import Player
 from pygame.locals import *
 
 class MazeGame:
@@ -15,7 +15,8 @@ class MazeGame:
         self.currState = "menu"
         self.maze = Maze.Maze()
         self.player = Player.Player()
-        self.completionTime, self.startTime, self.pauseTime = 0, 0, 0
+        self.mode = ""
+        self.completionTime, self.startTime, self.totalPauseTime, self.pauseTime, self.pauseStartTime = 0, 0, 0, 0, 0
 
     def on_init(self):
         pygame.init()
@@ -30,9 +31,6 @@ class MazeGame:
     def on_event(self, event):
         if (event.type == pygame.QUIT):
             self._running = False
-        if (event.type == pygame.KEYDOWN):
-            if (event.key == pygame.K_ESCAPE):
-                self._running = False
 
     def text_objects(self, text, font):
         textSurface = font.render(text, True, (0, 0, 0))
@@ -52,16 +50,22 @@ class MazeGame:
                     self.maze.setMaze(15)
                     self.player.setPlayer(self.maze.size, self.maze.allRect)
                     self.startTime = time.time()
+                    self.pauseTime, self.pauseStarTime = 0, 0
+                    self.mode = "EASY"
                     self.currState = "maze"
                 elif (state == "mediumMaze"):
                     self.maze.setMaze(25)
                     self.player.setPlayer(self.maze.size, self.maze.allRect)
                     self.startTime = time.time()
+                    self.pauseTime, self.pauseStarTime = 0, 0
+                    self.mode = "MEDIUM"
                     self.currState = "maze"
                 elif (state == "hardMaze"):
                     self.maze.setMaze(30)
                     self.player.setPlayer(self.maze.size, self.maze.allRect)
                     self.startTime = time.time()
+                    self.pauseTime, self.pauseStarTime = 0, 0
+                    self.mode = "HARD"
                     self.currState = "maze"
         else:
             pygame.draw.rect(self._display_surf, ic,(x,y,w,h))
@@ -76,7 +80,7 @@ class MazeGame:
         self._display_surf.blit(titleText, (640 - (titleText.get_width() // 2), 100))
         self.button("PLAY", 490, 300, 300, 100, (230, 230, 230), (200, 200, 200), "difficulty")
         self.button("HOW TO PLAY", 490, 450, 300, 100, (230, 230, 230), (200, 200, 200), "howto")
-        self.button("HOME", 490, 600, 140, 100, (230, 230, 230), (200, 200, 200), None)
+        self.button("HOME", 490, 600, 140, 100, (230, 230, 230), (200, 200, 200), "launcher")
         self.button("QUIT", 650, 600, 140, 100, (230, 230, 230), (200, 200, 200), "done")
         pygame.display.flip()
         
@@ -107,12 +111,23 @@ class MazeGame:
         self.button("BACK", 540, 650, 200, 50, (230, 230, 230), (200, 200, 200), "menu")
         pygame.display.flip()
     
+
+    def pauseScreen(self):
+        self.pauseStartTime = time.time()
+        self._display_surf.fill((255, 255, 255))
+        headingText = self.headingFont.render("GAME PAUSED", True, (0, 0, 0))
+        self._display_surf.blit(headingText, (640 - (headingText.get_width() // 2), 100))
+        self.button("RESUME", 490, 300, 300, 100, (230, 230, 230), (200, 200, 200), "resume")
+        self.button("MENU", 490, 450, 300, 100, (230, 230, 230), (200, 200, 200), "menu")
+        pygame.display.flip()
+        self.pauseTime += time.time() - self.pauseStartTime
+
     def renderMaze(self): 
         self._display_surf.fill((255, 255, 255))
         self.maze.draw(self._display_surf)
         pygame.draw.rect(self._display_surf, (0, 255, 0), self.player.goal)
         pygame.draw.rect(self._display_surf, (255, 100, 0), self.player.rect)
-        timeText = self.buttonFont.render(str(round((time.time() - self.startTime), 2)), True, (0, 0, 0))
+        timeText = self.buttonFont.render(str(round((time.time() - self.startTime - self.pauseTime), 2)), True, (0, 0, 0))
         self._display_surf.blit(timeText, (10, 10))
         pygame.display.flip()
     
@@ -121,6 +136,7 @@ class MazeGame:
         victoryText1 = self.titleFont.render("VICTORY", True, (0, 0,0))
         victoryText2 = self.buttonFont.render("Fastest Time: ", True, (0, 0, 0))
         victoryText3 = self.buttonFont.render("Completion Time: ", True, (0, 0, 0))
+        highscoreText = self.buttonFont.render(Scoreboard.highscore("Maze"), True, (0, 0, 0))
         timeText = self.buttonFont.render(str(round(self.completionTime, 2)), True, (0, 0, 0))
         self._display_surf.blit(victoryText1, (640 - (victoryText1.get_width() // 2), 100))
         self._display_surf.blit(victoryText2, (640 - (victoryText2.get_width() // 2), 300))
@@ -140,6 +156,8 @@ class MazeGame:
         while (self._running):
             for event in pygame.event.get():
                     self.on_event(event)
+            if (self.currState == "launcher"):
+                Launcher.displayLauncher()
             while ((self.currState == "menu") and self._running):
                 for event in pygame.event.get():
                     self.on_event(event)
@@ -154,7 +172,7 @@ class MazeGame:
                 self.howtoScreen()
             while ((self.currState == "done") and self._running):
                 self._running = False
-            while ((self.currState == "maze") and self._running):
+            while (((self.currState == "maze") or self.currState == "resume") and self._running):
                 for event in pygame.event.get():
                     self.on_event(event)
                 pygame.event.pump()
@@ -171,10 +189,18 @@ class MazeGame:
 
                 if (keyPress[K_DOWN] or keyPress[K_s]):
                     self.player.move(0, 1)
+
+                if (keyPress[K_ESCAPE] or keyPress[K_p]):
+                    self.currState = "pause"
+                    while (self.currState == "pause"):
+                        for event in pygame.event.get():
+                            self.on_event(event)
+                        self.pauseScreen()
                 
                 if (self.player.isWon == True):
-                    self.completionTime = time.time() - self.startTime
+                    self.completionTime = time.time() - self.startTime - self.pauseTime
                     self.currState = "victory"
+                    # Scoreboard.updateScore("Maze", (self.mode, self.completionTime)) # Updating the scoreboard
                 self.renderMaze()  
             while ((self.currState == "victory") and self._running):
                 for event in pygame.event.get():
