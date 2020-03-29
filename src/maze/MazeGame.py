@@ -247,7 +247,7 @@ class MazeGame:
                 if (self.player.isWon == True):
                     self.completionTime = time.time() - self.startTime - self.pauseTime
                     self.currState = "victory"
-                    Scoreboard.updateScore("Maze", tupleToScore(self.mode, self.completionTime)) # Updating the scoreboard
+                    Scoreboard.updateScore("Maze", tupleToScore((self.mode, self.completionTime))) # Updating the scoreboard
                 self.renderMaze()  
             while ((self.currState == "victory") and self._running):
                 for event in pygame.event.get():
