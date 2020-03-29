@@ -257,7 +257,20 @@ class MazeGame:
 
         self.on_cleanup()
 
-
+    # Transform from tuple to score
+    @staticmethod
+    def tupleToScore(tuple, score):
+        defaultScore = 100
+        defaultTime = [20, 60, 180]
+        if tuple[0] == "easy":
+            return (defaultScore + defaultTime[0] - int(score))
+        elif tuple[0] == "medium":
+            return (defaultScore + defaultTime[1] - int(score))
+        elif tuple[0] == "hard":
+            return (defaultScore + defaultTime[2] - int(score))
+        else
+            return 0
+    
 if __name__ == "__main__" :
     Maze = MazeGame()
     Maze.on_execute()
