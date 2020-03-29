@@ -6,7 +6,7 @@
 import pygame
 import thorpy
 from maze import MazeGame
-from pong import PongGame
+from pong import PlayPong
 import Scoreboard
 
 # Class Definition
@@ -14,7 +14,7 @@ class Launcher:
 
     # Static Constants
     gameTitle = ["Maze", "Flappy", "Pong"]
-    games = [MazeGame.MazeGame(), None, PongGame]
+    games = [MazeGame.MazeGame(), None, PlayPong]
     
 
     
