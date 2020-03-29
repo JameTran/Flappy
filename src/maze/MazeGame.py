@@ -1,11 +1,10 @@
 import pygame
 import time
 from datetime import datetime
-import Maze 
-import Player
-#from maze import Maze
-#from maze import Player
+from maze import Maze
+from maze import Player
 from pygame.locals import *
+import Scoreboard
 
 
 ## @brief Class that represents the maze game
@@ -177,7 +176,7 @@ class MazeGame:
         victoryText1 = self.titleFont.render("VICTORY", True, (0, 0,0))
         victoryText2 = self.buttonFont.render("Fastest Time: ", True, (0, 0, 0))
         victoryText3 = self.buttonFont.render("Completion Time: ", True, (0, 0, 0))
-        highscoreText = self.buttonFont.render(Scoreboard.highscore("Maze"), True, (0, 0, 0))
+        highscoreText = self.buttonFont.render(str(Scoreboard.Scoreboard.highScore("Maze")), True, (0, 0, 0))
         timeText = self.buttonFont.render(str(round(self.completionTime, 2)), True, (0, 0, 0))
         self._display_surf.blit(victoryText1, (640 - (victoryText1.get_width() // 2), 100))
         self._display_surf.blit(victoryText2, (640 - (victoryText2.get_width() // 2), 300))
@@ -204,7 +203,8 @@ class MazeGame:
             for event in pygame.event.get():
                     self.on_event(event)
             if (self.currState == "launcher"):
-                Launcher.displayLauncher()
+                import Launcher
+                Launcher.Launcher.displayLauncher()
             while ((self.currState == "menu") and self._running):
                 for event in pygame.event.get():
                     self.on_event(event)
