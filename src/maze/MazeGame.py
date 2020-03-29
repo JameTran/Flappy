@@ -75,21 +75,21 @@ class MazeGame:
                     self.player.setPlayer(self.maze.size, self.maze.allRect)
                     self.startTime = time.time()
                     self.pauseTime, self.pauseStarTime = 0, 0
-                    self.mode = "EASY"
+                    self.mode = "easy"
                     self.currState = "maze"
                 elif (state == "mediumMaze"):
                     self.maze.setMaze(25)
                     self.player.setPlayer(self.maze.size, self.maze.allRect)
                     self.startTime = time.time()
                     self.pauseTime, self.pauseStarTime = 0, 0
-                    self.mode = "MEDIUM"
+                    self.mode = "medium"
                     self.currState = "maze"
                 elif (state == "hardMaze"):
                     self.maze.setMaze(30)
                     self.player.setPlayer(self.maze.size, self.maze.allRect)
                     self.startTime = time.time()
                     self.pauseTime, self.pauseStarTime = 0, 0
-                    self.mode = "HARD"
+                    self.mode = "hard"
                     self.currState = "maze"
         else:
             pygame.draw.rect(self._display_surf, ic,(x,y,w,h))
@@ -132,7 +132,7 @@ class MazeGame:
         headingText = self.headingFont.render("How to Play", True, (0, 0, 0))
         howtoplay1 = self.typeFont.render("The goal of the game is to get to the green square as fast as possible.", True, (0, 0, 0))
         howtoplay2 = self.typeFont.render("To move you can use the 'W', 'A', 'S', 'D' keys or the arrow keys.", True, (0, 0, 0))
-        howtoplay3 = self.typeFont.render("Press 'Esc' to pause the game or return to the main menu.", True, (0, 0, 0))
+        howtoplay3 = self.typeFont.render("Press 'Esc' or 'P' to pause the game or return to the main menu.", True, (0, 0, 0))
         howtoplay4 = self.typeFont.render("You can return to the launcher using the main menu.", True, (0, 0, 0))
 
         self._display_surf.blit(headingText, (640 - (headingText.get_width() // 2), 100))
@@ -174,10 +174,10 @@ class MazeGame:
     def victoryScreen(self):
         self._display_surf.fill((255, 255, 255))
         victoryText1 = self.titleFont.render("VICTORY", True, (0, 0,0))
-        victoryText2 = self.buttonFont.render("Fastest Time: ", True, (0, 0, 0))
-        victoryText3 = self.buttonFont.render("Completion Time: ", True, (0, 0, 0))
+        victoryText2 = self.buttonFont.render("Highest Score: ", True, (0, 0, 0))
+        victoryText3 = self.buttonFont.render("Your Score: ", True, (0, 0, 0))
         highscoreText = self.buttonFont.render(str(Scoreboard.Scoreboard.highScore("Maze")), True, (0, 0, 0))
-        timeText = self.buttonFont.render(str(round(self.completionTime, 2)), True, (0, 0, 0))
+        timeText = self.buttonFont.render(str(tupleToScore(self.mode, self.completionTime)), True, (0, 0, 0))
         self._display_surf.blit(victoryText1, (640 - (victoryText1.get_width() // 2), 100))
         self._display_surf.blit(victoryText2, (640 - (victoryText2.get_width() // 2), 300))
         self._display_surf.blit(timeText, (640 - (timeText.get_width() // 2), 350))
@@ -247,7 +247,7 @@ class MazeGame:
                 if (self.player.isWon == True):
                     self.completionTime = time.time() - self.startTime - self.pauseTime
                     self.currState = "victory"
-                    # Scoreboard.updateScore("Maze", (self.mode, self.completionTime)) # Updating the scoreboard
+                    Scoreboard.updateScore("Maze", tupleToScore(self.mode, self.completionTime)) # Updating the scoreboard
                 self.renderMaze()  
             while ((self.currState == "victory") and self._running):
                 for event in pygame.event.get():
@@ -257,7 +257,9 @@ class MazeGame:
 
         self.on_cleanup()
 
-    # Transform from tuple to score
+    ## @brief Transform from tuple to score
+    ## @param tuple: represents the difficulty, as a string, and the time, as a float
+    ## return an integer representing the score calcualted by difficulty
     @staticmethod
     def tupleToScore(tuple):
         defaultScore = 100
@@ -268,7 +270,7 @@ class MazeGame:
             return (defaultScore + defaultTime[1] - int(tuple[1]))
         elif tuple[0] == "hard":
             return (defaultScore + defaultTime[2] - int(tuple[1]))
-        else
+        else:
             return 0
     
 if __name__ == "__main__" :
