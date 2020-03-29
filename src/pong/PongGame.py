@@ -74,7 +74,7 @@ def calculateScore(paddleScore, aiScore, maxScore):
     return int(((paddleScore * maxScore) - aiScore) * 17)
 
 #The main function of our program
-def playGame(difficulty, maxScore):
+def mainGame(difficulty, maxScore):
     global gameOver
     if maxScore <= 0:
         maxScore = 5
