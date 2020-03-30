@@ -180,7 +180,7 @@ class MazeGame:
         timeText = self.buttonFont.render(str(MazeGame.tupleToScore((self.mode, self.completionTime))), True, (0, 0, 0))
         self._display_surf.blit(victoryText1, (640 - (victoryText1.get_width() // 2), 100))
         self._display_surf.blit(victoryText2, (640 - (victoryText2.get_width() // 2), 300))
-        self._display_surf.blit(timeText, (640 - (timeText.get_width() // 2), 350))
+        self._display_surf.blit(highscoreText, (640 - (timeText.get_width() // 2), 350))
         self._display_surf.blit(victoryText3, (640 - (victoryText3.get_width() // 2), 450))
         self._display_surf.blit(timeText, (640 - (timeText.get_width() // 2), 500))
         self.button("MENU", 540, 650, 200, 50, (230, 230, 230), (200, 200, 200), "menu")
