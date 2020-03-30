@@ -1,4 +1,10 @@
-import sys, random, pygame
+## @file Paddle.py
+# @title Creating a Paddle for a player.
+# @author Arshan Khan
+# @date 28 March 2020
+import sys
+import random
+import pygame
 from pygame.locals import *
 from pong.Ball import *
 from pong.Paddle import *
@@ -12,7 +18,7 @@ pygame.init()
 FPS = 60
 
 #Setting the screen size
-scr_size = (width, height) = (1280, 800)
+scrSize = (width, height) = (1280, 800)
 middleX = int(width/2)
 middleY = int(height/2)
 
@@ -36,7 +42,7 @@ ENEMYCOLOR = GREEN
 Creating our game screen by passing its screen size as the parameter, 
 and setting its caption as 'Pong'
 """
-screen = pygame.display.set_mode(scr_size)
+screen = pygame.display.set_mode(scrSize)
 pygame.display.set_caption('Pong')
 click = False
 gameOver = True
@@ -99,16 +105,16 @@ def mainGame(difficulty, maxScore):
             if event.type == pygame.QUIT: #checks, if the user has clicked the close button
                 quit()                    #quits the program
 
-            if event.type == pygame.KEYDOWN: #checks whether a key has been pressed or not
-                if event.key == pygame.K_UP: #If user has pressed the UP key
+            if event.type == KEYDOWN: #checks whether a key has been pressed or not
+                if event.key == K_UP: #If user has pressed the UP key
                     paddle.movement[1] = -8  #Paddle moves upwards
-                elif event.key == pygame.K_DOWN: #If user has pressed the down key
+                elif event.key == K_DOWN: #If user has pressed the down key
                     paddle.movement[1] = 8       #Paddle moves downwards
-                if event.key == pygame.K_ESCAPE or event.key == pygame.K_SPACE:
+                if event.key == K_ESCAPE or event.key == K_SPACE:
                     pauseMenu(paddle.points, ai.points)
                 if event.key == K_r:
                     ball.resetBall()
-            if event.type == pygame.KEYUP:    #If the user lifts the key
+            if event.type == KEYUP:    #If the user lifts the key
                 paddle.movement[1] = 0        #Paddle stops moving
 
         aimove(ai, ball, difficulty) #moves the ai's paddle
