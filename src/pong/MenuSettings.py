@@ -8,16 +8,13 @@ from pygame.locals import *
 from pong.PongGame import *
 
 pygame.init()
-screen = pygame.display.set_mode(scrSize)
-pygame.display.set_caption('Main Menu')
-
-#setting the frames per second (FPS) and screen size.
 FPS = 60
 scrSize = (width,height) = (1280,800)
 middleX = int(width/2)
 middleY = int(height/2)
+screen = pygame.display.set_mode(scrSize)
+pygame.display.set_caption('Main Menu')
 
-#creating a clock object from pygame.time.Clock class.
 clock = pygame.time.Clock()
 
 #Creating a ball for introduction animation.
@@ -44,19 +41,6 @@ BLACK = (0, 0, 0)
 maxScore = -1
 diff = 0
 
-## @brief This function simplifies displaying text
-# @details This function is called when game details or information needs to be displayed to the user.
-# @param text The text to be presented to the user.
-# @param fontsize The desired size of the text.
-# @param x The horizontal coordinate of the text, center-weighted.
-# @param y The vertical coordinate of the text, center-weighted.
-# @param color The desired size of the text.
-def displaytext(text,fontsize,x,y,color):
-    font = pygame.font.SysFont('rockwell', fontsize, True)
-    text = font.render(text, 1, color)
-    textpos = text.get_rect(centerx=x, centery=y)
-    screen.blit(text, textpos)
-
 ## @brief Keeps the introductory-animation-ball inside the screen
 def ball_animation():
     global ball_speed_x, ball_speed_y
@@ -75,8 +59,8 @@ def changeDifficulty(x):
     global displayDifficulty, diff
     diff = x
     if (x == 4): level = 'EASY'
-    elif (x == 7): level = 'HARD'    
-    elif (x == 10): level = 'INSANE'
+    elif (x == 10): level = 'HARD'    
+    elif (x == 25): level = 'INSANE'
     else: level = ''
     displayDifficulty = ('Difficulty: ' + str(level))
 
@@ -127,19 +111,7 @@ def main_menu():
         displaytext('Get the BALL  past your opponent to score.', 20, middleX, height - 60, WHITE)
         displaytext('Press "ESC" to return to the launcher.', 20, middleX, height-30, WHITE)
 
-        #BEGIN show scoreboard button -------------------------------------------
-        scoresButton = pygame.Rect(middleX - 60, 75, 120, 50)
-        scoresColor = WHITE
-        if scoresButton.collidepoint((mx, my)):
-            scoresColor = (200, 200, 200)
-            if click:
-                # Scoreboard.drawScoreboard()
-                print("Add display scoreboard")
-        pygame.draw.rect(screen, scoresColor, scoresButton)
-        displaytext('Scoreboard', 18, middleX, 100, BLACK)
-        #END show scoreboard button
-
-        #BEGIN selection of difficulty ------------------------------------------
+        #BEGIN selection of difficulty ----------------------------------------
         easyButton = pygame.Rect(middleX - 125, middleY - 75, 50, 50)
         ecolor = GREEN
         medButton = pygame.Rect(middleX - 25, middleY - 75, 50, 50)
@@ -155,12 +127,12 @@ def main_menu():
             mcolor = HOVERORANGE
             if click:
                 #options()
-                changeDifficulty(7)
+                changeDifficulty(10)
         if hardButton.collidepoint((mx, my)):
             hcolor = HOVERRED
             if click:
                 #options()
-                changeDifficulty(10)
+                changeDifficulty(25)
         pygame.draw.ellipse(screen, ecolor, easyButton)
         pygame.draw.ellipse(screen, mcolor, medButton)
         pygame.draw.ellipse(screen, hcolor, hardButton)
@@ -168,7 +140,7 @@ def main_menu():
         displaytext('!!', 20, middleX, middleY - 50, WHITE)
         displaytext('!!!', 20, middleX + 100, middleY - 50, WHITE)
         displaytext(displayDifficulty, 25, middleX, 300, WHITE)
-        #END selection of difficulty
+        #END selection of difficulty ------------------------------------------
 
         #BEGIN start button ---------------------------------------------------
         startButton = pygame.Rect(middleX - 125, middleY + 160, 250, 80)
@@ -185,7 +157,7 @@ def main_menu():
                 mainGame(diff, maxScore)
         pygame.draw.rect(screen, startColor, startButton)
         displaytext('BEGIN', 50, middleX, middleY + 200, beginColor)
-        #END start button
+        #END start button -----------------------------------------------------
         
         #BEGIN selection of final score ---------------------------------------
         fiveButton = pygame.Rect(middleX - 125, middleY + 50, 50, 50)
@@ -216,7 +188,7 @@ def main_menu():
         displaytext('10', 20, middleX, middleY + 75, WHITE)
         displaytext('15', 20, middleX + 100, middleY + 75, WHITE)
         displaytext(displayMaxScore, 25, middleX, middleY + 25, WHITE)
-        #END selection of final score
+        #END selection of final score -----------------------------------------
         pygame.draw.rect(screen, BG, coverStart)
 
         click = False
