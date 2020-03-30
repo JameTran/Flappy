@@ -121,17 +121,14 @@ def main_menu():
         if easyButton.collidepoint((mx, my)):
             ecolor = HOVERGREEN
             if click:
-                # game()
                 changeDifficulty(4)
         if medButton.collidepoint((mx, my)):
             mcolor = HOVERORANGE
             if click:
-                #options()
                 changeDifficulty(10)
         if hardButton.collidepoint((mx, my)):
             hcolor = HOVERRED
             if click:
-                #options()
                 changeDifficulty(25)
         pygame.draw.ellipse(screen, ecolor, easyButton)
         pygame.draw.ellipse(screen, mcolor, medButton)
@@ -169,17 +166,14 @@ def main_menu():
         if fiveButton.collidepoint((mx, my)):
             color5 = HOVERBLUE
             if click:
-                # game()
                 changeMaxScore(5)
         if tenButton.collidepoint((mx, my)):
             color10 = HOVERBLUE
             if click:
-                #options()
                 changeMaxScore(10)
         if fifteenButton.collidepoint((mx, my)):
             color15 = HOVERBLUE
             if click:
-                #options()
                 changeMaxScore(15)
         pygame.draw.ellipse(screen, color5, fiveButton)
         pygame.draw.ellipse(screen, color10, tenButton)

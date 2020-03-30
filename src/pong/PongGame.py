@@ -200,19 +200,16 @@ def pauseMenu(paddleScore, aiScore):
         if resumeButton.collidepoint((mx, my)):
             resumeColor = HOVERBLUE
             if click:
-                # game()
                 pause = False
         if mainMenuButton.collidepoint((mx, my)):
             mainMenuColor = HOVERBLUE
             if click:
-                #options()
                 screen.fill(BG)
                 gameOver = True
                 pause = False
         if launcherButton.collidepoint((mx, my)):
             launcherColor = HOVERBLUE
             if click:
-                #options()
                 import Launcher
                 Launcher.Launcher.displayLauncher()
         pygame.draw.rect(screen, resumeColor, resumeButton)
@@ -277,18 +274,15 @@ def endGameMenu(victor, paddleScore, aiScore, maxScore):
         if saveScoreButton.collidepoint((mx, my)):
             saveScoreColor = HOVERBLUE
             if click:
-                # game()
                 Scoreboard.Scoreboard.updateScore("Pong", finalScore)
         if mainMenuButton.collidepoint((mx, my)):
             mainMenuColor = HOVERBLUE
             if click:
-                #options()
                 screen.fill(BG)
                 endGame = False
         if launcherButton.collidepoint((mx, my)):
             launcherColor = HOVERBLUE
             if click:
-                #options()
                 import Launcher
                 Launcher.Launcher.displayLauncher()
         pygame.draw.rect(screen, saveScoreColor, saveScoreButton)
