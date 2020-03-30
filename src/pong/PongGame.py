@@ -2,6 +2,7 @@ import sys, random, pygame
 from pygame.locals import *
 from pong.Ball import *
 from pong.Paddle import *
+import Scoreboard
 
 #initializing pygame
 pygame.init()
@@ -245,6 +246,7 @@ def pauseMenu(paddleScore, aiScore):
 def endGameMenu(victor, paddleScore, aiScore, maxScore):
     global click
     endGame = True
+    scoreNotSaved = True
     while endGame:
         screen.fill(BG)
         mx, my = pygame.mouse.get_pos()
@@ -257,6 +259,9 @@ def endGameMenu(victor, paddleScore, aiScore, maxScore):
             displaytext('THAT WAS TERRIBLE!' , 30, middleX, 150, ORANGE)
         if finalScore == 0:
             finalScore = maxScore
+        if scoreNotSaved:
+            scoreNotSaved = False
+            Scoreboard.Scoreboard.updateScore("Pong", finalScore)
 
         if (victor == 0):
             displaytext('DEFEAT', 80, middleX, 200, RED)
@@ -276,8 +281,7 @@ def endGameMenu(victor, paddleScore, aiScore, maxScore):
             saveScoreColor = HOVERBLUE
             if click:
                 # game()
-                # Scoreboard.updateScore("Pong", calculateScore(paddleScore, aiScore))
-                print("Add save score function but score is: " + str(finalScore))
+                Scoreboard.Scoreboard.updateScore("Pong", finalScore)
         if mainMenuButton.collidepoint((mx, my)):
             mainMenuColor = HOVERBLUE
             if click:
