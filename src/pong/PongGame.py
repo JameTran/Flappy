@@ -4,6 +4,7 @@ from pong.Ball import *
 from pong.Paddle import *
 import Scoreboard
 
+
 #initializing pygame
 pygame.init()
 
