@@ -177,7 +177,7 @@ class MazeGame:
         victoryText2 = self.buttonFont.render("Highest Score: ", True, (0, 0, 0))
         victoryText3 = self.buttonFont.render("Your Score: ", True, (0, 0, 0))
         highscoreText = self.buttonFont.render(str(Scoreboard.Scoreboard.highScore("Maze")), True, (0, 0, 0))
-        timeText = self.buttonFont.render(str(tupleToScore(self.mode, self.completionTime)), True, (0, 0, 0))
+        timeText = self.buttonFont.render(str(MazeGame.tupleToScore((self.mode, self.completionTime))), True, (0, 0, 0))
         self._display_surf.blit(victoryText1, (640 - (victoryText1.get_width() // 2), 100))
         self._display_surf.blit(victoryText2, (640 - (victoryText2.get_width() // 2), 300))
         self._display_surf.blit(timeText, (640 - (timeText.get_width() // 2), 350))
@@ -247,7 +247,7 @@ class MazeGame:
                 if (self.player.isWon == True):
                     self.completionTime = time.time() - self.startTime - self.pauseTime
                     self.currState = "victory"
-                    Scoreboard.updateScore("Maze", tupleToScore((self.mode, self.completionTime))) # Updating the scoreboard
+                    Scoreboard.Scoreboard.updateScore("Maze", MazeGame.tupleToScore((self.mode, self.completionTime))) # Updating the scoreboard
                 self.renderMaze()  
             while ((self.currState == "victory") and self._running):
                 for event in pygame.event.get():
