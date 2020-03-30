@@ -1,4 +1,6 @@
-from flappy.menu import mainMenu
+from menu import main_menu 
 
-    def playGame():
-        mainMenu
+
+def play_game():
+    main_menu()
+

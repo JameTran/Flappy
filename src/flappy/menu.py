@@ -1,2 +1,2 @@
-def mainMenu():
+def main_menu():
     print("flappy menu")
