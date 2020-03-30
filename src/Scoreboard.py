@@ -1,6 +1,6 @@
 # Scoreboard module of the program. This is the module that will be responsible for launching the mini-games
 # By Mengxi (William) Lei
-# Created 2020/03/27, Last Modified 2020/03/28
+# Created 2020/03/27, Last Modified 2020/03/29
 
 # Importation
 import pygame

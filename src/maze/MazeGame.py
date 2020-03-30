@@ -64,8 +64,8 @@ class MazeGame:
         mouse = pygame.mouse.get_pos()
         click = pygame.mouse.get_pressed()
 
-        if x+w > mouse[0] > x and y+h > mouse[1] > y:
-            pygame.draw.rect(self._display_surf, ac,(x,y,w,h))
+        if x + w > mouse[0] > x and y + h > mouse[1] > y:
+            pygame.draw.rect(self._display_surf, ac, (x, y, w, h))
             if click[0] == 1 and state != None:
                 self.currState = state
                 time.sleep(0.1)

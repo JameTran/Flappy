@@ -1,3 +1,7 @@
+## @file Paddle.py
+# @title Creating a Paddle for a player.
+# @author Arshan Khan
+# @date 28 March 2020
 import os
 import pygame
 import sys
@@ -5,16 +9,16 @@ import math
 import random
 from pygame.locals import *
 
-scr_size = (width, height) = (1280,800)
-screen = pygame.display.set_mode((scr_size))
+scrSize = (width, height) = (1280,800)
+screen = pygame.display.set_mode((scrSize))
 
-"""
-A paddle class which represents a real world Paddle.
-The class is initialized by passing 5 parameters, i.e
-x,y : the x and y coordinates of the paddle to determine its position
-sizex,sizey : the width and height of the paddle which determines its size
-color : the color of the paddle in (R,G,B) format
-"""
+## @brief A paddle class which represents a real world Paddle. The class is initialized by passing 5 parameters.
+# @details This class is only called twice for each player when the game starts.
+# @param x The x coordinate of the paddle to determine its position, weighted at the top-left.
+# @param y The y coordinate of the paddle to determine its position, weighted at the top-left.
+# @param sizex The width of the paddle which determines its size.
+# @param sizex The height of the paddle which determines its size.
+# @param color The color of the paddle in (R,G,B) format.
 class Paddle(pygame.sprite.Sprite):
     def __init__(self,x,y,sizex,sizey,color):
         pygame.sprite.Sprite.__init__(self)
@@ -32,8 +36,7 @@ class Paddle(pygame.sprite.Sprite):
         self.points = 0
         self.movement = [0,0]
 
-    ## @brief A function which checks whether the paddle is going out of bounds and make corrections accordingly
-    # 
+    ## @brief A function which checks whether the paddle is going out of bounds and stops additional movement in that direction.
     def checkBounds(self):
         if self.rect.top < 0:
             self.rect.top = 0
@@ -44,13 +47,11 @@ class Paddle(pygame.sprite.Sprite):
         if self.rect.right > width:
             self.rect.right = width
 
-    ## @brief An update function which updates the state and position of the paddle
-    # 
+    ## @brief An update function which updates the state and position of the paddle.
     def movePaddle(self):
         self.rect = self.rect.move(self.movement)
         self.checkBounds()
 
-    #A draw function which draws our paddle onto the screen
+    ## @brief A draw function which draws the paddle onto the screen.
     def drawPaddle(self):
-        #pygame.draw.rect(self.image,self.color,(0,0,self.sizex,self.sizey))
         screen.blit(self.image,self.rect)
