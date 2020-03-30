@@ -1,12 +1,12 @@
 import random
 
 ## @brief The class creates a Cell object
-# # @param None
 class Cell(object):
 
-    ## @brief Cell constructor accepts 2 parameters
+    ## @brief Cell constructor
     # @param id: an integer specifying which the id of the cell
     # @param gridLength: an integer specifying the dimensions of the maze
+    # @return None
     def __init__ (self, id: int, gridLength: int):
         self.id = id 
         self.gridLength = gridLength
@@ -31,6 +31,3 @@ class Cell(object):
             self.walls.append((self.id,leftWall))
         if ((rightWall // self.gridLength) == (self.id // self.gridLength)):
             self.walls.append((self.id,rightWall))
-
-#testCell = Cell(0, 10)
-#print(random.choice(testCell.cellWalls))

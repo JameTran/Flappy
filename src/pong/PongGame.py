@@ -74,7 +74,7 @@ def calculateScore(paddleScore, aiScore, maxScore):
     return int(((paddleScore * maxScore) - aiScore) * 17)
 
 #The main function of our program
-def playGame(difficulty, maxScore):
+def mainGame(difficulty, maxScore):
     global gameOver
     if maxScore <= 0:
         maxScore = 5
@@ -217,8 +217,8 @@ def pauseMenu(paddleScore, aiScore):
             launcherColor = HOVERBLUE
             if click:
                 #options()
-                # Launcher.displayLauncher
-                print("Add return to launcher")
+                import Launcher
+                Launcher.Launcher.displayLauncher()
         pygame.draw.rect(screen, resumeColor, resumeButton)
         pygame.draw.rect(screen, mainMenuColor, mainMenuButton)
         pygame.draw.rect(screen, launcherColor, launcherButton)
@@ -288,8 +288,8 @@ def endGameMenu(victor, paddleScore, aiScore, maxScore):
             launcherColor = HOVERBLUE
             if click:
                 #options()
-                # Launcher.displayLauncher
-                print("Add return to launcher")
+                import Launcher
+                Launcher.Launcher.displayLauncher()
         pygame.draw.rect(screen, saveScoreColor, saveScoreButton)
         pygame.draw.rect(screen, mainMenuColor, mainMenuButton)
         pygame.draw.rect(screen, launcherColor, launcherButton)

@@ -2,13 +2,14 @@ import pygame
 from pygame.locals import *
 import random
 import math
-#import Cell
 from maze import Cell
 
 ## @brief This class creates the Maze object
-# @param None
 class Maze(object):
 
+    ## @brief Constructor for the Maze class
+    # @param None
+    # @return: None
     def __init__ (self):
         self.size = 0 # the dimension of one side of the maze
         self.cells = []
@@ -17,7 +18,9 @@ class Maze(object):
         self.mazeWalls = []
         self.allRect = []
 
-
+    ## @brief A callable function that initializes the maze
+    # @param size: an integer representing a dimension of the maze
+    # @return None
     def setMaze(self, size):
         self.size = size # the dimension of one side of the maze
         self.cells = [Cell.Cell(i, size) for i in range (size ** 2)]
@@ -27,6 +30,9 @@ class Maze(object):
         self.allRect = []
         self.genMaze()
 
+    ## @brief Determines if the cells given have been visited
+    # @param id: a tuple of ids, each representing a cell
+    # @return the cell that has not been visited
     def checkVisited(self, id):
         if (self.cells[id[0]].isVisited == False):
             self.cells[id[0]].isVisited = True
@@ -35,6 +41,9 @@ class Maze(object):
             self.cells[id[1]].isVisited = True
             return self.cells[id[1]]
         
+    ## @brief Generates the maze using prim's algorithm and stores the remaining walls in mazeWalls
+    # @param None
+    # @return None
     def genMaze (self):
         # Generates maze walls
         for i in range (self.size ** 2):
@@ -58,6 +67,9 @@ class Maze(object):
             wallList.remove((currWall))
         self.transformWalls()
 
+    ## @brief Transforms the walls from prim's algorithm into tuples that represent the pygame rectangle command
+    # @param None
+    # @return None
     def transformWalls(self):
         l = 700 / self.size # wall length
         vo = 40 # vertical offset
@@ -88,7 +100,10 @@ class Maze(object):
             elif ((i[1] - i[0]) == self.size): # Bottom wall
                 rect = pygame.Rect(i[0] % self.size * l + ho, i[1] // self.size * l + vo, l + t, t)
                 self.allRect.append(rect)
-    
+  
+    ## @brief Draws the maze given the mazeWalls from the transform
+    # @param display_surf: the output window from the MazeGame
+    # @return None
     def draw(self, display_surf):
         for i in self.allRect: # Draw walls
             pygame.draw.rect(display_surf, (0, 0, 0), i)

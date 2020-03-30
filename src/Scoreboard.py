@@ -5,7 +5,6 @@
 # Importation
 import pygame
 import thorpy
-import Launcher
 
 # Class Definition
 class Scoreboard:
@@ -122,6 +121,7 @@ class Scoreboard:
     # Exit the scoreboard
     @staticmethod
     def exitScoreboard():
+        import Launcher
         if (Scoreboard.exitScreen < len(Scoreboard.gameTitle) and Scoreboard.exitScreen > -1):
             Launcher.Launcher.launchGame(Scoreboard.exitScreen)
         else:
