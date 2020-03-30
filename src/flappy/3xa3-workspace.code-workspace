@@ -9,6 +9,7 @@
 		"python.linting.pycodestyleEnabled": true,
 		"python.linting.pylintArgs": [
 			"--extension-pkg-whitelist=pygame"
-		]
+		],
+		"python.pythonPath": "env/bin/python3"
 	}
 }
