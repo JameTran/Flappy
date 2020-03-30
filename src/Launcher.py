@@ -1,12 +1,13 @@
 # Launcher module of the program. This is the module that will be responsible for launching the mini-games
 # By Mengxi (William) Lei
-# Created 2020/02/11, Last Modified 2020/03/28
+# Created 2020/02/11, Last Modified 2020/03/29
 
 # Importation
 import pygame
 import thorpy
 from maze import MazeGame
 from pong import PlayPong
+from flappy import playFlappy
 import Scoreboard
 
 # Class Definition
@@ -14,7 +15,7 @@ class Launcher:
 
     # Static Constants
     gameTitle = ["Maze", "Flappy", "Pong"]
-    games = [MazeGame.MazeGame(), None, PlayPong]
+    games = [MazeGame.MazeGame(), playFlappy, PlayPong]
     
 
     
@@ -90,8 +91,6 @@ class Launcher:
     def launchGame(gameID):
         if gameID == 0:
             Launcher.games[gameID].on_execute()
-        elif gameID == 1:
-            print("\nRunning " + Launcher.gameTitle[gameID] + "\n\n")
         else:
             Launcher.games[gameID].playGame()
     
