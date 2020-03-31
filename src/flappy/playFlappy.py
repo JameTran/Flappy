@@ -11,6 +11,3 @@ def play_game():
     while True:
         main_menu()
         main_game()
-
-
-play_game()
