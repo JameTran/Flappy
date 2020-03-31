@@ -1,4 +1,4 @@
-## @file Paddle.py
+## @file MenuSettings.py
 # @title All menus and screens for the initiation of the game.
 # @author Arshan Khan
 # @date 28 March 2020

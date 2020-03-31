@@ -1,4 +1,4 @@
-## @file Paddle.py
+## @file Ball.py
 # @title Creating a Ball for the game.
 # @author Arshan Khan
 # @date 28 March 2020
@@ -11,6 +11,9 @@ from pygame.locals import *
 
 scrSize = (width, height) = (1280,800)
 screen = pygame.display.set_mode((scrSize))
+
+pygame.mixer.init()
+bounce = pygame.mixer.Sound('pong/sounds/bbal.wav')
 
 ## @brief a Ball class which represents a real world ball. The class is initialized by passing 5 parameters.
 # @details This class is called once the game is running.
@@ -39,6 +42,7 @@ class Ball(pygame.sprite.Sprite):
     ## @brief This determines how the ball will move and stay within the boundary of the screen.
     def scoreGoal(self):
         if self.rect.top <= 0 or self.rect.bottom >= height: #reverses the vertical velocity on collision with top and bottom walls
+            bounce.play()
             self.movement[1] = -1*self.movement[1]
         if self.rect.left <= 0: #resets the ball's position and notes that the point is scored by the ai
             self.resetBall()
