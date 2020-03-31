@@ -1,6 +1,6 @@
 import pygame
 from pygame.locals import *
-from flappy_constants import *
+from flappy.flappy_constants import *
 
 
 def move_bird(playery, playerVelY):          

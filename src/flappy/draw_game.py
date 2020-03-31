@@ -1,4 +1,4 @@
-from flappy_constants import *
+from flappy.flappy_constants import *
 import pygame
 from pygame.locals import *
 

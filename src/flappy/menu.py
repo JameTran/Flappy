@@ -1,8 +1,8 @@
 import pygame
 import sys
 from pygame.locals import *  # Basic pygame imports
-from flappy_constants import *
-from flappy_game import main_game
+from flappy.flappy_constants import *
+from flappy.flappy_game import main_game
 
 
 def main_menu():

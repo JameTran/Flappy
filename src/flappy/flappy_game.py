@@ -37,7 +37,7 @@ def main_game():
         print(playery)
         SCREEN.blit(GAME_SPRITES['background'], (0, 0))
         SCREEN.blit(GAME_SPRITES['base'], (basex, GROUNDY))
-        draw_bird(playerx, playery)
+        draw_bird(layerx, playery)
         pygame.display.update()
         FPSCLOCK.tick(FPS)
         
