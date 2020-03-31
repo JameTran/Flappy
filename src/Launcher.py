@@ -15,8 +15,7 @@ class Launcher:
 
     # Static Constants
     gameTitle = ["Maze", "Flappy", "Pong"]
-    games = [MazeGame.MazeGame(), None, PlayPong]
-    #games = [MazeGame.MazeGame(), playFlappy, PlayPong]
+    games = [MazeGame.MazeGame(), playFlappy, PlayPong]
     
 
     
@@ -93,8 +92,7 @@ class Launcher:
         if gameID == 0:
             Launcher.games[gameID].on_execute()
         if gameID == 1:
-            print("test")
-            #Launcher.games[gameID].play_game()
+            Launcher.games[gameID].play_game()
         elif gameID == 2:
             Launcher.games[gameID].playGame()
     
