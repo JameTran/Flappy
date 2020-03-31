@@ -1,8 +1,8 @@
 import unittest
-from pong.Ball import *
-from pong.Paddle import *
-from pong.MenuSettings import *
-from pong.PongGame import *
+from Ball import *
+from Paddle import *
+from MenuSettings import *
+from PongGame import *
 
 class testPong(unittest.TestCase):
     # Any functions not tested are better tested as a System Test
