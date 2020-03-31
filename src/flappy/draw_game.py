@@ -21,6 +21,18 @@ def draw_pipes(upper_pipes, lower_pipes):
         SCREEN.blit(GAME_SPRITES['pipe'][1], (lower_pipe['x'], lower_pipe['y']))
 
 
+def draw_score(score):
+    myDigits = [int(x) for x in list(str(score))]
+    width = 0
+    for digit in myDigits:
+        width += GAME_SPRITES['numbers'][digit].get_width()
+    Xoffset = (SCREENWIDTH - width)/2
+
+    for digit in myDigits:
+        SCREEN.blit(GAME_SPRITES['numbers'][digit], (Xoffset, SCREENHEIGHT*0.12))
+        Xoffset += GAME_SPRITES['numbers'][digit].get_width()
+
+
 def remove_pipes(upper_pipes, lower_pipes):
     upper_pipes.pop(0)
     lower_pipes.pop(0)

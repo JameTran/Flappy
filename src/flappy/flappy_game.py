@@ -79,6 +79,7 @@ def main_game():
         draw_pipes(upperPipes, lowerPipes)
         draw_bird(playerx, playery)
         draw_ground()
+        draw_score(score)
         pygame.display.update()
         FPSCLOCK.tick(FPS)
 
@@ -124,5 +125,7 @@ def get_score(playerx, upperPipes, score):
             score +=1
             print(f"Your score is {score}") 
             GAME_SOUNDS['point'].play()
+            return score
+        else:
             return score
         
