@@ -46,7 +46,7 @@ gameOver = True
 # @param x The horizontal coordinate of the text, center-weighted.
 # @param y The vertical coordinate of the text, center-weighted.
 # @param color The desired size of the text.
-def displaytext(text, fontsize, x, y, color):
+def displayText(text, fontsize, x, y, color):
     font = pygame.font.SysFont('rockwell', fontsize, True)
     text = font.render(text, 1, color)
     textpos = text.get_rect(centerx=x, centery=y)
@@ -57,17 +57,19 @@ def displaytext(text, fontsize, x, y, color):
 # @param ai This is the AI's paddle object.
 # @param ball This is the game ball.
 # @param diff This is the difficulty selected by the user and determines how the paddle will move.
-def aimove(ai, ball, diff):
-    if diff > 4:
-        aiMovement = 6
+def aiMove(ai, ball, diff):
+    if diff == 25:
+        aiSpeed = 9
+    elif diff == 10:
+        aiSpeed = 7
     else:
-        aiMovement = 8
+        aiSpeed = 6
     if ball.movement[0] > 0: #ensures that the ai moves only when the ball is directed towards it
         #the extra addition of ai.rect.height/5 ensures that the ai will miss the ball sometimes
-        if ball.rect.bottom > ai.rect.bottom + int(ai.rect.height/diff):
-            ai.movement[1] = aiMovement
-        elif ball.rect.top < ai.rect.top - int(ai.rect.height/diff):
-            ai.movement[1] = -aiMovement
+        if ball.rect.bottom > ai.rect.bottom + 9 - aiSpeed:
+            ai.movement[1] = aiSpeed
+        elif ball.rect.top < ai.rect.top - 9 + aiSpeed:
+            ai.movement[1] = -aiSpeed
         else:
             ai.movement[1] = 0
     else:
@@ -118,11 +120,11 @@ def mainGame(difficulty, maxScore):
             if event.type == KEYUP:    #If the user lifts the key
                 paddle.movement[1] = 0 
 
-        aimove(ai, ball, difficulty) #moves the ai's paddle
+        aiMove(ai, ball, difficulty) #moves the ai's paddle
 
         screen.fill(BG)
         pygame.draw.aaline(screen, WHITE, (middleX, 0), (middleX, height))
-        displaytext('PAUSE the game using the "ESC" key.', 20, 1075, 25, WHITE)
+        displayText('PAUSE the game using the "ESC" key.', 20, 1075, 25, WHITE)
 
         #drawing user's paddle, ai's paddle and ball
         paddle.drawPaddle()
@@ -130,8 +132,8 @@ def mainGame(difficulty, maxScore):
         ball.draw()
 
         #displaying the points scored by the user and ai
-        displaytext(str(paddle.points), 40, middleX - 30, 30, WHITE)
-        displaytext(str(ai.points), 40, middleX + 30, 30, WHITE)
+        displayText(str(paddle.points), 40, middleX - 30, 30, WHITE)
+        displayText(str(ai.points), 40, middleX + 30, 30, WHITE)
         if (ai.points == maxScore):
             clock.tick(1)
             endGameMenu(0, paddle.points, ai.points, maxScore)
@@ -186,9 +188,9 @@ def pauseMenu(paddleScore, aiScore):
  
         mx, my = pygame.mouse.get_pos()
        
-        displaytext('PAUSED', 80, middleX, 300, WHITE)
-        displaytext((str(paddleScore) + ' - ' + str(aiScore)), 80, middleX, 200, WHITE)
-        displaytext('TIP: If you feel like you are stuck, use the "R" key to RESET the BALL.', 20, middleX, height - 30, RED)
+        displayText('PAUSED', 80, middleX, 300, WHITE)
+        displayText((str(paddleScore) + ' - ' + str(aiScore)), 80, middleX, 200, WHITE)
+        displayText('TIP: If you feel like you are stuck, use the "R" key to RESET the BALL.', 20, middleX, height - 30, RED)
 
         #BEGIN selection of pause options -------------------------------------
         resumeButton = pygame.Rect(middleX - 100, middleY - 25, 200, 50)
@@ -215,9 +217,9 @@ def pauseMenu(paddleScore, aiScore):
         pygame.draw.rect(screen, resumeColor, resumeButton)
         pygame.draw.rect(screen, mainMenuColor, mainMenuButton)
         pygame.draw.rect(screen, launcherColor, launcherButton)
-        displaytext('Resume', 25, middleX, middleY, WHITE)
-        displaytext('New Game', 25, middleX, middleY + 75, WHITE)
-        displaytext('Quit Game', 25, middleX, middleY + 150, WHITE)
+        displayText('Resume', 25, middleX, middleY, WHITE)
+        displayText('New Game', 25, middleX, middleY + 75, WHITE)
+        displayText('Quit Game', 25, middleX, middleY + 150, WHITE)
         #END selection of pause options ---------------------------------------
 
         click = False
@@ -241,40 +243,33 @@ def endGameMenu(victor, paddleScore, aiScore, maxScore):
     global click
     endGame = True
     scoreNotSaved = True
+    # Saves the score to the scoreboard
+    finalScore = calculateScore(paddleScore, aiScore, maxScore)
+    if finalScore == 0:
+        finalScore = maxScore
+    # Scoreboard.Scoreboard.updateScore("Pong", finalScore)
     while endGame:
         screen.fill(BG)
         mx, my = pygame.mouse.get_pos()
         
-        finalScore = calculateScore(paddleScore, aiScore, maxScore)
         if finalScore in [425, 1700, 3825]:
-            displaytext('+*! PERFECT SCORE !*+', 30, middleX, 150, AMBER)
+            displayText('+*! PERFECT SCORE !*+', 30, middleX, 150, AMBER)
         if finalScore < 0:
             finalScore = int(maxScore/3)
-            displaytext('THAT WAS TERRIBLE!' , 30, middleX, 150, ORANGE)
-        if finalScore == 0:
-            finalScore = maxScore
-        if scoreNotSaved:
-            scoreNotSaved = False
-            Scoreboard.Scoreboard.updateScore("Pong", finalScore)
+            displayText('THAT WAS TERRIBLE!' , 30, middleX, 150, ORANGE)
 
         if (victor == 0):
-            displaytext('DEFEAT', 80, middleX, 200, RED)
+            displayText('DEFEAT', 80, middleX, 200, RED)
         else:
-            displaytext('YOU WIN!', 80, middleX, 200, GREEN10)
-        displaytext(('FINAL SCORE: ' + str(finalScore)), 30, middleX, 275, WHITE)
-        displaytext((str(paddleScore) + ' - ' + str(aiScore)), 90, middleX, 350, WHITE)
+            displayText('YOU WIN!', 80, middleX, 200, GREEN10)
+        displayText(('FINAL SCORE: ' + str(finalScore)), 40, middleX, 275, WHITE)
+        displayText((str(paddleScore) + ' - ' + str(aiScore)), 110, middleX, 360, WHITE)
 
         #BEGIN selection of pause options -------------------------------------
-        saveScoreButton = pygame.Rect(middleX - 100, middleY + 25, 200, 50)
-        saveScoreColor = BLUE
         mainMenuButton = pygame.Rect(middleX - 100, middleY + 100, 200, 50)
         mainMenuColor = BLUE
         launcherButton = pygame.Rect(middleX - 100, middleY + 175, 200, 50)
         launcherColor = BLUE
-        if saveScoreButton.collidepoint((mx, my)):
-            saveScoreColor = HOVERBLUE
-            if click:
-                Scoreboard.Scoreboard.updateScore("Pong", finalScore)
         if mainMenuButton.collidepoint((mx, my)):
             mainMenuColor = HOVERBLUE
             if click:
@@ -285,12 +280,10 @@ def endGameMenu(victor, paddleScore, aiScore, maxScore):
             if click:
                 import Launcher
                 Launcher.Launcher.displayLauncher()
-        pygame.draw.rect(screen, saveScoreColor, saveScoreButton)
         pygame.draw.rect(screen, mainMenuColor, mainMenuButton)
         pygame.draw.rect(screen, launcherColor, launcherButton)
-        displaytext('Save Score', 25, middleX, middleY + 50, WHITE)
-        displaytext('New Game', 25, middleX, middleY + 125, WHITE)
-        displaytext('Quit Game', 25, middleX, middleY + 200, WHITE)
+        displayText('New Game', 25, middleX, middleY + 125, WHITE)
+        displayText('Quit Game', 25, middleX, middleY + 200, WHITE)
         #END selection of pause options ---------------------------------------
 
         click = False

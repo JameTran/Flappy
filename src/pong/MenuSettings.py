@@ -56,20 +56,20 @@ def ball_animation():
 ## @brief Alters the difficulty of the AI player.
 # @details This function is initiated by the user by selecting a difficulty level in the main menu.
 def changeDifficulty(x):
-    global displayDifficulty, diff
-    diff = x
+    global displayDifficulty
     if (x == 4): level = 'EASY'
     elif (x == 10): level = 'HARD'    
     elif (x == 25): level = 'INSANE'
     else: level = ''
     displayDifficulty = ('Difficulty: ' + str(level))
+    return x
 
 ## @brief Alters the maximum score the game will run, at which point the game will end.
 # @details This function is initiated by the user by selecting a maximum score in the main menu.
 def changeMaxScore(x):
-    global displayMaxScore, maxScore
-    maxScore = x
+    global displayMaxScore
     displayMaxScore = ('Play up to: ' + str(x))
+    return x
 
 ## @brief This function displays the transition from the main menu to the main game.
 # @details This function is initiated by the user by clicking on the 'BEGIN' button.
@@ -83,14 +83,14 @@ def startGameAnimation():
         fadeR = fadeR - int(5/20)
         fadeG = fadeG - int(35/20)
         fadeB = fadeB - int(60/20)
-        displaytext('TIP: If you feel like you are stuck, use the "R" key to RESET the BALL.', 20, middleX, height - 120, RED)
-        displaytext('Use the "UP"/"DOWN" arrow keys to move your PADDLE.', 20, middleX, height - 90, WHITE)
-        displaytext('Get the BALL  past your opponent to score.', 20, middleX, height - 60, WHITE)
-        displaytext('Press "ESC" to PAUSE the game.', 20, middleX, height-30, WHITE)
+        displayText('TIP: If you feel like you are stuck, use the "R" key to RESET the BALL.', 20, middleX, height - 120, RED)
+        displayText('Use the "UP"/"DOWN" arrow keys to move your PADDLE.', 20, middleX, height - 90, WHITE)
+        displayText('Get the BALL  past your opponent to score.', 20, middleX, height - 60, WHITE)
+        displayText('Press "ESC" to PAUSE the game.', 20, middleX, height-30, WHITE)
         timer -= 1
         pygame.display.update()
         clock.tick(8)
-    displaytext('Welcome TO PONG', 100, middleX, middleY, WHITE)
+    displayText('Welcome TO PONG', 100, middleX, middleY, WHITE)
     pygame.display.update()
     clock.tick(0.7)
 
@@ -103,13 +103,14 @@ coverStart = pygame.Rect(0, 0, 1280, 800)
 ## @brief This class contains all visuals for the screen the user first experiences. This includes all buttons and text.
 # @details This function is the first function run in the program, and is run automatically after selecting a game from the Launcher.
 def main_menu():
+    global diff, maxScore
     while True:
         # No condition on the while statement to keep it running at all times (for new games and such).
         screen.fill(BG)
         mx, my = pygame.mouse.get_pos()
-        displaytext('Use the UP / DOWN arrow keys to move your PADDLE.', 20, middleX, height - 90, WHITE)
-        displaytext('Get the BALL  past your opponent to score.', 20, middleX, height - 60, WHITE)
-        displaytext('Press "ESC" to return to the launcher.', 20, middleX, height-30, WHITE)
+        displayText('Use the UP / DOWN arrow keys to move your PADDLE.', 20, middleX, height - 90, WHITE)
+        displayText('Get the BALL  past your opponent to score.', 20, middleX, height - 60, WHITE)
+        displayText('Press "ESC" to return to the launcher.', 20, middleX, height-30, WHITE)
 
         #BEGIN selection of difficulty ----------------------------------------
         easyButton = pygame.Rect(middleX - 125, middleY - 75, 50, 50)
@@ -121,22 +122,22 @@ def main_menu():
         if easyButton.collidepoint((mx, my)):
             ecolor = HOVERGREEN
             if click:
-                changeDifficulty(4)
+                diff = changeDifficulty(4)
         if medButton.collidepoint((mx, my)):
             mcolor = HOVERORANGE
             if click:
-                changeDifficulty(10)
+                diff = changeDifficulty(10)
         if hardButton.collidepoint((mx, my)):
             hcolor = HOVERRED
             if click:
-                changeDifficulty(25)
+                diff = changeDifficulty(25)
         pygame.draw.ellipse(screen, ecolor, easyButton)
         pygame.draw.ellipse(screen, mcolor, medButton)
         pygame.draw.ellipse(screen, hcolor, hardButton)
-        displaytext('!', 20, middleX - 100, middleY - 50, WHITE)
-        displaytext('!!', 20, middleX, middleY - 50, WHITE)
-        displaytext('!!!', 20, middleX + 100, middleY - 50, WHITE)
-        displaytext(displayDifficulty, 25, middleX, 300, WHITE)
+        displayText('!', 20, middleX - 100, middleY - 50, WHITE)
+        displayText('!!', 20, middleX, middleY - 50, WHITE)
+        displayText('!!!', 20, middleX + 100, middleY - 50, WHITE)
+        displayText(displayDifficulty, 25, middleX, 300, WHITE)
         #END selection of difficulty ------------------------------------------
 
         #BEGIN start button ---------------------------------------------------
@@ -153,7 +154,7 @@ def main_menu():
                 startGameAnimation()
                 mainGame(diff, maxScore)
         pygame.draw.rect(screen, startColor, startButton)
-        displaytext('BEGIN', 50, middleX, middleY + 200, beginColor)
+        displayText('BEGIN', 50, middleX, middleY + 200, beginColor)
         #END start button -----------------------------------------------------
         
         #BEGIN selection of final score ---------------------------------------
@@ -166,22 +167,22 @@ def main_menu():
         if fiveButton.collidepoint((mx, my)):
             color5 = HOVERBLUE
             if click:
-                changeMaxScore(5)
+                maxScore = changeMaxScore(5)
         if tenButton.collidepoint((mx, my)):
             color10 = HOVERBLUE
             if click:
-                changeMaxScore(10)
+                maxScore = changeMaxScore(10)
         if fifteenButton.collidepoint((mx, my)):
             color15 = HOVERBLUE
             if click:
-                changeMaxScore(15)
+                maxScore = changeMaxScore(15)
         pygame.draw.ellipse(screen, color5, fiveButton)
         pygame.draw.ellipse(screen, color10, tenButton)
         pygame.draw.ellipse(screen, color15, fifteenButton)
-        displaytext('5', 20, middleX - 100, middleY + 75, WHITE)
-        displaytext('10', 20, middleX, middleY + 75, WHITE)
-        displaytext('15', 20, middleX + 100, middleY + 75, WHITE)
-        displaytext(displayMaxScore, 25, middleX, middleY + 25, WHITE)
+        displayText('5', 20, middleX - 100, middleY + 75, WHITE)
+        displayText('10', 20, middleX, middleY + 75, WHITE)
+        displayText('15', 20, middleX + 100, middleY + 75, WHITE)
+        displayText(displayMaxScore, 25, middleX, middleY + 25, WHITE)
         #END selection of final score -----------------------------------------
         pygame.draw.rect(screen, BG, coverStart)
 
@@ -204,7 +205,7 @@ def main_menu():
             coverStart.x = 1280
 
         pygame.draw.ellipse(screen, AMBER, ball)
-        displaytext("P   NG", 150, middleX, 200, AMBER)
+        displayText("P   NG", 150, middleX, 200, AMBER)
  
         pygame.display.update()
         clock.tick(70)

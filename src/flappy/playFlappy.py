@@ -1,4 +1,16 @@
-from flappy.menu import mainMenu
+from menu import main_menu 
+from flappy_game import main_game
+import pygame
+from pygame.locals import *  # Basic pygame imports
+from flappy_constants import *
 
-def playGame():
-    mainMenu()
+
+def play_game():
+    pygame.init()
+    pygame.display.set_caption('Flappy Bird') 
+    while True:
+        main_menu()
+        main_game()
+
+
+play_game()

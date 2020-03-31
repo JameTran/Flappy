@@ -51,8 +51,8 @@ class Ball(pygame.sprite.Sprite):
 
     ## @brief Resets the ball to the center of the screen with a random trajectory.
     def resetBall(self):
-        self.rect.centerx = width/2
-        self.rect.centery = height/2
+        self.rect.centerx = int(width/2)
+        self.rect.centery = int(height/2)
         self.movement = [random.randrange(-1,2,2)*6,random.randrange(-1,2,2)*6]
 
     ## @brief Redraw the ball on the screen.

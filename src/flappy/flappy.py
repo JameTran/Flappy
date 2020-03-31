@@ -42,19 +42,18 @@ def main_menu():
             else:
                 SCREEN.blit(GAME_SPRITES['background'], (0, 0))    
                 SCREEN.blit(GAME_SPRITES['player'], (playerx, playery))    
-                SCREEN.blit(GAME_SPRITES['message'], (messagex,messagey ))    
+                SCREEN.blit(GAME_SPRITES['message'], (messagex, messagey ))    
                 SCREEN.blit(GAME_SPRITES['base'], (basex, GROUNDY))    
                 pygame.display.update()
                 FPSCLOCK.tick(FPS)
 
 
-def main_game():
     
 
 
 if __name__ == "__main__":
     # This will be the main point from where our game will start
-    pygame.init() # Initialize all pygame's modules
+    pygame.init()  # Initialize all pygame's modules
     FPSCLOCK = pygame.time.Clock()
     pygame.display.set_caption('Flappy Bird')
     GAME_SPRITES['numbers'] = ( 
@@ -70,9 +69,9 @@ if __name__ == "__main__":
         pygame.image.load('sprites/9.png').convert_alpha(),
     )
 
-    GAME_SPRITES['message'] =pygame.image.load('sprites/message.png').convert_alpha()
-    GAME_SPRITES['base'] =pygame.image.load('sprites/base.png').convert_alpha()
-    GAME_SPRITES['pipe'] =(pygame.transform.rotate(pygame.image.load( PIPE).convert_alpha(), 180), pygame.image.load(PIPE).convert_alpha())
+    GAME_SPRITES['message'] = pygame.image.load('sprites/message.png').convert_alpha()
+    GAME_SPRITES['base'] = pygame.image.load('sprites/base.png').convert_alpha()
+    GAME_SPRITES['pipe'] = (pygame.transform.rotate(pygame.image.load(PIPE).convert_alpha(), 180), pygame.image.load(PIPE).convert_alpha())
     GAME_SPRITES['background'] = pygame.image.load(BACKGROUND).convert()
     GAME_SPRITES['player'] = pygame.image.load(PLAYER).convert_alpha()
 
@@ -84,7 +83,6 @@ if __name__ == "__main__":
     GAME_SOUNDS['wing'] = pygame.mixer.Sound('audio/wing.wav')
 
     
-
     while True:
         main_menu() # Shows welcome screen to the user until he presses a button
 

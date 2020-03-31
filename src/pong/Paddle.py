@@ -36,21 +36,13 @@ class Paddle(pygame.sprite.Sprite):
         self.points = 0
         self.movement = [0,0]
 
-    ## @brief A function which checks whether the paddle is going out of bounds and stops additional movement in that direction.
-    def checkBounds(self):
+    ## @brief An update function which updates the state and position of the paddle.
+    def movePaddle(self):
+        self.rect = self.rect.move(self.movement)
         if self.rect.top < 0:
             self.rect.top = 0
         if self.rect.bottom > height:
             self.rect.bottom = height
-        if self.rect.left < 0:
-            self.rect.left = 0
-        if self.rect.right > width:
-            self.rect.right = width
-
-    ## @brief An update function which updates the state and position of the paddle.
-    def movePaddle(self):
-        self.rect = self.rect.move(self.movement)
-        self.checkBounds()
 
     ## @brief A draw function which draws the paddle onto the screen.
     def drawPaddle(self):
