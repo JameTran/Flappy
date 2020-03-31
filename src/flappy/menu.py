@@ -1,10 +1,12 @@
 import pygame
+import sys
 from pygame.locals import *  # Basic pygame imports
 from flappy_constants import *
+from flappy_game import main_game
 
 
 def main_menu():
-      
+     
     """
     Shows main_menu images on the screen
     """
@@ -31,3 +33,4 @@ def main_menu():
                 SCREEN.blit(GAME_SPRITES['base'], (basex, GROUNDY))    
                 pygame.display.update()
                 FPSCLOCK.tick(FPS)
+        
