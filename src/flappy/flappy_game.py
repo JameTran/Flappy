@@ -3,6 +3,7 @@ import sys
 from pygame.locals import *
 from flappy_constants import *
 from player_movement import *
+from draw_game import *
 
 
 def main_game():
@@ -26,16 +27,17 @@ def main_game():
             if event.type == KEYDOWN and (event.key == K_SPACE or event.key == K_UP):
                 if playery > 0:
                     playerVelY = playerFlapAccv
-                    playerFlapped = True
+                    playerFlapped = True 
                     GAME_SOUNDS['wing'].play()
         if playerVelY <playerMaxVelY and not playerFlapped:
             playerVelY += playerAccY
         if playerFlapped:
             playerFlapped = False
         playery = move_bird(playery, playerVelY)
+        print(playery)
         SCREEN.blit(GAME_SPRITES['background'], (0, 0))
         SCREEN.blit(GAME_SPRITES['base'], (basex, GROUNDY))
-        SCREEN.blit(GAME_SPRITES['player'], (playerx, playery))
+        draw_bird(playerx, playery)
         pygame.display.update()
         FPSCLOCK.tick(FPS)
         
