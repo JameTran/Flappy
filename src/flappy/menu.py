@@ -13,8 +13,8 @@ def main_menu():
 
     playerx = int(SCREENWIDTH/5)
     playery = int(SCREENHEIGHT/2)
-    messagex = int((SCREENWIDTH - GAME_SPRITES['message'].get_width())/2)
-    messagey = int(SCREENHEIGHT*0.13)
+    #messagex = int((SCREENWIDTH - GAME_SPRITES['message'].get_width())/2)
+    #messagey = int(SCREENHEIGHT*0.13)
     basex = 0
     while True:
         for event in pygame.event.get():

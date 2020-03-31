@@ -5,6 +5,7 @@ from flappy.flappy_constants import *
 from flappy.player_movement import *
 from flappy.draw_game import *
 import random
+import Scoreboard
 
 
 def main_game():
@@ -37,8 +38,8 @@ def main_game():
     while True:
         for event in pygame.event.get():
             if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
-                pygame.quit()
-                sys.exit()
+                import Launcher
+                Launcher.Launcher.displayLauncher()
             if event.type == KEYDOWN and (event.key == K_SPACE or event.key == K_UP):
                 if playery > 0:
                     playerVelY = playerFlapAccv
@@ -55,7 +56,10 @@ def main_game():
 
         crashTest = isCollide(playerx, playery, upperPipes, lowerPipes) # This function will return true if the player is crashed
         if crashTest:
-            return 
+            print('{}{}'.format("Your score is: ", score))
+            #save score to scoreboard
+            Scoreboard.Scoreboard.updateScore("Flappy", score)
+            return
         
         score = get_score(playerx, upperPipes, score)
 

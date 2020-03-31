@@ -27,7 +27,7 @@ GAME_SPRITES['numbers'] = (
     pygame.image.load('flappy/sprites/9.png').convert_alpha(),
 )
 
-GAME_SPRITES['message'] = pygame.image.load('flappy/sprites/message.png').convert_alpha()
+
 GAME_SPRITES['base'] = pygame.image.load('flappy/sprites/base.png').convert_alpha()
 GAME_SPRITES['pipe'] = (pygame.transform.rotate(pygame.image.load(PIPE).convert_alpha(), 180), pygame.image.load(PIPE).convert_alpha())
 GAME_SPRITES['background'] = pygame.image.load(BACKGROUND).convert()
