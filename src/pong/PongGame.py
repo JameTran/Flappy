@@ -1,4 +1,4 @@
-## @file Paddle.py
+## @file PongGame.py
 # @title Creating a Paddle for a player.
 # @author Arshan Khan
 # @date 28 March 2020
@@ -21,6 +21,14 @@ screen = pygame.display.set_mode(scrSize)
 pygame.display.set_caption('Pong')
 
 clock = pygame.time.Clock()
+
+#Sound effects and music
+pygame.mixer.init()
+hitPaddle = pygame.mixer.Sound('pong/sounds/bruh.wav')
+aiScored = pygame.mixer.Sound('pong/sounds/oof.wav')
+playerScored = pygame.mixer.Sound('pong/sounds/hyesz.wav')
+win = pygame.mixer.Sound('pong/sounds/victory.wav')
+lose = pygame.mixer.Sound('pong/sounds/defeat.wav')
 
 #Declaring various color values
 BG = (5, 35, 60)
@@ -81,7 +89,12 @@ def aiMove(ai, ball, diff):
 # @param aiScore The points scored by the AI.
 # @param maxScore The maximum score of the game, used in the calculation.
 def calculateScore(paddleScore, aiScore, maxScore):
-    return int(((paddleScore * maxScore) - aiScore) * 17)
+    finalScore = int(((paddleScore * maxScore) - aiScore) * 17)
+    if finalScore == 0:
+        finalScore = maxScore
+    if finalScore < 0:
+        finalScore == int(maxScore/3)
+    return finalScore
 
 ## @brief This function includes all components, animations, and calculations of the main game.
 # @details This function is run after the user clicks the 'BEGIN' button on the main menu.
@@ -145,6 +158,7 @@ def mainGame(difficulty, maxScore):
 
         # Using pygame's collide_mask function, we can get realistic collisions between the ball and the paddle
         if pygame.sprite.collide_mask(paddle, ball):
+            hitPaddle.play()
             ball.movement[0] = -1*ball.movement[0]
             ball.movement[1] = ball.movement[1] - int(0.1*random.randrange(5, 10)*paddle.movement[1])
             if ball.movement[1] > ball.maxspeed:
@@ -153,6 +167,7 @@ def mainGame(difficulty, maxScore):
                 ball.movement[1] = -1*ball.maxspeed
 
         if pygame.sprite.collide_mask(ai, ball):
+            hitPaddle.play()
             ball.movement[0] = -1*ball.movement[0]
             ball.movement[1] = ball.movement[1] - int(0.1*random.randrange(5, 10)*ai.movement[1])
             if ball.movement[1] > ball.maxspeed:
@@ -162,11 +177,15 @@ def mainGame(difficulty, maxScore):
 
         #checks whether user or ai scored a point and increments accordingly
         if ball.score == 1:
+            aiScored.play()
             ai.points += 1
             ball.score = 0
+            clock.tick(1)
         elif ball.score == -1:
+            playerScored.play()
             paddle.points += 1
             ball.score = 0
+            clock.tick(1.2)
 
         #updating the states of user's paddle, ai's paddle and ball
         paddle.movePaddle()
@@ -240,30 +259,31 @@ def pauseMenu(paddleScore, aiScore):
 ## @brief This function displays the game over screen, including all text and buttons.
 # @details This function is run automatically after the player or AI reach the maximum score.
 def endGameMenu(victor, paddleScore, aiScore, maxScore):
+    screen.fill(BG)
     global click
     endGame = True
     scoreNotSaved = True
+
     # Saves the score to the scoreboard
     finalScore = calculateScore(paddleScore, aiScore, maxScore)
-    if finalScore == 0:
-        finalScore = maxScore
-    # Scoreboard.Scoreboard.updateScore("Pong", finalScore)
-    while endGame:
-        screen.fill(BG)
-        mx, my = pygame.mouse.get_pos()
-        
-        if finalScore in [425, 1700, 3825]:
-            displayText('+*! PERFECT SCORE !*+', 30, middleX, 150, AMBER)
-        if finalScore < 0:
-            finalScore = int(maxScore/3)
-            displayText('THAT WAS TERRIBLE!' , 30, middleX, 150, ORANGE)
+    Scoreboard.Scoreboard.updateScore("Pong", finalScore)
+    
+    if finalScore in [425, 1700, 3825]:
+        displayText('+*! PERFECT SCORE !*+', 30, middleX, 150, AMBER)
+    if finalScore < 0:
+        displayText('THAT WAS TERRIBLE!', 30, middleX, 150, ORANGE)
+    
+    if (victor == 0):
+        displayText('DEFEAT', 80, middleX, 200, RED)
+        lose.play()
+    else:
+        displayText('YOU WIN!', 80, middleX, 200, GREEN10)
+        win.play()
+    displayText(('FINAL SCORE: ' + str(finalScore)), 40, middleX, 275, WHITE)
+    displayText((str(paddleScore) + ' - ' + str(aiScore)), 110, middleX, 360, WHITE)
 
-        if (victor == 0):
-            displayText('DEFEAT', 80, middleX, 200, RED)
-        else:
-            displayText('YOU WIN!', 80, middleX, 200, GREEN10)
-        displayText(('FINAL SCORE: ' + str(finalScore)), 40, middleX, 275, WHITE)
-        displayText((str(paddleScore) + ' - ' + str(aiScore)), 110, middleX, 360, WHITE)
+    while endGame:
+        mx, my = pygame.mouse.get_pos()
 
         #BEGIN selection of pause options -------------------------------------
         mainMenuButton = pygame.Rect(middleX - 100, middleY + 100, 200, 50)

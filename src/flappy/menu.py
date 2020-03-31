@@ -1,8 +1,8 @@
 import pygame
 import sys
 from pygame.locals import *  # Basic pygame imports
-from flappy_constants import *
-from flappy_game import main_game
+from flappy.flappy_constants import *
+from flappy.flappy_game import main_game
 
 
 def main_menu():
@@ -13,8 +13,8 @@ def main_menu():
 
     playerx = int(SCREENWIDTH/5)
     playery = int(SCREENHEIGHT/2)
-    messagex = int((SCREENWIDTH - GAME_SPRITES['message'].get_width())/2)
-    messagey = int(SCREENHEIGHT*0.13)
+    #messagex = int((SCREENWIDTH - GAME_SPRITES['message'].get_width())/2)
+    #messagey = int(SCREENHEIGHT*0.13)
     basex = 0
     while True:
         for event in pygame.event.get():
@@ -29,7 +29,7 @@ def main_menu():
             else:
                 SCREEN.blit(GAME_SPRITES['background'], (0, 0))    
                 SCREEN.blit(GAME_SPRITES['player'], (playerx, playery))    
-                SCREEN.blit(GAME_SPRITES['message'], (messagex, messagey ))    
+                #SCREEN.blit(GAME_SPRITES['message'], (messagex, messagey ))    
                 SCREEN.blit(GAME_SPRITES['base'], (basex, GROUNDY))    
                 pygame.display.update()
                 FPSCLOCK.tick(FPS)
