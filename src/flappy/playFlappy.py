@@ -1,8 +1,13 @@
 from menu import main_menu 
+import pygame
+from pygame.locals import *  # Basic pygame imports
+from flappy_constants import *
 
 
 def play_game():
-    main_menu()
+    pygame.init()
+    pygame.display.set_caption('Flappy Bird') 
+    while True:
+        main_menu()
 
-def playGame():
-    mainMenu()
+play_game()
