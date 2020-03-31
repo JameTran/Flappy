@@ -20,8 +20,8 @@ def main_menu():
         for event in pygame.event.get():
             # if user clicks on 'x' button, close the game
             if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
-                pygame.quit()
-                sys.exit()
+                import Launcher
+                Launcher.Launcher.displayLauncher()
 
             # If the user presses space or up key, start the game for them
             elif event.type==KEYDOWN and (event.key == K_SPACE or event.key == K_UP):
