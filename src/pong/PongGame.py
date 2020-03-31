@@ -241,11 +241,13 @@ def endGameMenu(victor, paddleScore, aiScore, maxScore):
     global click
     endGame = True
     scoreNotSaved = True
+    # Saves the score to the scoreboard
+    finalScore = calculateScore(paddleScore, aiScore, maxScore)
+    Scoreboard.Scoreboard.updateScore("Pong", finalScore)
     while endGame:
         screen.fill(BG)
         mx, my = pygame.mouse.get_pos()
         
-        finalScore = calculateScore(paddleScore, aiScore, maxScore)
         if finalScore in [425, 1700, 3825]:
             displaytext('+*! PERFECT SCORE !*+', 30, middleX, 150, AMBER)
         if finalScore < 0:
@@ -265,16 +267,10 @@ def endGameMenu(victor, paddleScore, aiScore, maxScore):
         displaytext((str(paddleScore) + ' - ' + str(aiScore)), 90, middleX, 350, WHITE)
 
         #BEGIN selection of pause options -------------------------------------
-        saveScoreButton = pygame.Rect(middleX - 100, middleY + 25, 200, 50)
-        saveScoreColor = BLUE
         mainMenuButton = pygame.Rect(middleX - 100, middleY + 100, 200, 50)
         mainMenuColor = BLUE
         launcherButton = pygame.Rect(middleX - 100, middleY + 175, 200, 50)
         launcherColor = BLUE
-        if saveScoreButton.collidepoint((mx, my)):
-            saveScoreColor = HOVERBLUE
-            if click:
-                Scoreboard.Scoreboard.updateScore("Pong", finalScore)
         if mainMenuButton.collidepoint((mx, my)):
             mainMenuColor = HOVERBLUE
             if click:
@@ -285,10 +281,8 @@ def endGameMenu(victor, paddleScore, aiScore, maxScore):
             if click:
                 import Launcher
                 Launcher.Launcher.displayLauncher()
-        pygame.draw.rect(screen, saveScoreColor, saveScoreButton)
         pygame.draw.rect(screen, mainMenuColor, mainMenuButton)
         pygame.draw.rect(screen, launcherColor, launcherButton)
-        displaytext('Save Score', 25, middleX, middleY + 50, WHITE)
         displaytext('New Game', 25, middleX, middleY + 125, WHITE)
         displaytext('Quit Game', 25, middleX, middleY + 200, WHITE)
         #END selection of pause options ---------------------------------------
