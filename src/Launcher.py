@@ -7,7 +7,7 @@ import pygame
 import thorpy
 from maze import MazeGame
 from pong import PlayPong
-from flappy import playFlappy
+#from flappy import playFlappy
 import Scoreboard
 
 # Class Definition
@@ -15,7 +15,8 @@ class Launcher:
 
     # Static Constants
     gameTitle = ["Maze", "Flappy", "Pong"]
-    games = [MazeGame.MazeGame(), playFlappy, PlayPong]
+    games = [MazeGame.MazeGame(), None, PlayPong]
+    #games = [MazeGame.MazeGame(), playFlappy, PlayPong]
     
 
     
@@ -91,7 +92,10 @@ class Launcher:
     def launchGame(gameID):
         if gameID == 0:
             Launcher.games[gameID].on_execute()
-        else:
+        if gameID == 1:
+            print("test")
+            #Launcher.games[gameID].play_game()
+        elif gameID == 2:
             Launcher.games[gameID].playGame()
     
     
