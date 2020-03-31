@@ -1,8 +1,8 @@
 import unittest
-from Ball import *
-from Paddle import *
-from MenuSettings import *
-from PongGame import *
+from pongTestFiles.Ball import *
+from pongTestFiles.Paddle import *
+from pongTestFiles.MenuSettings import *
+from pongTestFiles.PongGame import *
 
 class testPong(unittest.TestCase):
     # Any functions not tested are better tested as a System Test
@@ -61,7 +61,7 @@ class testPong(unittest.TestCase):
 
     # Testing PongGame.py methods -----------------------------------
     def testDisplayText(self):
-        displaytext('TESTING', 30, 200, 100, (255, 255, 255))
+        displayText('TESTING', 30, 200, 100, (255, 255, 255))
         pygame.display.update()
     
     def testCalculateScore(self):
