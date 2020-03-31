@@ -193,8 +193,8 @@ def main_menu():
                 sys.exit()
             if event.type == KEYDOWN:
                 if event.key == K_ESCAPE:
-                    pygame.quit()
-                    sys.exit()
+                    import Launcher
+                    Launcher.Launcher.displayLauncher()
             if event.type == MOUSEBUTTONDOWN:
                 if event.button == 1:
                     click = True
