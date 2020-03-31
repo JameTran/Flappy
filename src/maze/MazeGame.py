@@ -68,7 +68,7 @@ class MazeGame:
             pygame.draw.rect(self._display_surf, ac, (x, y, w, h))
             if click[0] == 1 and state != None:
                 self.currState = state
-                time.sleep(0.1)
+                time.sleep(0.2)
 
                 if (state == "easyMaze"):
                     self.maze.setMaze(15)
