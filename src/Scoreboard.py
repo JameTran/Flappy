@@ -233,8 +233,6 @@ class Scoreboard:
     # Create a buttton
     @staticmethod
     def createButton(title, index, painter1, painter2):
-    
-        print(index)
         
         # Declare Variables
         button = None  #Clickable(thorpy)
