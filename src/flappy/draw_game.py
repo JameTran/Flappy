@@ -36,3 +36,15 @@ def draw_score(score):
 def remove_pipes(upper_pipes, lower_pipes):
     upper_pipes.pop(0)
     lower_pipes.pop(0)
+
+
+def draw_menuScore(score):
+    myDigits = [int(x) for x in list(str(score))]
+    width = 0
+    for digit in myDigits:
+        width += GAME_SPRITES['numbers'][digit].get_width()
+    Xoffset = (SCREENWIDTH - width)/2
+
+    for digit in myDigits:
+        SCREEN.blit(GAME_SPRITES['numbers'][digit], (Xoffset, SCREENHEIGHT*0.4))
+        Xoffset += GAME_SPRITES['numbers'][digit].get_width()

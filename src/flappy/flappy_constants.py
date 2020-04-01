@@ -33,6 +33,9 @@ GAME_SPRITES['base'] = pygame.image.load('flappy/sprites/base.png').convert_alph
 GAME_SPRITES['pipe'] = (pygame.transform.rotate(pygame.image.load(PIPE).convert_alpha(), 180), pygame.image.load(PIPE).convert_alpha())
 GAME_SPRITES['background'] = pygame.image.load(BACKGROUND).convert()
 GAME_SPRITES['player'] = pygame.image.load(PLAYER).convert_alpha()
+GAME_SPRITES['start'] = pygame.image.load('flappy/sprites/start.png')
+GAME_SPRITES['main_menu'] = pygame.image.load('flappy/sprites/main_menu.png')
+GAME_SPRITES['end'] = pygame.image.load('flappy/sprites/end.png')
 
 # Game sounds
 GAME_SOUNDS['die'] = pygame.mixer.Sound('flappy/audio/die.wav')

@@ -6,7 +6,7 @@ from flappy.player_movement import *
 from flappy.draw_game import *
 import random
 import Scoreboard
-
+import time
 
 
 def main_game():
@@ -20,6 +20,7 @@ def main_game():
     playerAccY = 1
     playerFlapAccv = -8  # velocity while flapping
     playerFlapped = False  # It is true only when the bird is flapping
+
 
     # Create 2 pipes for blitting on the screen
     newPipe1 = getRandomPipe()
@@ -35,6 +36,12 @@ def main_game():
         {'x': SCREENWIDTH+200, 'y':newPipe1[1]['y']},
         {'x': SCREENWIDTH+200+(SCREENWIDTH/2), 'y':newPipe2[1]['y']},
     ]
+    
+    
+    
+    #pygame.draw.rect(SCREEN, WHITE, [0,512,991,289])
+    #pygame.draw.rect(SCREEN, WHITE, [280,0,991,800])
+    #pygame.draw.rect(SCREEN, WHITE, [0,512,991,289])
 
     while True:
         for event in pygame.event.get():
@@ -58,13 +65,30 @@ def main_game():
         crashTest = isCollide(playerx, playery, upperPipes, lowerPipes) # This function will return true if the player is crashed
         if crashTest:
             print('{}{}'.format("Your score is: ", score))
-            #save score to scoreboard
+            # save score to scoreboard
             Scoreboard.Scoreboard.updateScore("Flappy", score)
-            return
-        
+            while True:
+                pygame.draw.rect(SCREEN, WHITE, [0,0,1280,800])
+                draw_back_ground()
+                pygame.draw.rect(SCREEN, WHITE, [280,0,991,800])
+                draw_pipes(upperPipes, lowerPipes)
+                draw_bird(playerx, playery)
+                draw_ground()
+                draw_menuScore(score)
+                pygame.draw.rect(SCREEN, WHITE, [280,0,991,800])
+                pygame.draw.rect(SCREEN, WHITE, [0,512,991,289])
+                SCREEN.blit(GAME_SPRITES['end'], (0, 0))
+                for event in pygame.event.get():
+                    if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
+                        import Launcher
+                        Launcher.Launcher.displayLauncher()
+                    if event.type == KEYDOWN and (event.key == K_SPACE or event.key == K_UP):
+                        return
+                pygame.display.update()
+                FPSCLOCK.tick(FPS)
+                    
+
         score = get_score(playerx, upperPipes, score)
-
-
         # move pipes to the left
         move_pipes(upperPipes, lowerPipes, pipeVelX)
 
@@ -78,7 +102,6 @@ def main_game():
         if upperPipes[0]['x'] < -GAME_SPRITES['pipe'][0].get_width():
             remove_pipes(upperPipes, lowerPipes)
 
-
         ## DRAW BACKGROUND FIRST
         pygame.draw.rect(SCREEN, WHITE, [0,0,1280,800])
         draw_back_ground()
@@ -90,8 +113,10 @@ def main_game():
         pygame.draw.rect(SCREEN, WHITE, [280,0,991,800])
         pygame.draw.rect(SCREEN, WHITE, [0,512,991,289])
         draw_score(score)
+        
         pygame.display.update()
         FPSCLOCK.tick(FPS)
+
 
 def isCollide(playerx, playery, upperPipes, lowerPipes):
     if playery> GROUNDY - 25  or playery<0:
@@ -126,14 +151,13 @@ def getRandomPipe():
     ]
     return pipe
 
-    
+ 
 def get_score(playerx, upperPipes, score):
     playerMidPos = playerx + GAME_SPRITES['player'].get_width()/2
     for pipe in upperPipes:
         pipeMidPos = pipe['x'] + GAME_SPRITES['pipe'][0].get_width()/2
         if pipeMidPos<= playerMidPos < pipeMidPos +4:
             score +=1
-            print(f"Your score is {score}") 
             GAME_SOUNDS['point'].play()
             return score
         else:
