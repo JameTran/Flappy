@@ -1,6 +1,4 @@
-## @file MenuSettings.py
-# @title All menus and screens for the initiation of the game.
-# @author Arshan Khan
+## @title File for testing purposes only.
 # @date 28 March 2020
 import pygame
 import sys
@@ -17,12 +15,10 @@ pygame.display.set_caption('Main Menu')
 
 clock = pygame.time.Clock()
 
-#Creating a ball for introduction animation.
 ball = pygame.Rect(582,460, 104, 104)
 ball_speed_x = 8
 ball_speed_y = 5
 
-#Declaring various color values.
 BG = (5, 35, 60)
 BLUE = (66, 133, 244)
 HOVERBLUE = (36, 103, 214)
@@ -41,20 +37,15 @@ BLACK = (0, 0, 0)
 maxScore = -1
 diff = 0
 
-## @brief Keeps the introductory-animation-ball inside the screen
 def ball_animation():
     global ball_speed_x, ball_speed_y
-    # Moves the ball by one multiple of the ball speed
     ball.x += ball_speed_x
     ball.y += ball_speed_y
-    # Keeps the ball in the boundaries
     if ball.top <= 0 or ball.bottom >= height:
         ball_speed_y *= -1
     if ball.left <= 0 or ball.right >= width:
         ball_speed_x *= -1
 
-## @brief Alters the difficulty of the AI player.
-# @details This function is initiated by the user by selecting a difficulty level in the main menu.
 def changeDifficulty(x):
     global displayDifficulty
     if (x == 4): level = 'EASY'
@@ -64,19 +55,14 @@ def changeDifficulty(x):
     displayDifficulty = ('Difficulty: ' + str(level))
     return x
 
-## @brief Alters the maximum score the game will run, at which point the game will end.
-# @details This function is initiated by the user by selecting a maximum score in the main menu.
 def changeMaxScore(x):
     global displayMaxScore
     displayMaxScore = ('Play up to: ' + str(x))
     return x
 
-## @brief This function displays the transition from the main menu to the main game.
-# @details This function is initiated by the user by clicking on the 'BEGIN' button.
 def startGameAnimation():
     screen.fill(BG)
     fadeR, fadeG, fadeB = 5, 35, 60
-    # Hard coded length of the transition screen.
     timer = 20
     while timer > 0:
         screen.fill((fadeR, fadeG, fadeB))
@@ -100,12 +86,9 @@ displayMaxScore = 'Select the maximum score'
 displayDifficulty = 'Select difficulty'
 coverStart = pygame.Rect(0, 0, 1280, 800)
 
-## @brief This class contains all visuals for the screen the user first experiences. This includes all buttons and text.
-# @details This function is the first function run in the program, and is run automatically after selecting a game from the Launcher.
 def main_menu():
     global diff, maxScore
     while True:
-        # No condition on the while statement to keep it running at all times (for new games and such).
         screen.fill(BG)
         mx, my = pygame.mouse.get_pos()
         displayText('Use the UP / DOWN arrow keys to move your PADDLE.', 20, middleX, height - 90, WHITE)
