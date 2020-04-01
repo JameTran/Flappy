@@ -36,12 +36,6 @@ def main_game():
         {'x': SCREENWIDTH+200, 'y':newPipe1[1]['y']},
         {'x': SCREENWIDTH+200+(SCREENWIDTH/2), 'y':newPipe2[1]['y']},
     ]
-    
-    
-    
-    #pygame.draw.rect(SCREEN, WHITE, [0,512,991,289])
-    #pygame.draw.rect(SCREEN, WHITE, [280,0,991,800])
-    #pygame.draw.rect(SCREEN, WHITE, [0,512,991,289])
 
     while True:
         for event in pygame.event.get():
