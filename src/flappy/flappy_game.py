@@ -8,6 +8,7 @@ import random
 import Scoreboard
 
 
+
 def main_game():
     score = 0
     playerx = int(SCREENWIDTH/5)
@@ -79,10 +80,15 @@ def main_game():
 
 
         ## DRAW BACKGROUND FIRST
+        pygame.draw.rect(SCREEN, WHITE, [0,0,1280,800])
         draw_back_ground()
+        pygame.draw.rect(SCREEN, WHITE, [280,0,991,800])
         draw_pipes(upperPipes, lowerPipes)
         draw_bird(playerx, playery)
         draw_ground()
+        pygame.draw.rect(SCREEN, WHITE, [0,512,991,289])
+        pygame.draw.rect(SCREEN, WHITE, [280,0,991,800])
+        pygame.draw.rect(SCREEN, WHITE, [0,512,991,289])
         draw_score(score)
         pygame.display.update()
         FPSCLOCK.tick(FPS)

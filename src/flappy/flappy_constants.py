@@ -5,13 +5,14 @@ pygame.init()
 FPS = 32
 SCREENWIDTH = 289
 SCREENHEIGHT = 511
-SCREEN = pygame.display.set_mode((SCREENWIDTH, SCREENHEIGHT))
+SCREEN = pygame.display.set_mode((1280, 800))
 GROUNDY = SCREENHEIGHT * 0.8
 GAME_SPRITES = {}
 GAME_SOUNDS = {}
 PLAYER = 'flappy/sprites/bird.png'
 BACKGROUND = 'flappy/sprites/background.png'
 PIPE = 'flappy/sprites/pipe.png'
+WHITE = (255, 255, 255)
 
 FPSCLOCK = pygame.time.Clock()
 GAME_SPRITES['numbers'] = ( 
