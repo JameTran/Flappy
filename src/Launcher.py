@@ -57,13 +57,13 @@ class Launcher:
         scoreboardButton.set_painter(painter)
         scoreboardButton.finish()
         scoreboardButton.set_font_size(23)
-        scoreboardButton.set_font_color_hover((57,197,187))
+        scoreboardButton.set_font_color_hover((255,255,255))
         quitButton = thorpy.Clickable("Exit")
         quitButton.user_func = thorpy.functions.quit_menu_func
         quitButton.set_painter(painter)
         quitButton.finish()
         quitButton.set_font_size(23)
-        quitButton.set_font_color_hover((57,197,187))
+        quitButton.set_font_color_hover((255,255,255))
         
         # Format the buttons
         buttonGroup = thorpy.make_group(buttons)
@@ -119,7 +119,7 @@ class Launcher:
         button.set_painter(painter)
         button.finish()
         button.set_font_size(23)
-        button.set_font_color_hover((57,197,187))
+        button.set_font_color_hover((255,255,255))
         
         # Return
         return button

@@ -90,7 +90,7 @@ def startGameAnimation():
         timer -= 1
         pygame.display.update()
         clock.tick(8)
-    displayText('Welcome TO PONG', 100, middleX, middleY, WHITE)
+    displayText('Welcome to PONG', 100, middleX, middleY, WHITE)
     pygame.display.update()
     clock.tick(0.7)
 

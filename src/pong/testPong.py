@@ -33,6 +33,7 @@ class testPong(unittest.TestCase):
         self.player1.drawPaddle()
         self.player2.drawPaddle()
         pygame.display.update()
+        # visually check if these function correctly
         
     # Testing Ball.py methods ---------------------------------------
     def testCreateBall(self):
@@ -47,6 +48,7 @@ class testPong(unittest.TestCase):
     def testDisplayBall(self):
         self.gameBall.draw()
         pygame.display.update()
+        # visually check if this functions correctly
 
     # Testing MenuSettings.py methods -------------------------------
     def testChangeDifficulty(self):
@@ -63,6 +65,7 @@ class testPong(unittest.TestCase):
     def testDisplayText(self):
         displayText('TESTING', 30, 200, 100, (255, 255, 255))
         pygame.display.update()
+        # visually check if this functions correctly
     
     def testCalculateScore(self):
         playerScore = 14
