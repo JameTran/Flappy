@@ -12,4 +12,4 @@ def play_game():
         main_menu()
         main_game()
 
-play_game()
+#play_game()
