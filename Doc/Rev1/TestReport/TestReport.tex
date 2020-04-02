@@ -1,7 +1,13 @@
 \documentclass[12pt, titlepage]{article}
 
+\usepackage{fullpage}
+\usepackage[round]{natbib}
+\usepackage{multirow}
 \usepackage{booktabs}
 \usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{placeins}
 \usepackage{hyperref}
 \hypersetup{
     colorlinks,
@@ -12,72 +18,339 @@
 }
 \usepackage[round]{natbib}
 
-\title{SE 3XA3: Test Report\\Title of Project}
+\newcounter{acnum}
+\newcommand{\actheacnum}{AC\theacnum}
+\newcommand{\acref}[1]{AC\ref{#1}}
 
-\author{Team \#, Team Name
-		\\ Student 1 name and macid
-		\\ Student 2 name and macid
-		\\ Student 3 name and macid
+\newcounter{ucnum}
+\newcommand{\uctheucnum}{UC\theucnum}
+\newcommand{\uref}[1]{UC\ref{#1}}
+
+\newcounter{mnum}
+\newcommand{\mthemnum}{M\themnum}
+\newcommand{\mref}[1]{M\ref{#1}}
+
+\title{SE 3XA3: Test Report\\Mini-Arcade}
+
+\author{Andrew Hum \\ huma3 \\ 400138826 \and
+		William Lei \\ leim5 \\ 400125240 \and
+		Arshan Khan \\ khana172 \\ 400145605 \and
+		Jame Tran \\ tranj52 \\ 400144141
 }
 
-\date{\today}
+\date{}
 
-\input{../Comments}
 
 \begin{document}
-
 \maketitle
-
-\pagenumbering{roman}
+\newpage
 \tableofcontents
 \listoftables
 \listoffigures
 
-\begin{table}[bp]
+\begin{table}[!hbp]
 \caption{\bf Revision History}
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
-\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
+\toprule {\bf Date} & {\bf Version} & {\bf Notes} \\
 \midrule
-Date 1 & 1.0 & Notes\\
-Date 2 & 1.1 & Notes\\
+4/2/2020 & 1.0 & Andrew - Formatted Document \& Section 1 \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
 \newpage
 
-\pagenumbering{arabic}
+\section{Functional Qualities Evaluation}
 
-This document ...
-
-\section{Functional Requirements Evaluation}
-
-\section{Nonfunctional Requirements Evaluation}
-
-\subsection{Usability}
-		
-\subsection{Performance}
-
-\subsection{etc.}
+\textbf{Description of Tests}: These tests are used to demonstrate that the requirements of the product are fulfilled based upon the functional requirements from the Software Requirements Specification. These tests will demonstrate basic functionality of the game and its correctness. \\
 	
-\section{Comparison to Existing Implementation}	
+	
+	Test Name: FRCG
+	
+	Results: The user is able to choose a game to play \\
+	
+	Test Name: FRSS
+	
+	Results: The user is able to access and see the scoreboard \\ 
+	
+	Test Name: FRPM 
+	
+	Results: The user is able to play the Maze game \\ 
+	
+	Test Name: FRPP 
+	
+	Results: The user is able to play the Pong Game \\ 
+	
+	Test Name: FRPF
+	
+	Results: The user is able to play the Flappy Game \\
+	
+	Test Name: FRRL
+	
+	Results: The user is able to return to the launcher \\
+	
+	Test Name: FRME 
+	
+	Result: The user is able access all of the menu elements for each game \\
+	
+	Test Name: FRKM
+	
+	Result: The user is able to move the player using the keyboard or mouse (varies per game) \\
+	
+	Test Name: FRSG
+	
+	Result: The game produces a final score and records it for the scoreboard \\
+	
 
-This section will not be appropriate for every project.
+\section{Nonfunctional Qualities Evaluation} 
 
-\section{Unit Testing}
+	\subsection{Usability}
+	
+	Description of Tests: \\
+	\\
+	Test Name:\\
+	Results: \\
+	\\	
+	
+	\subsubsection{Example Test Scenario}
+	
+	Description of Tests: \\
+	\\
+	Test Name:\\
+	Results: \\
+	\\		
+	\\	
+
+	\subsection{Performance and Robustness}
+	
+	\subsubsection{Example Test Scenario}
+	
+	Description of Tests: \\
+	\\
+	Test Name:\\
+	Results: \\
+	\\	
 
 \section{Changes Due to Testing}
 
-\section{Automated Testing}
+	\subsection{Launcher Testing}
+
+	\subsection{Scoreboard Testing}
+
+	\subsection{Maze Testing}
+	
+	\subsection{Pong Testing}
+	
+	\subsection{Flappy Testing}
+
+\section{Automated Testing}	
+
+	\subsection{Launcher Testing}
+	
+	\subsection{Scoreboard Testing}
 		
-\section{Trace to Requirements}
+	\subsection{Maze Testing}
+		Description of tests: \\
 		
-\section{Trace to Modules}		
+		Results: \\ \\
+		
+	\subsection{Pong Testing}
+		Description of tests: \\
+		
+		Results: \\ \\
+		
+	\subsection{Flappy Testing}
+		Description of tests: \\
+		
+		Results: \\ \\
+		
+\section{System Tests}
 
-\section{Code Coverage Metrics}
+\subsection{Launcher Testing}
 
-\bibliographystyle{plainnat}
+\textbf{Test Name} - \\
+\textbf{Initial State} - \\
+\textbf{Input} - \\
+\textbf{Expected Output} - \\
 
-\bibliography{SRS}
+\subsection{Scoreboard Testing}
+
+\textbf{Test Name} - \\
+\textbf{Initial State} - \\
+\textbf{Input} - \\
+\textbf{Expected Output} - \\
+
+\subsection{Maze Testing}
+
+\textbf{Test Name} - \\
+\textbf{Initial State} - \\
+\textbf{Input} - \\
+\textbf{Expected Output} - \\
+
+\subsection{Pong Testing}
+
+\textbf{Test Name} - \\
+\textbf{Initial State} - \\
+\textbf{Input} - \\
+\textbf{Expected Output} - \\
+
+\subsection{Flappy Testing}
+
+\textbf{Test Name} - \\
+\textbf{Initial State} - \\
+\textbf{Input} - \\
+\textbf{Expected Output} - \\
+
+\section{Trace to Requirements}	
+
+\subsection{Functional Requirements Traceability Matrix}
+\begin{table}[H]
+\centering
+\begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+\toprule
+\textbf{Test} & \textbf{Req.}\\
+\midrule
+FT-1 & -\\
+FT-2 & -\\
+FT-3 & -\\
+FT-4 & -\\
+FT-5 & -\\
+FT-6 & -\\
+FT-7 & -\\
+FT-8 & -\\
+FT-9 & -\\
+\bottomrule
+\end{tabular}
+\caption{Trace Between Tests and Functional Requirements}
+\label{TblTFR}
+\end{table}
+
+\newpage
+
+\subsection{Non-Functional Requirements Traceability Matrix}
+\begin{table}[H]
+\centering
+\begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+\toprule
+\textbf{Test} & \textbf{Req.}\\
+\midrule
+NFT-1 & -\\
+NFT-2 & -\\
+NFT-3 & -\\
+NFT-4 & -\\
+NFT-5 & -\\
+NFT-6 & -\\
+NFT-7 & -\\
+NFT-8 & -\\
+NFT-9 & -\\
+\bottomrule
+\end{tabular}
+\caption{Trace Between Tests and Non-Functional Requirements}
+\label{TblTNFR}
+\end{table}
+
+\newpage
+
+\subsection{Automated Testing Traceability Matrix}
+\begin{table}[H]
+\centering
+\begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+\toprule
+\textbf{Test} & \textbf{Req.}\\
+\midrule
+AT-1 & -\\
+AT-2 & -\\
+AT-3 & -\\
+AT-4 & -\\
+AT-5 & -\\
+AT-6 & -\\
+AT-7 & -\\
+AT-8 & -\\
+AT-9 & -\\
+\bottomrule
+\end{tabular}
+\caption{Trace Between Automated Tests and Requirements}
+\label{TblTATR}
+\end{table}
+
+\newpage
+
+\section{Trace to Modules}
+
+\subsection{Functional Requirements Traceability Matrix}
+\begin{table}[H]
+\centering
+\begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+\toprule
+\textbf{Test} & \textbf{Modules}\\
+\midrule
+FT-1 & -\\
+FT-2 & -\\
+FT-3 & -\\
+FT-4 & -\\
+FT-5 & -\\
+FT-6 & -\\
+FT-7 & -\\
+FT-8 & -\\
+FT-9 & -\\
+\bottomrule
+\end{tabular}
+\caption{Trace Between Functional Tests and Modules}
+\label{TblFTM}
+\end{table}
+
+\newpage
+
+\subsection{Non-Functional Requirements Traceability Matrix}
+\begin{table}[H]
+\centering
+\begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+\toprule
+\textbf{Test} & \textbf{Modules}\\
+\midrule
+NFT-1 & -\\
+NFT-2 & -\\
+NFT-3 & -\\
+NFT-4 & -\\
+NFT-5 & -\\
+NFT-6 & -\\
+NFT-7 & -\\
+NFT-8 & -\\
+NFT-9 & -\\
+\bottomrule
+\end{tabular}
+\caption{Trace Between Non-Functional Tests and Modules}
+\label{TblNFTM}
+\end{table}
+
+\newpage
+
+\subsection{Automated Testing Traceability Matrix}
+\begin{table}[H]
+\centering
+\begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+\toprule
+\textbf{Test} & \textbf{Modules}\\
+\midrule
+AT-1 & -\\
+AT-2 & -\\
+AT-3 & -\\
+AT-4 & -\\
+AT-5 & -\\
+AT-6 & -\\
+AT-7 & -\\
+AT-8 & -\\
+AT-9 & -\\
+\bottomrule
+\end{tabular}
+\caption{Trace Between Automated Tests and Modules}
+\label{TblATM}
+\end{table}
+
+\newpage
+	
+\section{Code Coverage Metrics}					% Mario
+
+With the tests mentioned throughout this document, our group has produced an approximate 85\% code coverage. This is evident through the traceability matrices above, as they show that every module has been covered, with some being covered multiple times.
 
 \end{document}
