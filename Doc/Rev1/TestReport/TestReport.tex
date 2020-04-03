@@ -18,17 +18,17 @@
 }
 \usepackage[round]{natbib}
 
-\newcounter{acnum}
-\newcommand{\actheacnum}{AC\theacnum}
-\newcommand{\acref}[1]{AC\ref{#1}}
+\newcounter{ftnum}
+\newcommand{\fttheftnum}{FT\theftnum}
+\newcommand{\ftref}[1]{FT\ref{#1}}
 
-\newcounter{ucnum}
-\newcommand{\uctheucnum}{UC\theucnum}
-\newcommand{\uref}[1]{UC\ref{#1}}
+\newcounter{nftnum}
+\newcommand{\nftthenftnum}{NFT\thenftnum}
+\newcommand{\nftref}[1]{NFT\ref{#1}}
 
-\newcounter{mnum}
-\newcommand{\mthemnum}{M\themnum}
-\newcommand{\mref}[1]{M\ref{#1}}
+\newcounter{atnum}
+\newcommand{\atthemnum}{AT\theatnum}
+\newcommand{\atref}[1]{AT\ref{#1}}
 
 \title{SE 3XA3: Test Report\\Mini-Arcade}
 
@@ -53,7 +53,8 @@
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
 \toprule {\bf Date} & {\bf Version} & {\bf Notes} \\
 \midrule
-4/2/2020 & 1.0 & Andrew - Formatted Document \& Section 1 \\
+4/2/2020 & 1.0 & Andrew - Formatted Document \& Section 1 \& Section 8\\
+4/3/2020 & 1.1 & Andrew - Section 2, 3, 4, 5, 6, \& 7 \\ 
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -64,80 +65,74 @@
 
 \textbf{Description of Tests}: These tests are used to demonstrate that the requirements of the product are fulfilled based upon the functional requirements from the Software Requirements Specification. These tests will demonstrate basic functionality of the game and its correctness. \\
 	
+\subsection{Launcher Functional Tests}
+	Test Name: \\
+	Results: \\ \\
 	
-	Test Name: FRCG
+\subsection{Maze Functional Tests}
+	Test Name: FR-N-9 \\
+	Results: The user is able to select How To Play \\ \\
+	Test Name: FR-N-12 \\
+	Results: The user is able to return to the launcher \\ \\
+	Test Name: FR-MGM-1 \\
+	Results: The user is able to select Play \\ \\
+	Test Name: FR-MGM-2 \\
+	Results: The user is able to return to the Main Menu screen\\ \\
+	Test Name: FR-MGM-3 \\
+	Results: The user is able to generate a maze by difficulty \\ \\ 
+	Test Name: FR-MGM-4 \\ 
+	Results: The user is able to move the player \\ \\
+	Test Name: FR-MGM-5 \\
+	Results: The user is able to view the Victory screen \\ \\
+	Test Name: FR-MGM-7 \\ 
+	Results: The user is able to return to the Main Menu screen\\ \\
 	
-	Results: The user is able to choose a game to play \\
+\subsection{Pong Functional Tests}
+	Test Name: \\
+	Results: \\ \\
 	
-	Test Name: FRSS
+\subsection{Flappy Functional Tests}
+	Test Name: \\
+	Results: \\ \\
 	
-	Results: The user is able to access and see the scoreboard \\ 
-	
-	Test Name: FRPM 
-	
-	Results: The user is able to play the Maze game \\ 
-	
-	Test Name: FRPP 
-	
-	Results: The user is able to play the Pong Game \\ 
-	
-	Test Name: FRPF
-	
-	Results: The user is able to play the Flappy Game \\
-	
-	Test Name: FRRL
-	
-	Results: The user is able to return to the launcher \\
-	
-	Test Name: FRME 
-	
-	Result: The user is able access all of the menu elements for each game \\
-	
-	Test Name: FRKM
-	
-	Result: The user is able to move the player using the keyboard or mouse (varies per game) \\
-	
-	Test Name: FRSG
-	
-	Result: The game produces a final score and records it for the scoreboard \\
-	
-
 \section{Nonfunctional Qualities Evaluation} 
 
 	\subsection{Usability}
 	
-	Description of Tests: \\
-	\\
-	Test Name:\\
-	Results: \\
-	\\	
+	\subsubsection{GUI Testing}
+	Description of Tests: Usability of the Graphical User Interface (GUI) was tested by the group members that did not work on the given screen, and by family members of each of the development team. Due to current events, usability testing was limited, however, we feel that our tests still proved that the system is usable to an acceptable extent.\\ \\
+	Test Name: NFT-2\\
+	Results: From people outside of the development team, they stated that the GUI was visually appealing and easy to navigate through looks.\\ \\
+	Test Name: NFT-3\\
+	Results: Sample users stated that the GUI was non-intrusive and didn't inhibit their experience during gameplay. \\ \\
 	
-	\subsubsection{Example Test Scenario}
+	\subsubsection{Game-play Testing}
+	Description of Tests: Users are to play the game with no prior explanation or instructions, and will be judged on how they handle the games and are able to navigate through them. \\ \\
+	Test Name: NFT-4 \\ 
+	Results: Sample users who had no instructions given to them were able to successfully play and complete the games with ease. \\ \\
 	
-	Description of Tests: \\
-	\\
-	Test Name:\\
-	Results: \\
-	\\		
-	\\	
+	\subsubsection{Running the Product}
+	Description of Tests: These tests will focus on being able to run the product with it not previously installed on the computer.\\ \\
+	Test Name: NFT-7 \\
+	Results: The game is able to be easily installed and run with little to no instructions. \\ \\
 
 	\subsection{Performance and Robustness}
 	
-	\subsubsection{Example Test Scenario}
-	
-	Description of Tests: \\
-	\\
-	Test Name:\\
-	Results: \\
-	\\	
+	\subsubsection{Game-play Testing}
+	Description of Tests: The development team, as well as non-development users, will test the games and launcher through playing/running the software to judge the performance and robustness.\\ \\
+	Test Name: NFT-1\\
+	Results: The average FPS of the game is above 30\\ \\ 
+	Test Name: NFT-5\\ 
+	Results: The launcher and all games are opened, when requested, in under 30 seconds.\\ \\
+	Test Name: NFT-6\\
+	Results: Users (both development and non-development) play each of the games and state that there is no noticeable input lag.
 
 \section{Changes Due to Testing}
 
 	\subsection{Launcher Testing}
 
-	\subsection{Scoreboard Testing}
-
 	\subsection{Maze Testing}
+	Through code development, many non-formal test methods were run to ensure correctness. However, once the program was completed, there were no changes made due to the formal testing methods and cases defined in this document.
 	
 	\subsection{Pong Testing}
 	
@@ -146,22 +141,20 @@
 \section{Automated Testing}	
 
 	\subsection{Launcher Testing}
-	
-	\subsection{Scoreboard Testing}
-		
-	\subsection{Maze Testing}
-		Description of tests: \\
-		
+	    Description of tests: \\ \\
 		Results: \\ \\
 		
-	\subsection{Pong Testing}
-		Description of tests: \\
+	\subsection{Maze Testing}
+		Description of tests: Given that games are difficult to test using automated testing, there are a limited amount of automated tests that were able to be run. These tests are located in the Maze folder under the file name testMaze.py. These tests are used to test for correct object creation and that the functions within the objects work correctly. \\ \\
+		Test Names: AMT1, AMT2, AMT3, AMT4, AMT5
+		Results: These 5 test cases were all executed successfully and passed. This shows that the entity objects used in the maze program work correctly and are providing the correct data.\\ \\
 		
+	\subsection{Pong Testing}
+		Description of tests: \\ \\
 		Results: \\ \\
 		
 	\subsection{Flappy Testing}
-		Description of tests: \\
-		
+		Description of tests: \\ \\
 		Results: \\ \\
 		
 \section{System Tests}
@@ -171,35 +164,109 @@
 \textbf{Test Name} - \\
 \textbf{Initial State} - \\
 \textbf{Input} - \\
-\textbf{Expected Output} - \\
-
-\subsection{Scoreboard Testing}
-
-\textbf{Test Name} - \\
-\textbf{Initial State} - \\
-\textbf{Input} - \\
-\textbf{Expected Output} - \\
+\textbf{Expected Output} - \\ \\ 
 
 \subsection{Maze Testing}
 
-\textbf{Test Name} - \\
-\textbf{Initial State} - \\
-\textbf{Input} - \\
-\textbf{Expected Output} - \\
+\textbf{Test Name} - FR-N-9\\
+\textbf{Initial State} - Main Menu of Maze\\
+\textbf{Input} - Mouse click on the 'How To Play' button\\
+\textbf{Expected Output} - The 'How To Play' screen that shows the instructions of the game.\\ \\
+\textbf{Test Name} - FR-N-12\\
+\textbf{Initial State} - Main Menu of Maze\\
+\textbf{Input} - Mouse click on the 'Home' button\\
+\textbf{Expected Output} - Returns the user back to the Launcher screen\\ \\
+\textbf{Test Name} - FR-MGM-1\\
+\textbf{Initial State} - Main Menu of Maze\\
+\textbf{Input} - Mouse click on the 'Play' button\\
+\textbf{Expected Output} - Brings the user to the 'Difficulty Selection' screen\\ \\
+\textbf{Test Name} - FR-MGM-2\\
+\textbf{Initial State} - Pause Screen / End Screen\\
+\textbf{Input} - Mouse click on the 'Menu' button\\
+\textbf{Expected Output} - Brings the user back to the Main Menu screen of the Maze \\ \\
+\textbf{Test Name} - FR-MGM-3\\
+\textbf{Initial State} - Difficulty Screen of Maze\\
+\textbf{Input} - A difficulty selection via mouse click\\
+\textbf{Expected Output} - A randomly generated maze, with the size defined by the selected difficulty\\ \\ 
+\textbf{Test Name} - FR-MGM-4\\
+\textbf{Initial State} - Playing the Maze\\
+\textbf{Input} - Keyboard input of either 'WASD' or the arrow keys\\
+\textbf{Expected Output} - The player object moves according to the keyboard input\\ \\ 
+\textbf{Test Name} - FR-MGM-5\\
+\textbf{Initial State} - Playing the Maze\\
+\textbf{Input} - Reaches the goal via keyboard input\\
+\textbf{Expected Output} - The victory screen is displayed with the user's current score and the overall high score.\\ \\
+\textbf{Test Name} - FR-MGM-7\\
+\textbf{Initial State} - Victory Screen of Maze\\
+\textbf{Input} - Mouse click on the 'Continue' button\\
+\textbf{Expected Output} - Brings the user back to the main menu screen of Maze\\ \\
+\textbf{Test Name} - AMT1\\
+\textbf{Initial State} - No Cell created\\
+\textbf{Input} - Create a cell\\
+\textbf{Expected Output} - A Cell object is successfully created\\ \\
+\textbf{Test Name} - AMT2\\
+\textbf{Initial State} - Cell created\\
+\textbf{Input} - Cell with id 0 in a 5x5 maze\\
+\textbf{Expected Output} - Cell has walls connecting it to Cell 1 and Cell 6\\ \\
+\textbf{Test Name} - AMT3\\
+\textbf{Initial State} - Cell created\\
+\textbf{Input} - Cell with id 6 in a 5x5 maze\\
+\textbf{Expected Output} - 4 surrounding walls\\ \\
+\textbf{Test Name} - AMT4\\
+\textbf{Initial State} - Cell created\\
+\textbf{Input} - Newly generated Cell\\
+\textbf{Expected Output} - The current cell has not been visited\\ \\
+\textbf{Test Name} - AMT5\\
+\textbf{Initial State} - No Player Created\\
+\textbf{Input} - Create a Player\\ 
+\textbf{Expected Output} - A Player object is successfully created\\ \\
 
 \subsection{Pong Testing}
 
 \textbf{Test Name} - \\
 \textbf{Initial State} - \\
 \textbf{Input} - \\
-\textbf{Expected Output} - \\
+\textbf{Expected Output} - \\ \\ 
 
 \subsection{Flappy Testing}
 
 \textbf{Test Name} - \\
 \textbf{Initial State} - \\
 \textbf{Input} - \\
-\textbf{Expected Output} - \\
+\textbf{Expected Output} - \\ \\ 
+
+\subsection{Usability Testing}
+
+\textbf{Test Name} - NFT-2\\
+\textbf{Initial State} - Program is launched on default settings and is at the launcher screen\\
+\textbf{Input} - User plays game for 5 minutes\\
+\textbf{Expected Output} - Users provide feedback stating the game is visually appealing and the GUI enhances usability.\\ \\ 
+\textbf{Test Name} - NFT-3\\
+\textbf{Initial State} - Program is launched on default settings and is at the launcher screen\\
+\textbf{Input} - User plays the game for 5 minutes\\
+\textbf{Expected Output} - Users will state the the GUI is non-intrusive and does not take away from the usability and game-play.\\ \\ 
+\textbf{Test Name} - NFT-4\\
+\textbf{Initial State} - Program is launcher on default settings and is at the launcher screen\\
+\textbf{Input} - Users play the game for 5 minutes\\
+\textbf{Expected Output} - Users state that the overall product is intuitive and easy to learn with minimal to no instructions.\\ \\ 
+\textbf{Test Name} - NFT-7\\
+\textbf{Initial State} - Mini-Arcade is currently not installed\\
+\textbf{Input} - User will attempt to install and run the program\\
+\textbf{Expected Output} - User will be able to install and run the program with little-to-no difficulty.\\ \\ 
+
+\subsection{Performance and Robustness Testing}
+\textbf{Test Name} - NFT-1\\
+\textbf{Initial State} - Program is launched on default settings and is at the launcher screen \\
+\textbf{Input} - User will play the game for 5 minutes\\
+\textbf{Expected Output} - User will report minimal-to-no frame drops and pygame will display an average of 30 or greater frames per second\\ \\ 
+\textbf{Test Name} - NFT-5\\
+\textbf{Initial State} - Program is launched on default settings\\
+\textbf{Input} - User will be asked to launch one of the available games\\
+\textbf{Expected Output} - The requested actions will take no longer than 30 seconds to complete\\ \\ 
+\textbf{Test Name} - NFT-6\\
+\textbf{Initial State} - Program is launched on default settings and is currently playing one of the available games\\
+\textbf{Input} - User will be asked to provide the program with keyboard input\\
+\textbf{Expected Output} - They will report minimal-to-no input lag and the game will update within a quarter second of the user input.\\ \\ 
 
 \section{Trace to Requirements}	
 
@@ -210,15 +277,14 @@
 \toprule
 \textbf{Test} & \textbf{Req.}\\
 \midrule
-FT-1 & -\\
-FT-2 & -\\
-FT-3 & -\\
-FT-4 & -\\
-FT-5 & -\\
-FT-6 & -\\
-FT-7 & -\\
-FT-8 & -\\
-FT-9 & -\\
+FR-N-9 & FR13\\
+FR-N-12 & FR10\\
+FR-MGM-1 & FR7\\
+FR-MGM-2 & FR13\\
+FR-MGM-3 & FR9\\
+FR-MGM-4 & FR12\\
+FR-MGM-5 & FR8, FR11, FR13\\
+FR-MGM-7 & FR13, FR31, FR3\\
 \bottomrule
 \end{tabular}
 \caption{Trace Between Tests and Functional Requirements}
@@ -234,15 +300,13 @@ FT-9 & -\\
 \toprule
 \textbf{Test} & \textbf{Req.}\\
 \midrule
-NFT-1 & -\\
-NFT-2 & -\\
-NFT-3 & -\\
-NFT-4 & -\\
-NFT-5 & -\\
-NFT-6 & -\\
-NFT-7 & -\\
-NFT-8 & -\\
-NFT-9 & -\\
+NFT-1 & NFR1, NFR8, NFR9, NFR10, NFR11, NFR12\\
+NFT-2 & NFR2, NFR8, NFR9, NFR10, NFR11, NFR12\\
+NFT-3 & NFR3, NFR8, NFR9, NFR10, NFR11, NFR12\\
+NFT-4 & NFR4, NFR8, NFR9, NFR10, NFR11, NFR12\\
+NFT-5 & NFR5, NFR8, NFR9, NFR10, NFR11, NFR12\\
+NFT-6 & NFR6, NFR8, NFR9, NFR10, NFR11, NFR12\\
+NFT-7 & NFR7, NFR8, NFR9, NFR10, NFR11, NFR12\\
 \bottomrule
 \end{tabular}
 \caption{Trace Between Tests and Non-Functional Requirements}
@@ -258,15 +322,11 @@ NFT-9 & -\\
 \toprule
 \textbf{Test} & \textbf{Req.}\\
 \midrule
-AT-1 & -\\
-AT-2 & -\\
-AT-3 & -\\
-AT-4 & -\\
-AT-5 & -\\
-AT-6 & -\\
-AT-7 & -\\
-AT-8 & -\\
-AT-9 & -\\
+AMT1 & FR9\\
+AMT2 & FR9\\
+AMT3 & FR9\\
+AMT4 & FR9\\
+AMT5 & FR11, FR12\\
 \bottomrule
 \end{tabular}
 \caption{Trace Between Automated Tests and Requirements}
