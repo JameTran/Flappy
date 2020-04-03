@@ -6,6 +6,7 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{graphicx}
+\usepackage[normalem]{ulem}
 \usepackage{float}
 \usepackage{hyperref}
 \hypersetup{
@@ -61,7 +62,9 @@
 3/11/2020 & 1.2 & Andrew updated section 1, and sections 2, 3, 5, 6 where Maze modules and changes were relevant.\\
 3/12/2020 & 1.3 & Arshan added Gantt chart and updated sections 2, 3, 5, 6 wherever Pong was relevant.\\
 3/12/2020 & 1.4 & William updated section 2, 3, 5, 6, 7.\\
-3/13/2020 & 2.0 & All completed the final draft.\\
+3/13/2020 & 1.5 & Revision 0\\
+4/1/2020 & 1.6 & William update section 6 \\
+4/3/2020 & 1.7 & Andrew Revision 1 \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -144,7 +147,7 @@ change.
 
 \newpage
 
-\begin{table}[h!]
+\begin{table}[!htbp]
 \centering
 \begin{tabular}{p{0.3\textwidth} p{0.6\textwidth}}
 \toprule
@@ -379,8 +382,7 @@ FR1 & \mref{mLM}\\
 FR2 & \mref{mLM}\\
 FR3 & \mref{mLM}\\
 FR4 & \mref{mLM}, \mref{mSM}\\ 
-FR5 & \mref{mSM}, \mref{mSTM}, \mref{mSTP}\\
-FR6 & \mref{mSM}, \mref{mSTM}, \mref{mSTP}\\
+FR5 & \mref{mSM}, \mref{mSTM}, \mref{mSTP}, \mref{mSTF}\\
 FR7 & \mref{mMSM}\\ 
 FR8 & \mref{mSTM}\\
 FR9 & \mref{mMGM}, \mref{mDGM}\\
@@ -388,14 +390,13 @@ FR10 & \mref{mMSM}\\
 FR11 & \mref{mSM}, \mref{mSTM}, \mref{mDGM}\\
 FR12 & \mref{mPMM}, \mref{mDGM}\\
 FR13 & \mref{mMSM}, \mref{mMGM}, \mref{mDGM}\\
-FR14 & \mref{mMSM}\\ 
+\sout{FR14} & \sout{\mref{mMSM}}\\ 
 FR15 & \mref{mMSF}\\
 FR16 & \mref{mPMF}\\
 FR17 & \mref{mMGF} \\
 FR18 & \mref{mMGF}\\
 FR19 & \mref{mSTF}\\
 FR20 & \mref{mMSF}\\
-FR21 & \mref{mSM} \\
 FR22 & \mref{mMSF}\\
 FR23 & \mref{mMSF}\\
 FR24 & \mref{mMSP}\\ 
@@ -405,6 +406,7 @@ FR27 & \mref{mMSP}\\
 FR28 & \mref{mBTP}, \mref{mSTP}, \mref{mDGP}\\
 FR29 & \mref{mDGP}, \mref{mMSP}\\
 FR30 & \mref{mMSP}\\
+\textcolor{red}{FR31} & \textcolor{red}{\mref{mMSM} \mref{mMSP} \mref{mMSF}}\\
 \bottomrule
 \end{tabular}
 \caption{Trace Between Functional Requirements and Modules}
