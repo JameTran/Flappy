@@ -2,6 +2,7 @@
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{tabularx}
+\usepackage[normalem]{ulem}
 \usepackage{hyperref}
 \hypersetup{
     colorlinks,
@@ -43,7 +44,7 @@
 2/27/2020 & 1.2 & Andrew revised sections 1 and 5 for grammatical errors\\
 2/27/2020 & 1.3 & William completed section 3.1\\
 2/27/2020 & 1.4 & Jame completed section 3.2 and section 4\\
-2/28/2020 & 2.0 & All completed the final draft\\
+2/28/2020 & 1.5 & Revision 0\\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -175,60 +176,53 @@ How test will be performed: The application will be opened and the user will man
 \item{FR-N-7\\}
 Type: FDM\\
 Initial State: Leaderboard Screen\\
-Input: User clicks on Flappy\\
-Output: The leaderboard screen will display the leaderboard for Flappy.\\
+Input: User clicks on Pong\\
+Output: The leaderboard screen will display the leaderboard for Pong.\\
 How test will be performed: The application will be opened and the user will manually provide inputs to the software and observes for the output of the software on the screen.\\
 
 \item{FR-N-8\\}
 Type: FDM\\
-Initial State: Maze - Menu Screen\\
-Input: User clicks on Help\\
-Output: The screen will display the instructions for how to play the mini-game.\\
+Initial State: Leaderboard Screen\\
+Input: User clicks on Flappy\\
+Output: The leaderboard screen will display the leaderboard for Flappy.\\
 How test will be performed: The application will be opened and the user will manually provide inputs to the software and observes for the output of the software on the screen.\\
 
 \item{FR-N-9\\}
 Type: FDM\\
-Initial State: Flappy - Menu Screen\\
+Initial State: Maze - Menu Screen\\
 Input: User clicks on Help\\
 Output: The screen will display the instructions for how to play the mini-game.\\
 How test will be performed: The application will be opened and the user will manually provide inputs to the software and observes for the output of the software on the screen.\\
 
 \item{FR-N-10\\}
 Type: FDM\\
-Initial State: Pong - Menu Screen\\
+Initial State: Flappy - Menu Screen\\
 Input: User clicks on Help\\
 Output: The screen will display the instructions for how to play the mini-game.\\
 How test will be performed: The application will be opened and the user will manually provide inputs to the software and observes for the output of the software on the screen.\\
 
 \item{FR-N-11\\}
 Type: FDM\\
-Initial State: Maze - Menu Screen\\
-Input: User clicks on Leaderboard\\
-Output: The leaderboard of the mini-game opens and is displayed on the screen.\\
+Initial State: Pong - Menu Screen\\
+Input: User clicks on Help\\
+Output: The screen will display the instructions for how to play the mini-game.\\
 How test will be performed: The application will be opened and the user will manually provide inputs to the software and observes for the output of the software on the screen.\\
 
 \item{FR-N-12\\}
 Type: FDM\\
-Initial State: Flappy - Menu Screen\\
-Input: User clicks on Leaderboard\\
-Output: The leaderboard of the mini-game opens and is displayed on the screen.\\
+Initial State: Maze - Menu Screen\\
+Input: User clicks on \sout{Back} \textcolor{red}{Home}\\
+Output: The Main Screen opens and is displayed on the screen.\\
 How test will be performed: The application will be opened and the user will manually provide inputs to the software and observes for the output of the software on the screen.\\
 
 \item{FR-N-13\\}
 Type: FDM\\
-Initial State: Maze - Menu Screen\\
+Initial State: Flappy - Menu Screen\\
 Input: User clicks on Back\\
 Output: The Main Screen opens and is displayed on the screen.\\
 How test will be performed: The application will be opened and the user will manually provide inputs to the software and observes for the output of the software on the screen.\\
 
 \item{FR-N-14\\}
-Type: FDM\\
-Initial State: Flappy - Menu Screen\\
-Input: User clicks on Back\\
-Output: The Main Screen opens and is displayed on the screen.\\
-How test will be performed: The application will be opened and the user will manually provide inputs to the software and observes for the output of the software on the screen.\\
-
-\item{FR-N-15\\}
 Type: FDM\\
 Initial State: Pong - Menu Screen\\
 Input: User clicks on Back\\
@@ -381,7 +375,7 @@ How test will be performed: The application will be opened and the user will man
 
 \item{FR-MGF-6\\}
 Type: FDM\\
-Initial State: Flappy - Game Screen (Both single and multiplayer)\\
+Initial State: Pong - Game Screen (Both single and multiplayer)\\
 Input: User control the paddle to hit the ball until either side reaches the max score\\
 Output: The score between the two players will be displayed on the end game screen.\\
 How test will be performed: The application will be opened and the user will manually provide inputs to the software and observes for the output of the software on the screen.\\
@@ -518,20 +512,8 @@ How test will be performed: Either a group of users will be asked to perform the
 \paragraph{Since many of the above tests for non-functional requirements also cover issues in the Proof of Concept, these tests will focus on testing external modules}
 
 \begin{enumerate}
-
+					
 \item{PC-1\\}
-
-Type: FDM
-					
-Initial State: A computer with Python 3 installed, the source code for the projects, and the pyinstaller module installed.
-					
-Input: The user will create an executable of the source files using pyinstaller.
-					
-Output: A working executable file will be created.
-					
-How test will be performed: A sample python file will be used for testing. The user will create an executable using pyinstaller, and run the executable. Success will be counted if the executable program can display game functionality. This test will be repeated across multiple computers.
-					
-\item{test-id2\\}
 
 Type: FDM
 					
