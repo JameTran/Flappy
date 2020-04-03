@@ -54,7 +54,8 @@
 \toprule {\bf Date} & {\bf Version} & {\bf Notes} \\
 \midrule
 4/2/2020 & 1.0 & Andrew - Formatted Document \& Section 1 \& Section 8\\
-4/3/2020 & 1.1 & Andrew - Section 2, 3, 4, 5, 6, \& 7 \\ 
+4/3/2020 & 1.1 & Andrew - Section 2, 3, 4, 5, 6, \& 7 \\
+4/3/2020 & 1.2 & William - Section 1-7 \\ 
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -66,8 +67,24 @@
 \textbf{Description of Tests}: These tests are used to demonstrate that the requirements of the product are fulfilled based upon the functional requirements from the Software Requirements Specification. These tests will demonstrate basic functionality of the game and its correctness. \\
 	
 \subsection{Launcher Functional Tests}
-	Test Name: \\
-	Results: \\ \\
+	Test Name: FR-N-1\\
+	Results: The user is able to open up scoreboard.\\ \\
+	Test Name: FR-N-2\\
+	Results: The user is able to open up Maze.\\ \\
+	Test Name: FR-N-3\\
+	Results: The user is able to open up Flappy.\\ \\
+	Test Name: FR-N-4\\
+	Results: The user is able to open up Pong.\\ \\
+	Test Name: FR-N-5\\
+	Results: The user is able close the application.\\ \\
+
+\subsection{Scoreboard Functional Tests}
+    Test Name: FR-N-6\\
+	Results: The user is able to open up scoreboard for Maze.\\ \\
+	Test Name: FR-N-7\\
+	Results: The user is able to open up scoreboard for Pong.\\ \\
+	Test Name: FR-N-8\\
+	Results: The user is able to open up scoreboard for Flappy.\\ \\
 	
 \subsection{Maze Functional Tests}
 	Test Name: FR-N-9 \\
@@ -130,6 +147,10 @@
 \section{Changes Due to Testing}
 
 	\subsection{Launcher Testing}
+	During development, many non-formal tests were run to ensure the correctness of the implementation. But after completing the development, there were no changes made due to the result from the tests defined in this document.
+	
+	\subsection{Scoreboard Testing}
+	During development, many non-formal tests were run to ensure the correctness of the implementation. But after completing the development, there were no changes made due to the result from the tests defined in this document.
 
 	\subsection{Maze Testing}
 	Through code development, many non-formal test methods were run to ensure correctness. However, once the program was completed, there were no changes made due to the formal testing methods and cases defined in this document.
@@ -141,8 +162,10 @@
 \section{Automated Testing}	
 
 	\subsection{Launcher Testing}
-	    Description of tests: \\ \\
-		Results: \\ \\
+	    All tests for Launcher is done manually because they are GUI related.
+	    
+	\subsection{Scoreboard Testing}
+	    All tests for Scoreboard is done manually because they are GUI or file IO related.
 		
 	\subsection{Maze Testing}
 		Description of tests: Given that games are difficult to test using automated testing, there are a limited amount of automated tests that were able to be run. These tests are located in the Maze folder under the file name testMaze.py. These tests are used to test for correct object creation and that the functions within the objects work correctly. \\ \\
@@ -161,10 +184,41 @@
 
 \subsection{Launcher Testing}
 
-\textbf{Test Name} - \\
-\textbf{Initial State} - \\
-\textbf{Input} - \\
-\textbf{Expected Output} - \\ \\ 
+\textbf{Test Name} - FR-N-1\\
+\textbf{Initial State} - Main Screen\\
+\textbf{Input} - User clicks on Scoreboard\\
+\textbf{Expected Output} - Scoreboard opens and is displayed on the screen.\\ \\
+\textbf{Test Name} - FR-N-2\\
+\textbf{Initial State} - Main Screen\\
+\textbf{Input} - User clicks on Maze\\
+\textbf{Expected Output} - The mini-game Maze opens and is displayed on the screen.\\ \\
+\textbf{Test Name} - FR-N-3\\
+\textbf{Initial State} - Main Screen\\
+\textbf{Input} - User clicks on Flappy\\
+\textbf{Expected Output} - The mini-game Flappy opens and is displayed on the screen.\\ \\
+\textbf{Test Name} - FR-N-4\\
+\textbf{Initial State} - Main Screen\\
+\textbf{Input} - User clicks on Pong\\
+\textbf{Expected Output} - The mini-game Pong opens and is displayed on the screen.\\ \\
+\textbf{Test Name} - FR-N-5\\
+\textbf{Initial State} - Main Screen\\
+\textbf{Input} - User clicks on close button\\
+\textbf{Expected Output} - The software will be terminated.\\ \\
+
+\subsection{Scoreboard Testing}
+
+\textbf{Test Name} - FR-N-6\\
+\textbf{Initial State} - Scoreboard Screen\\
+\textbf{Input} - User clicks on Maze\\
+\textbf{Expected Output} - The scoreboard screen will display the scoreboard for Maze.\\ \\
+\textbf{Test Name} - FR-N-7\\
+\textbf{Initial State} - Scoreboard Screen\\
+\textbf{Input} - User clicks on Pong\\
+\textbf{Expected Output} - The scoreboard screen will display the scoreboard for Pong.\\ \\
+\textbf{Test Name} - FR-N-8\\
+\textbf{Initial State} - Scoreboard Screen\\
+\textbf{Input} - User clicks on Flappy\\
+\textbf{Expected Output} - The scoreboard screen will display the scoreboard for Flappy.\\ \\
 
 \subsection{Maze Testing}
 
@@ -277,6 +331,14 @@
 \toprule
 \textbf{Test} & \textbf{Req.}\\
 \midrule
+FR-N-1 & FR4\\
+FR-N-2 & FR1, FR2\\
+FR-N-3 & FR1, FR2\\
+FR-N-4 & FR1, FR2\\
+FR-N-5 & FR3\\
+FR-N-6 & FR5\\
+FR-N-7 & FR5\\
+FR-N-8 & FR5\\
 FR-N-9 & FR13\\
 FR-N-12 & FR10\\
 FR-MGM-1 & FR7\\
@@ -344,15 +406,22 @@ AMT5 & FR11, FR12\\
 \toprule
 \textbf{Test} & \textbf{Modules}\\
 \midrule
-FT-1 & -\\
-FT-2 & -\\
-FT-3 & -\\
-FT-4 & -\\
-FT-5 & -\\
-FT-6 & -\\
-FT-7 & -\\
-FT-8 & -\\
-FT-9 & -\\
+FR-N-1 & M2, M3\\
+FR-N-2 & M2\\
+FR-N-3 & M2\\
+FR-N-4 & M2\\
+FR-N-5 & M2\\
+FR-N-6 & M3\\
+FR-N-7 & M3\\
+FR-N-8 & M3\\
+FR-N-9 & M8\\
+FR-N-12 & M2, M8\\
+FR-MGM-1 & M8\\
+FR-MGM-2 & M4, M6, M8\\
+FR-MGM-3 & M4, M5, M6, M8\\
+FR-MGM-4 & M6, M7\\
+FR-MGM-5 & M5, M7, M8\\
+FR-MGM-7 & M6, M8\\
 \bottomrule
 \end{tabular}
 \caption{Trace Between Functional Tests and Modules}
@@ -368,15 +437,12 @@ FT-9 & -\\
 \toprule
 \textbf{Test} & \textbf{Modules}\\
 \midrule
-NFT-1 & -\\
-NFT-2 & -\\
-NFT-3 & -\\
-NFT-4 & -\\
-NFT-5 & -\\
-NFT-6 & -\\
-NFT-7 & -\\
-NFT-8 & -\\
-NFT-9 & -\\
+NFT-1 & M4, M5, M6, M7, M8\\
+NFT-2 & M4, M5, M6, M7, M8\\
+NFT-3 & M4, M5, M6, M7, M8\\
+NFT-5 & M4, M5, M6, M7, M8\\
+NFT-6 & M4, M5, M6, M7, M8\\
+NFT-7 & M4, M5, M6, M7, M8\\
 \bottomrule
 \end{tabular}
 \caption{Trace Between Non-Functional Tests and Modules}
@@ -392,15 +458,11 @@ NFT-9 & -\\
 \toprule
 \textbf{Test} & \textbf{Modules}\\
 \midrule
-AT-1 & -\\
-AT-2 & -\\
-AT-3 & -\\
-AT-4 & -\\
-AT-5 & -\\
-AT-6 & -\\
-AT-7 & -\\
-AT-8 & -\\
-AT-9 & -\\
+AMT1 & M4, M6\\
+AMT2 & M4, M6\\
+AMT3 & M4, M6\\
+AMT4 & M4, M6\\
+AMT5 & M7\\
 \bottomrule
 \end{tabular}
 \caption{Trace Between Automated Tests and Modules}
