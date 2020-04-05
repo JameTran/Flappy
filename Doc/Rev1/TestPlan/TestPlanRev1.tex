@@ -232,8 +232,8 @@ How test will be performed: The application will be opened and the user will man
 \item{FR-N-14\\}
 Type: FDM\\
 Initial State: Pong - Menu Screen\\
-Input: User clicks on Back\\
-Output: The Main Screen opens and is displayed on the screen.\\
+Input: User clicks on Quit Game\\
+Output: The Launcher Screen opens and is displayed on the screen.\\
 How test will be performed: The application will be opened and the user will manually provide inputs to the software and observes for the output of the software on the screen.\\
 
 \end{enumerate}
@@ -359,7 +359,7 @@ Input: User clicks on 'Begin'\\
 Output: The game will start, taking no longer than 10 seconds to begin.\\
 How test will be performed: The application will be opened and the user will manually provide inputs to the software and observes for the output of the software on the screen.\\
 
-\item{FR-MGF-3\\}
+\item{FR-MGP-3\\}
 \sout{Type: FDM\\
 Initial State: Pong - Game Screen\\
 Input: User inputs an integer between 1 to 10.\\
@@ -380,7 +380,7 @@ Input: User controls the paddle to hit the ball until the ball reaches the bound
 Output: The score of the scoring side will be increased by 1 and the change will be displayed on the game screen.\\
 How test will be performed: The application will be opened and the user will manually provide inputs to the software and observes for the output of the software on the screen. \textcolor{red}{Once for the user to score and once for the AI to score}.\\
 
-\item{FR-MGF-6\\}
+\item{FR-MGP-6\\}
 Type: FDM\\
 Initial State: Pong - Game Screen\\
 Input: User control the paddle to hit the ball until either side reaches the max score\\
@@ -401,26 +401,33 @@ Input: User clicks on Quit Game\\
 Output: The Launcher opens and is displayed on the screen.\\
 How test will be performed: While on the End Game Screen, the user clicks on the Quit Game button.\\
 
-\item{FR-MGF-9\\}
+\item{FR-MGP-9\\}
 \textcolor{red}{Type: FDM\\
 Initial State: Pong - Game Screen\\
 Input: The user pauses the game\\
 Output: This will display the Pause Game Screen.\\
 How test will be performed: While the game is running, the user presses the key to pause the game.}\\
 
-\item{FR-MGF-10\\}
+\item{FR-MGP-10\\}
 \textcolor{red}{Type: FDM\\
 Initial State: Pong - Pause Game Screen\\
 Input: The user chooses to resume the current game\\
 Output: This will redisplay the Game Screen at the same point where the Pause Game Screen was invoked.\\
 How test will be performed: While on the Pause Game Screen, the user clicks on the Resume Game button.}\\
 
-\item{FR-MGF-11\\}
+\item{FR-MGP-11\\}
 \textcolor{red}{Type: FDM\\
 Initial State: Pong - Pause Game Screen\\
 Input: The user chooses to start a new game\\
 Output: This will take the user back to the Main Menu Screen.\\
 How test will be performed: While on the Pause Game Screen, the user clicks on the New Game button.}\\
+
+\item{FR-MGP-12\\}
+\textcolor{red}{Type: FDM\\
+Initial State: Pong - Pause Game Screen\\
+Input: The user chooses to return to the Launcher\\
+Output: This will take the user back to the Launcher Screen.\\
+How test will be performed: While on the Pause Game Screen, the user clicks on the Quit Game button.}\\
     
 \end{enumerate}
 
