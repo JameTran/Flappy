@@ -56,6 +56,7 @@
 4/2/2020 & 1.0 & Andrew - Formatted Document \& Section 1 \& Section 8\\
 4/3/2020 & 1.1 & Andrew - Section 2, 3, 4, 5, 6, \& 7 \\
 4/3/2020 & 1.2 & William - Section 1-7 \\ 
+4/5/2020 & 1.3 & Arshan - Pong related sections\\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -76,7 +77,7 @@
 	Test Name: FR-N-4\\
 	Results: The user is able to open up Pong.\\ \\
 	Test Name: FR-N-5\\
-	Results: The user is able close the application.\\ \\
+	Results: The user is able close the application.\\
 
 \subsection{Scoreboard Functional Tests}
     Test Name: FR-N-6\\
@@ -84,7 +85,7 @@
 	Test Name: FR-N-7\\
 	Results: The user is able to open up scoreboard for Pong.\\ \\
 	Test Name: FR-N-8\\
-	Results: The user is able to open up scoreboard for Flappy.\\ \\
+	Results: The user is able to open up scoreboard for Flappy.\\
 	
 \subsection{Maze Functional Tests}
 	Test Name: FR-N-9 \\
@@ -102,15 +103,37 @@
 	Test Name: FR-MGM-5 \\
 	Results: The user is able to view the Victory screen \\ \\
 	Test Name: FR-MGM-7 \\ 
-	Results: The user is able to return to the Main Menu screen\\ \\
+	Results: The user is able to return to the Main Menu screen\\
 	
 \subsection{Pong Functional Tests}
-	Test Name: \\
-	Results: \\ \\
+	Test Name: FR-N-14 \\
+	Results: The user is able to return to the launcher \\ \\
+	Test Name: FR-MGP-1 \\
+	Results: The user is able to select different difficulty levels and maximum scores (visual feedback) \\ \\
+	Test Name: FR-MGP-2 \\
+	Results: The main menu transitions to the game without error \\ \\
+	Test Name: FR-MGP-4 \\
+	Results: The user is able to move the player's paddle up and down\\ \\
+	Test Name: FR-MGP-5 \\
+	Results: The user is able to gain a point by scoring on the AI, or vice versa \\ \\ 
+	Test Name: FR-MGP-6 \\ 
+	Results: The game screen transitions to the end game screen without error \\ \\
+	Test Name: FR-MGP-7 \\
+	Results: The user is able to return to the main menu from the end game screen \\ \\
+	Test Name: FR-MGP-8 \\ 
+	Results: The user is able to return to the Launcher from the end game screen\\ \\
+	Test Name: FR-MGP-9 \\
+	Results: The user is able to suspend gameplay by pausing the game \\ \\
+	Test Name: FR-MGP-10 \\
+	Results: The user is able to unsuspend the gameplay and resume playing \\ \\
+	Test Name: FR-MGP-11 \\
+	Results: The user is able to return to the main menu screen from the pause screen \\ \\
+	Test Name: FR-MGP-12 \\
+	Results: The user is able to return to the Launcher screen from the pause screen \\
 	
 \subsection{Flappy Functional Tests}
 	Test Name: \\
-	Results: \\ \\
+	Results: \\
 	
 \section{Nonfunctional Qualities Evaluation} 
 
@@ -121,17 +144,17 @@
 	Test Name: NFT-2\\
 	Results: From people outside of the development team, they stated that the GUI was visually appealing and easy to navigate through looks.\\ \\
 	Test Name: NFT-3\\
-	Results: Sample users stated that the GUI was non-intrusive and didn't inhibit their experience during gameplay. \\ \\
+	Results: Sample users stated that the GUI was non-intrusive and didn't inhibit their experience during gameplay. \\
 	
 	\subsubsection{Game-play Testing}
 	Description of Tests: Users are to play the game with no prior explanation or instructions, and will be judged on how they handle the games and are able to navigate through them. \\ \\
 	Test Name: NFT-4 \\ 
-	Results: Sample users who had no instructions given to them were able to successfully play and complete the games with ease. \\ \\
+	Results: Sample users who had no instructions given to them were able to successfully play and complete the games with ease. \\
 	
 	\subsubsection{Running the Product}
 	Description of Tests: These tests will focus on being able to run the product with it not previously installed on the computer.\\ \\
 	Test Name: NFT-7 \\
-	Results: The game is able to be easily installed and run with little to no instructions. \\ \\
+	Results: The game is able to be easily installed and run with little to no instructions. \\
 
 	\subsection{Performance and Robustness}
 	
@@ -156,6 +179,7 @@
 	Through code development, many non-formal test methods were run to ensure correctness. However, once the program was completed, there were no changes made due to the formal testing methods and cases defined in this document.
 	
 	\subsection{Pong Testing}
+	Throughout code development, many non-formal test methods were run to ensure continuity with the requirements. However, once the program was completed, there were no major changes made due to the formal testing methods and cases defined in this document.
 	
 	\subsection{Flappy Testing}
 
@@ -170,15 +194,15 @@
 	\subsection{Maze Testing}
 		Description of tests: Given that games are difficult to test using automated testing, there are a limited amount of automated tests that were able to be run. These tests are located in the Maze folder under the file name testMaze.py. These tests are used to test for correct object creation and that the functions within the objects work correctly. \\ \\
 		Test Names: AMT1, AMT2, AMT3, AMT4, AMT5
-		Results: These 5 test cases were all executed successfully and passed. This shows that the entity objects used in the maze program work correctly and are providing the correct data.\\ \\
+		Results: These 5 test cases were all executed successfully and passed. This shows that the entity objects used in the maze program work correctly and are providing the correct data.\\ 
 		
 	\subsection{Pong Testing}
-		Description of tests: \\ \\
-		Results: \\ \\
+		Description of tests: Since automated testing is limited for game applications, the automated tests were limited to checking instantiation and calculation functions. The functions affecting visual aspects are better for manual testing\\ \\
+		Results: In the pong folder, the file testPong.py contains the test cases for all the Pong modules. These tests will be called ATP1, ATP2, ATP3, ATP4, ATP5, ATP6, ATP7, ATP8, ATP9, ATP10. All of these tests passed successfully which shows that all objects are instantiated and calculations are implemented correctly. \\ 
 		
 	\subsection{Flappy Testing}
 		Description of tests: \\ \\
-		Results: \\ \\
+		Results: \\ 
 		
 \section{System Tests}
 
@@ -203,7 +227,7 @@
 \textbf{Test Name} - FR-N-5\\
 \textbf{Initial State} - Main Screen\\
 \textbf{Input} - User clicks on close button\\
-\textbf{Expected Output} - The software will be terminated.\\ \\
+\textbf{Expected Output} - The software will be terminated. \\
 
 \subsection{Scoreboard Testing}
 
@@ -218,7 +242,7 @@
 \textbf{Test Name} - FR-N-8\\
 \textbf{Initial State} - Scoreboard Screen\\
 \textbf{Input} - User clicks on Flappy\\
-\textbf{Expected Output} - The scoreboard screen will display the scoreboard for Flappy.\\ \\
+\textbf{Expected Output} - The scoreboard screen will display the scoreboard for Flappy.\\
 
 \subsection{Maze Testing}
 
@@ -273,14 +297,99 @@
 \textbf{Test Name} - AMT5\\
 \textbf{Initial State} - No Player Created\\
 \textbf{Input} - Create a Player\\ 
-\textbf{Expected Output} - A Player object is successfully created\\ \\
+\textbf{Expected Output} - A Player object is successfully created\\ 
 
 \subsection{Pong Testing}
 
-\textbf{Test Name} - \\
-\textbf{Initial State} - \\
-\textbf{Input} - \\
-\textbf{Expected Output} - \\ \\ 
+\textbf{Test Name} - FR-N-14\\
+\textbf{Initial State} - Return to the Launcher\\
+\textbf{Input} - Mouse click on the Quit Game button on the Main Menu\\
+\textbf{Expected Output} - Display the Launcher screen\\ \\
+\textbf{Test Name} - FR-MGP-1\\
+\textbf{Initial State} - Pong Main Menu screen\\
+\textbf{Input} - Mouse click on the Difficulty and Maximum Score buttons\\
+\textbf{Expected Output} - Visual indication of selected difficulty and maximum score on the screen\\ \\
+\textbf{Test Name} - FR-MGP-2\\
+\textbf{Initial State} - Pong Main Menu screen\\
+\textbf{Input} - Mouse click on the 'Begin' button\\
+\textbf{Expected Output} - Transition to the Game screen and the game begins\\ \\
+\textbf{Test Name} - FR-MGP-4\\
+\textbf{Initial State} - Pong Game screen\\
+\textbf{Input} - Keyboard input: up or down arrow key\\
+\textbf{Expected Output} - The paddle moves up or down with respect to the button pressed\\ \\
+\textbf{Test Name} - FR-MGP-5\\
+\textbf{Initial State} - Pong Game screen\\
+\textbf{Input} - Keyboard input: up or down arrow key enough times such that the ball passes the AI's or the player's paddle\\
+\textbf{Expected Output} - An increase in the AI's or the player's score by one\\ \\
+\textbf{Test Name} - FR-MGP-6\\
+\textbf{Initial State} - Pong Game screen\\
+\textbf{Input} - The user or AI scores a point so that their total score is equal to the predefined maximum score\\
+\textbf{Expected Output} - Transition from the Game screen to the End Game screen\\ \\
+\textbf{Test Name} - FR-MGP-7\\
+\textbf{Initial State} - Pong End Game screen\\
+\textbf{Input} - Mouse click on the 'New Game' button on the End Game screen\\
+\textbf{Expected Output} - Transition to the Main Menu screen\\ \\
+\textbf{Test Name} - FR-MGP-8\\
+\textbf{Initial State} - Pong End Game screen\\
+\textbf{Input} - Mouse click on the 'Quit Game' button on the End Game screen\\
+\textbf{Expected Output} - Transition to the Launcher screen\\ \\
+\textbf{Test Name} - FR-MGP-9\\
+\textbf{Initial State} - Pong Game screen\\
+\textbf{Input} - Keyboard input: 'ESC' key\\
+\textbf{Expected Output} - Suspend gameplay and transition to the Game Pause screen\\ \\
+\textbf{Test Name} - FR-MGP-10\\
+\textbf{Initial State} - Pong Game Pause screen\\
+\textbf{Input} - Mouse click on 'Resume' button or Keyboard input: 'ESC' key\\
+\textbf{Expected Output} - Unsuspend gameplay and transition back to Game screen\\ \\
+\textbf{Test Name} - FR-MGP-11\\
+\textbf{Initial State} - Pong Game Pause screen\\
+\textbf{Input} - Mouse click on 'New Game' button\\
+\textbf{Expected Output} - Transition to the Main Menu screen form the Game Pause screen\\ \\
+\textbf{Test Name} - FR-MGP-12\\
+\textbf{Initial State} - Pong Game Pause Screen\\
+\textbf{Input} - Mouse click on the 'Quit Game' button\\
+\textbf{Expected Output} - Transition to the Launcher screen form the Game Pause screen\\ \\
+\textbf{Test Name} - ATP1\\
+\textbf{Initial State} - No Paddles created\\
+\textbf{Input} - Create two paddles of arbitrary size and location\\
+\textbf{Expected Output} - Two instantiated Paddle objects\\ \\
+\textbf{Test Name} - ATP2\\
+\textbf{Initial State} - Existing Paddle\\
+\textbf{Input} - Check attributes of a paddle: coordinates, size, color, etc\\
+\textbf{Expected Output} - All attributes are at their expected location\\ \\
+\textbf{Test Name} - ATP3\\
+\textbf{Initial State} - Existing Paddle\\
+\textbf{Input} - Draw paddle to screen\\
+\textbf{Expected Output} - Object still exists and no error message is shown\\ \\
+\textbf{Test Name} - ATP4\\
+\textbf{Initial State} - No existing Ball\\
+\textbf{Input} - Create a Ball object\\
+\textbf{Expected Output} - Ball object is instantiated\\ \\
+\textbf{Test Name} - ATP5\\
+\textbf{Initial State} - Existing Ball\\
+\textbf{Input} - Check attributes of a ball: coordinates, color, size, and location\\
+\textbf{Expected Output} - All attributes are at their expected values\\ \\
+\textbf{Test Name} - ATP6\\
+\textbf{Initial State} - Existing Ball\\
+\textbf{Input} - Draw ball to screen\\
+\textbf{Expected Output} - Object still exists and no error message is shown\\ \\
+\textbf{Test Name} - ATP7\\
+\textbf{Initial State} - None\\
+\textbf{Input} - Enter a new difficulty\\
+\textbf{Expected Output} - The new difficulty is equivalent to the desired value\\ \\
+\textbf{Test Name} - ATP8\\
+\textbf{Initial State} - None\\
+\textbf{Input} - Enter a new maximum score\\
+\textbf{Expected Output} - The new maximum score is equivalent to the desired value\\ \\
+\textbf{Test Name} - ATP9\\
+\textbf{Initial State} - None\\
+\textbf{Input} - Display text to the screen\\
+\textbf{Expected Output} - Text is shown on the screen, somewhat briefly\\ \\
+\textbf{Test Name} - ATP10\\
+\textbf{Initial State} - None\\
+\textbf{Input} - Three arbitrary values for the playerScore, aiScore, and maxScore into the calculateScore function\\
+\textbf{Expected Output} - Actual final score matches our expected final score\\ \\
+
 
 \subsection{Flappy Testing}
 
@@ -341,12 +450,24 @@ FR-N-7 & FR5\\
 FR-N-8 & FR5\\
 FR-N-9 & FR13\\
 FR-N-12 & FR10\\
+FR-N-14 & FR30\\
 FR-MGM-1 & FR7\\
 FR-MGM-2 & FR13\\
 FR-MGM-3 & FR9\\
 FR-MGM-4 & FR12\\
 FR-MGM-5 & FR8, FR11, FR13\\
 FR-MGM-7 & FR13, FR31, FR3\\
+FR-MGP-1 & FP1, FP2\\
+FR-MGP-2 & FR25\\
+FR-MGP-4 & FR25\\
+FR-MGP-5 & FR26\\
+FR-MGP-6 & FR28\\
+FR-MGP-7 & FR29\\
+FR-MGP-8 & FR30\\
+FR-MGP-9 & FP3\\
+FR-MGP-10 & FP3\\
+FR-MGP-11 & FR30\\
+FR-MGP-12 & FR30\\
 \bottomrule
 \end{tabular}
 \caption{Trace Between Tests and Functional Requirements}
@@ -389,6 +510,16 @@ AMT2 & FR9\\
 AMT3 & FR9\\
 AMT4 & FR9\\
 AMT5 & FR11, FR12\\
+ATP1 & FR25\\
+ATP2 & FR25\\
+ATP3 & FR25\\
+ATP4 & FR26, FR28\\
+ATP5 & FR26, FR28\\
+ATP6 & FR26, FR28\\
+ATP7 & FP1\\
+ATP8 & FP2\\
+ATP9 & FP1, FP2, FR29, FR30\\
+ATP10 & FR28\\
 \bottomrule
 \end{tabular}
 \caption{Trace Between Automated Tests and Requirements}
@@ -416,12 +547,24 @@ FR-N-7 & M3\\
 FR-N-8 & M3\\
 FR-N-9 & M8\\
 FR-N-12 & M2, M8\\
+FR-N-14 & M13\\
 FR-MGM-1 & M8\\
 FR-MGM-2 & M4, M6, M8\\
 FR-MGM-3 & M4, M5, M6, M8\\
 FR-MGM-4 & M6, M7\\
 FR-MGM-5 & M5, M7, M8\\
 FR-MGM-7 & M6, M8\\
+FR-MGP-1 & M13\\
+FR-MGP-2 & M13\\
+FR-MGP-4 & M11, M12\\
+FR-MGP-5 & M9, M10, M11, M12\\
+FR-MGP-6 & M9, M10, M11, M12\\
+FR-MGP-7 & M11, M13\\
+FR-MGP-8 & M13\\
+FR-MGP-9 & M11, M13\\
+FR-MGP-10 & M11, M13\\
+FR-MGP-11 & M13\\
+FR-MGP-12 & M13\\
 \bottomrule
 \end{tabular}
 \caption{Trace Between Functional Tests and Modules}
@@ -437,12 +580,12 @@ FR-MGM-7 & M6, M8\\
 \toprule
 \textbf{Test} & \textbf{Modules}\\
 \midrule
-NFT-1 & M4, M5, M6, M7, M8\\
-NFT-2 & M4, M5, M6, M7, M8\\
-NFT-3 & M4, M5, M6, M7, M8\\
-NFT-5 & M4, M5, M6, M7, M8\\
-NFT-6 & M4, M5, M6, M7, M8\\
-NFT-7 & M4, M5, M6, M7, M8\\
+NFT-1 & M4 - M13\\
+NFT-2 & M4 - M13\\
+NFT-3 & M4 - M13\\
+NFT-5 & M4 - M13\\
+NFT-6 & M4 - M13\\
+NFT-7 & M4 - M13\\
 \bottomrule
 \end{tabular}
 \caption{Trace Between Non-Functional Tests and Modules}
@@ -463,6 +606,16 @@ AMT2 & M4, M6\\
 AMT3 & M4, M6\\
 AMT4 & M4, M6\\
 AMT5 & M7\\
+ATP1 & M12 \\
+ATP2 & M12 \\
+ATP3 & M11, M12 \\
+ATP4 & M9 \\
+ATP5 & M9, M10 \\
+ATP6 & M9, M11 \\
+ATP7 & M9, M11, M13 \\
+ATP8 & M9, M11, M13 \\
+ATP9 & M11, M13 \\
+ATP10 & M10, M13 \\
 \bottomrule
 \end{tabular}
 \caption{Trace Between Automated Tests and Modules}
