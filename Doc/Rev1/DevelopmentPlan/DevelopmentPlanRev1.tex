@@ -1,10 +1,14 @@
-\documentclass{article}
+\documentclass[12pt, titlepage]{article}
 
+\usepackage{fullpage}
+\usepackage[round]{natbib}
+\usepackage{multirow}
 \usepackage{booktabs}
 \usepackage{tabularx}
-\usepackage{hyperref}
-\usepackage{float}
 \usepackage{graphicx}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage[normalem]{ulem}
 \hypersetup{
     colorlinks,
     citecolor=black,
@@ -42,6 +46,7 @@
 1/31/2020 & Arshan Khan & Section 5, 8, 9 \\
 1/31/2020 & Jame Tran & Section 5, 6 \\
 4/2/2020 & Andrew Hum & Revision 1\\
+4/4/2020 & Arshan Khan & Revision 1\\
 
 \bottomrule
 \end{tabularx}
@@ -82,7 +87,7 @@ The most significant risk for our game refresh and launcher creation will be tha
 Also, we may find testing to be in the middle between manageable and complicated. On one hand, running pytest for some unit tests will be simple but on the other, usability tests, such as if the games and launcher will run pleasingly, will need to be conducted manually and may more time than expected.
 \fi
 
-Testing the game may prove to be a challenge. We plan to have at least three games available to play, this means each game as well as the launcher needs to be sufficiently tested.  While small unit tests can be quickly be written using pytest, any system testing will have to be conducted manually by playing the game, or by automating parts of the game, which can be extremely time-consuming. Furthermore, any UI components or concerns such as if the game runs pleasingly will also have to be tested manually.
+Testing the game may prove to be a challenge. We plan to have at least three games available to play, this means each game as well as the launcher needs to be sufficiently tested.  While small unit tests can be quickly written using pytest, any system testing will have to be conducted manually by playing the game, or by automating parts of the game, which can be extremely time-consuming. Furthermore, any UI components or concerns, such as if the game runs pleasingly, will also have to be tested manually.
 
 The required libraries are not too difficult to install, the most challenging aspect will be the actual programming of the games. That said, portability is expected to be very seamless as the project is intended to be downloaded as an executable file online. Once the executable file is downloaded, the game will install itself.
 
@@ -105,9 +110,9 @@ PEP 8 will be used as the coding style for this project. The detail style guide 
 Doxygen will be used as the documentation and commenting style guide for this project. The detail style guide can be found on the official website of Doxygen at \url{http://www.doxygen.nl/}.
 
 \section{Project Schedule} \label{gantt}
-
-The Gantt Chart can be found at this location \href{run:../../ProjectSchedule/3XA3-ProjSched.gan}{../../ProjectSchedule/3XA3-ProjSched.gan}. \\
-The Chart will be updated with more precise tasks once future deliverables are made more clear.
+\includegraphics[width=16cm]{Images/GanttChartRev1.png}\\
+\\
+\includegraphics[width=16cm]{Images/GanttResourcesRev1.png}
 
 \section{Project Review}
 Will be completed in Revision 1.
