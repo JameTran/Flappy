@@ -62,6 +62,7 @@
 3/12/2020 & 1.3 & William completed modules relevant to launcher and scoreboard.\\
 3/13/2020 & 1.4 & Jame completed modules relevant to Flappy\\
 4/2/2020 & 1.5 & Andrew Revision 1\\
+4/5/2020 & 1.6 & Arshan - Revision 1\\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -108,9 +109,9 @@
 		\begin{tabular}[pos]{|c|c|c|c|}
 			\hline
 			\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
-			displayLauncher & - & GUI & - \\ \hline
-			launchGame & integer & - & - \\ \hline
-			launchScoreboard & - & - & - \\ \hline
+			displayLauncher & None & GUI & None \\ \hline
+			launchGame & integer & None & None \\ \hline
+			launchScoreboard & None & None & None \\ \hline
 		\end{tabular}
 		\subsection{Interface Semantics}
 		\subsubsection{State Variables}
@@ -157,13 +158,13 @@
 		\begin{tabular}[pos]{|c|c|c|c|}
 			\hline
 			\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
-			drawScoreboard & String & GUI & - \\ \hline
-			changeGame & integer & - & - \\ \hline
-			exitScoreBoard & - & - & - \\ \hline
-			readData & - & - & FileNotFound, FileCannotRead \\ \hline
-			writeData & - & FileSystem & FileCannotWrite \\ \hline
-			updateScore & String, integer & - & - \\ \hline
-			highScore & String & integer & - \\ \hline
+			drawScoreboard & String & GUI & None \\ \hline
+			changeGame & integer & None & None \\ \hline
+			exitScoreBoard & None & None & None \\ \hline
+			readData & None & None & FileNotFound, FileCannotRead \\ \hline
+			writeData & None & FileSystem & FileCannotWrite \\ \hline
+			updateScore & String, integer & None & None \\ \hline
+			highScore & String & integer & None \\ \hline
 		\end{tabular}
 		\subsection{Interface Semantics}
 		\subsubsection{State Variables}
@@ -252,12 +253,12 @@
 		\begin{tabular}[pos]{|c|c|c|c|}
 			\hline
 			\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
-			Cell & integer, integer & - & Invalid Input \\ \hline
-			Cell.genWalls & - & - & - \\ \hline
-			Maze & integer & - & Invalid Input \\ \hline
-			\textcolor{red}{Maze.setMaze} & \textcolor{red}{integer} & \textcolor{red}{-} & \textcolor{red}{Invalid Input} \\ \hline
+			Cell & integer, integer & None & Invalid Input \\ \hline
+			Cell.genWalls & None & None & None \\ \hline
+			Maze & integer & None & Invalid Input \\ \hline
+			\textcolor{red}{Maze.setMaze} & \textcolor{red}{integer} & \textcolor{red}{None} & \textcolor{red}{Invalid Input} \\ \hline
 			\textcolor{red}{Maze.checkVisited} & \textcolor{red}{(integer, integer)} & \textcolor{red}{Cell} & \textcolor{red}{Invalid Input} \\ \hline
-			Maze.genMaze & - & - & - \\ \hline
+			Maze.genMaze & None & None & None \\ \hline
 		\end{tabular}
 		
 		\subsection{Interface Semantics}
@@ -342,7 +343,7 @@
 		\begin{tabular}[pos]{|c|c|c|c|}
 			\hline
 			\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
-			saveScore & float & - & Invalid Input \\ \hline
+			saveScore & float & None & Invalid Input \\ \hline
 			\sout{checkRank} & \sout{float} & \sout{integer} & \sout{Invalid Input} \\ \hline
 		\end{tabular}
 		
@@ -384,11 +385,11 @@
 			\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
 			\sout{drawMaze} \textcolor{red}{Maze\_draw} & display\_surface & GUI & Invalid Input \\ \hline
 			\sout{drawCharacter} & \sout{integer}, \sout{integer} & \sout{GUI} & \sout{Invalid Input} \\ \hline
-			\sout{showTime} \textcolor{red}{pauseScreen} & - & GUI & - \\ \hline
-			\textcolor{red}{difficultyScreen} & \textcolor{red}{-} & \textcolor{red}{GUI} & \textcolor{red}{-} \\ \hline
-			\textcolor{red}{renderMaze} & \textcolor{red}{-} & \textcolor{red}{-} & \textcolor{red}{-} \\ \hline
-			\textcolor{red}{victoryScreen} & \textcolor{red}{-} & \textcolor{red}{GUI} & \textcolor{red}{-} \\ \hline
-			\textcolor{red}{on\_execute} & \textcolor{red}{-} & \textcolor{red}{GUI} & \textcolor{red}{-} \\ \hline
+			\sout{showTime} \textcolor{red}{pauseScreen} & None & GUI & None \\ \hline
+			\textcolor{red}{difficultyScreen} & \textcolor{red}{None} & \textcolor{red}{GUI} & \textcolor{red}{None} \\ \hline
+			\textcolor{red}{renderMaze} & \textcolor{red}{None} & \textcolor{red}{None} & \textcolor{red}{None} \\ \hline
+			\textcolor{red}{victoryScreen} & \textcolor{red}{None} & \textcolor{red}{GUI} & \textcolor{red}{None} \\ \hline
+			\textcolor{red}{on\_execute} & \textcolor{red}{None} & \textcolor{red}{GUI} & \textcolor{red}{None} \\ \hline
 		\end{tabular}
 		
 		\subsection{Interface Semantics}
@@ -621,7 +622,7 @@
 		\begin{tabular}[pos]{|c|c|c|c|}
 			\hline
 			\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
-		    \sout{drawInterface} \textcolor{red}{menuScreen} & \sout{integer}\textcolor{red}{-} & GUI & - \\ \hline
+		    \sout{drawInterface} \textcolor{red}{menuScreen} & \sout{integer}\textcolor{red}{-} & GUI & None \\ \hline
 			\sout{checkEvent} & \sout{float}, \sout{float}, \sout{boolean} & \sout{integer} & \sout{Invalid Input} \\ \hline
 			
 		\end{tabular}
@@ -716,9 +717,9 @@
 		
 		Input: None
 		
-		Transition: ball at right bound is +1, ball at left bound is -1
+		Transition: ball at right bound is +1 for player, ball at left bound is +1 for AI
 		
-		Exceptions: Invalid Input size is not a positive integer\\
+		Exceptions: None\\
 		\\
 		resetBall():
 		
@@ -742,39 +743,51 @@
 		\begin{tabular}[pos]{|c|c|c|c|}
 			\hline
 			\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
-			saveScore & integer, integer & [integer, integer] & Invalid Input \\ \hline
-			checkRank & [integer, integer] & integer & Invalid Input \\ \hline
+			\textcolor{red}{calculateScore} & \textcolor{red}{integer, integer, integer} & \textcolor{red}{integer} & \textcolor{red}{Invalid Input} \\ \hline
+			saveScore & integer, \sout{integer} & [integer, \sout{integer}] & Invalid Input \\ \hline
+			\sout{checkRank} & \sout{[integer, integer]} & \sout{integer} & \sout{Invalid Input} \\ \hline
 		\end{tabular}
 		
 		\subsection{Interface Semantics}
 		\subsubsection{State Variables}
 		playerScore: int - scores earned by main player \\
-		opponentScore: int - scores earned by secondary/computer player
+		\sout{opponentScore} \textcolor{red}{aiScore}: int - scores earned by secondary/computer player \\
+		finalScore: int - the final value calculated by calculateScore, used for end game appearance
 		
 		\subsubsection{Assumptions}
 		Variables should be set before trying to access them \\
-		saveScore is only called after a game is over
+		saveScore is only called after \sout{a game is over} the maximum score is reached
 		
 		\subsubsection{Access Program Semantics}
-		saveScore(playerScore, opponentScore):
+		\textcolor{red}{calculateScore(playerScore, aiScore, maxScore):}
 		
-		Input: two integers representing the scores obtained by the players
+		\textcolor{red}{Input: the scores obtained by each player and the maximum score the game ended at}
 		
-		Transition: converts two scores into an array
+		\textcolor{red}{Transition: uses the players' scores to calculate a final score}
 		
-		Output: a 1x2 integer array containing the two scores
+		\textcolor{red}{Output: an integer representing the final score for the user}
 		
-		Exceptions: Invalid Input if the inputs are not positive integers \\
+		\textcolor{red}{Exceptions: Invalid Input if the inputs are not positive integers} \\
 		\\
-		checkRank([playerScore, opponentScore]):
+		saveScore(\sout{playerScore, opponentScore} \textcolor{red}{finalScore}):
 		
-		Input: 1x2 integer array containing the main and secondary player's score
+		Input: \sout{two integers representing the scores obtained by the players} \textcolor{red}{the value returned by calculateScore}
 		
-		Transition: None
+		Transition: \sout{converts two scores into an array} \textcolor{red}{sends the final score to the Scoreboard}
 		
-		Output: the games current rank based upon previous scores
+		Output: \sout{a 1x2 integer array containing the two scores} \textcolor{red}{a file entry to record the game's score}
 		
-		Exceptions: Invalid Input if the input is not a positive integer array of the right size
+		Exceptions: Invalid Input if the input is not a positive integer \\
+		\\
+		\sout{checkRank([playerScore, opponentScore]):}
+		
+		\sout{Input: 1x2 integer array containing the main and secondary player's score}
+		
+    	\sout{Transition: None}
+		
+		\sout{Output: the games current rank based upon previous scores}
+		
+		\sout{Exceptions: Invalid Input if the input is not a positive integer array of the right size}
 
 \section{MIS of Draw Game (Pong) Module}
 		\subsection{Interface Syntax}
@@ -790,8 +803,8 @@
 		\subsection{Interface Semantics}
 		\subsubsection{State Variables}
 		gameOver: bool - determines if game has ended or not; keeps current match running \\
-		playerOne: Paddle - movement of main player \\
-		playerTwo: Paddle - movement of secondary player \\
+		player\sout{One}: Paddle - movement of main player \\
+		\sout{playerTwo: Paddle - movement of secondary player} \\
 		score: int - keeps track of total points earned \\
 		fps: int - keeps track of the number of times (per second) to refresh the game's state
 		
@@ -819,9 +832,9 @@
 		\\
 		showScore(scoreGoal):
 		
-		Input: scoreGoal is a notifier of score change
+		Input: scoreGoal acts as a notifier of score change
 		
-		Transition: positive notifier means primary player scored, negative means secondary player scored
+		Transition: \sout{positive notifier means primary player scored, negative means secondary player scored} \textcolor{red}{updates score for respective scorer}
 		
 		Output: two numbers shown on screen representing each player's score
 		
@@ -841,18 +854,19 @@
 		
 		\subsection{Interface Semantics}
 		\subsubsection{State Variables}
-		paddleCenter\_x: int - horizontal coordinate of a paddle
+		paddleCenter\_x: int - horizontal coordinate of a paddle \\
+        \textcolor{red}{paddle\_top: int - avoids recalculation of top of Paddle for bound-checking} \\ 
+        \textcolor{red}{paddle\_bottom: int - avoids recalculation of bottom of Paddle for bound-checking} \\
 		
 		\subsubsection{Environment Variables}
-		None
+		
 		\subsubsection{Assumptions}
 		Variables should be set before trying to access them \\ 
-		The four corners of a paddle can be calculated from paddleCenter\_x and paddleCenter\_y \\
 		
 		\subsubsection{Access Program Semantics}
 		Paddle(integer, integer, integer, color):
 		
-		Input: 2 integers for the paddle's position and a color tuple defining the paddle's color
+		Input: 2 integers for the paddle's position, one for the size, and a color tuple defining the paddle's color
 		
 		Transition: initializes a Paddle object
 		
@@ -886,7 +900,7 @@
 		\begin{tabular}[pos]{|c|c|c|c|}
 			\hline
 			\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
-			drawInterface & integer & GUI & - \\ \hline
+			drawInterface & integer & GUI & None \\ \hline
 			checkEvent & float, float, boolean & integer & Invalid Input \\ \hline
 			
 		\end{tabular}
@@ -970,9 +984,9 @@
 		\begin{tabular}[pos]{|c|c|c|c|}
 			\hline
 			\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
-			topPipe & [integer, integer, integer] & - & Invalid Input \\ \hline
-			bottomPipe & [integer, integer, integer] & - & Invalid Input \\ \hline
-			pipeDist & - & [integer, integer, integer] & Invalid Input \\ \hline
+			topPipe & [integer, integer, integer] & None & Invalid Input \\ \hline
+			bottomPipe & [integer, integer, integer] & None & Invalid Input \\ \hline
+			pipeDist & None & [integer, integer, integer] & Invalid Input \\ \hline
 			
 		\end{tabular}
 		
@@ -1158,7 +1172,7 @@
 		\begin{tabular}[pos]{|c|c|c|c|}
 			\hline
 			\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
-			drawInterface & integer & GUI & - \\ \hline
+			drawInterface & integer & GUI & None \\ \hline
 			checkEvent & float, float, boolean & integer & Invalid Input \\ \hline
 			
 		\end{tabular}
