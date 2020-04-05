@@ -1,9 +1,14 @@
 \documentclass[12pt, titlepage]{article}
-\usepackage{graphicx}
+
+\usepackage{fullpage}
+\usepackage[round]{natbib}
+\usepackage{multirow}
 \usepackage{booktabs}
 \usepackage{tabularx}
-\usepackage[normalem]{ulem}
+\usepackage{graphicx}
+\usepackage{float}
 \usepackage{hyperref}
+\usepackage[normalem]{ulem}
 \hypersetup{
     colorlinks,
     citecolor=black,
@@ -15,11 +20,10 @@
 
 \title{SE 3XA3: Test Plan\\Mini-Arcade}
 
-\author{Team \#104
-		\\ Andrew Hum, 400138826
-		\\ Arshan Khan, 400145605
-		\\ Jame Tran, 400144141
-		\\ William Lei, 400125240
+\author{Andrew Hum \\ huma3 \\ 400138826 \and
+		William Lei \\ leim5 \\ 400125240 \and
+		Arshan Khan \\ khana172 \\ 400145605 \and
+		Jame Tran \\ tranj52 \\ 400144141
 }
 \date{\today}
 
@@ -47,6 +51,7 @@
 2/28/2020 & 1.5 & Revision 0\\
 4/3/2020 & 1.6 & Andrew - Revision 1\\
 4/3/2020 & 1.7 & William - Revision 1\\
+4/4/2020 & 1.8 & Arshan - Revised and edited document\\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -204,11 +209,11 @@ Output: The screen will display the instructions for how to play the mini-game.\
 How test will be performed: The application will be opened and the user will manually provide inputs to the software and observes for the output of the software on the screen.\\
 
 \item{FR-N-11\\}
-Type: FDM\\
+\sout{Type: FDM\\
 Initial State: Pong - Menu Screen\\
 Input: User clicks on Help\\
 Output: The screen will display the instructions for how to play the mini-game.\\
-How test will be performed: The application will be opened and the user will manually provide inputs to the software and observes for the output of the software on the screen.\\
+How test will be performed: The application will be opened and the user will manually provide inputs to the software and observes for the output of the software on the screen.\\}
 
 \item{FR-N-12\\}
 Type: FDM\\
@@ -342,59 +347,80 @@ How test will be performed: The application will be opened and the user will man
 
 \item{FR-MGP-1\\}
 Type: FDM\\
-Initial State: Pong - Menu Screen\\
-Input: User clicks on Single Player\\
-Output: The game screen will be opened and displayed and will request the user to input a max score.\\
+Initial State: Pong - Main Menu Screen\\
+Input: User clicks on \sout{Single Player} \textcolor{red}{Difficulty Level and Max Score}\\
+Output: The game will display the selected difficulty level and maximum score on the screen.\\
 How test will be performed: The application will be opened and the user will manually provide inputs to the software and observes for the output of the software on the screen.\\
 
 \item{FR-MGP-2\\}
 Type: FDM\\
-Initial State: Pong - Menu Screen\\
-Input: User clicks on Multiplayer\\
-Output: The game screen will be opened and displayed and will request the user to input a max score.\\
+Initial State: Pong - Main Menu Screen\\
+Input: User clicks on 'Begin'\\
+Output: The game will start, taking no longer than 10 seconds to begin.\\
 How test will be performed: The application will be opened and the user will manually provide inputs to the software and observes for the output of the software on the screen.\\
 
 \item{FR-MGF-3\\}
-Type: FDM\\
-Initial State: Pong - Game Screen (Both single and multiplayer, requesting max score input)\\
+\sout{Type: FDM\\
+Initial State: Pong - Game Screen\\
 Input: User inputs an integer between 1 to 10.\\
 Output: The game will be initialized or started.
-How test will be performed: The application will be opened and the user will manually provide inputs to the software and observes for the output of the software on the screen.\\
+How test will be performed: Assuming difficulty and max score have been chosen, the application will be opened and the user will manually provide inputs to the software and observes for the output of the software on the screen.\\}
 
 \item{FR-MGP-4\\}
 Type: FDM\\
-Initial State: Pong - Game Screen (Both single and multiplayer)\\
+Initial State: Pong - Game Screen\\
 Input: User clicks a movement key\\
 Output: The corresponding paddle will move according to the key-movement mapping and the movement will be displayed on the screen.\\
 How test will be performed: The application will be opened and the user will manually provide inputs to the software and observes for the output of the software on the screen.\\
 
 \item{FR-MGP-5\\}
 Type: FDM\\
-Initial State: Pong - Game Screen (Both single and multiplayer)\\
-Input: User control the paddle to hit the ball until the ball reaches the boundary on either side (and did not hit a paddle)\\
-Output: The score of the opposite will be increased by 1 and the change will be displayed on the game screen.\\
-How test will be performed: The application will be opened and the user will manually provide inputs to the software and observes for the output of the software on the screen.\\
+Initial State: Pong - Game Screen\\
+Input: User controls the paddle to hit the ball until the ball reaches the boundary on either side \textcolor{red}{(i.e. without hitting a paddle)}\\
+Output: The score of the scoring side will be increased by 1 and the change will be displayed on the game screen.\\
+How test will be performed: The application will be opened and the user will manually provide inputs to the software and observes for the output of the software on the screen. \textcolor{red}{Once for the user to score and once for the AI to score}.\\
 
 \item{FR-MGF-6\\}
 Type: FDM\\
-Initial State: Pong - Game Screen (Both single and multiplayer)\\
+Initial State: Pong - Game Screen\\
 Input: User control the paddle to hit the ball until either side reaches the max score\\
 Output: The score between the two players will be displayed on the end game screen.\\
-How test will be performed: The application will be opened and the user will manually provide inputs to the software and observes for the output of the software on the screen.\\
+How test will be performed: The user will play the game until the max score is reached.\\
 
 \item{FR-MGP-7\\}
 Type: FDM\\
 Initial State: Pong - End Game Screen\\
-Input: User clicks on Restart\\
-Output: The game will be initialized/started and the game screen will be opened and displayed.\\
-How test will be performed: The application will be opened and the user will manually provide inputs to the software and observes for the output of the software on the screen.\\
+Input: User clicks on New Game\\
+Output: The Main Menu Screen will be displayed.\\
+How test will be performed: While on the End Game Screen, the user clicks on the New Game button.\\
 
 \item{FR-MGP-8\\}
 Type: FDM\\
 Initial State: Pong - End Game Screen\\
-Input: User clicks on Return\\
-Output: The Menu Screen opens and is displayed on the screen.\\
-How test will be performed: The application will be opened and the user will manually provide inputs to the software and observes for the output of the software on the screen.\\
+Input: User clicks on Quit Game\\
+Output: The Launcher opens and is displayed on the screen.\\
+How test will be performed: While on the End Game Screen, the user clicks on the Quit Game button.\\
+
+\item{FR-MGF-9\\}
+\textcolor{red}{Type: FDM\\
+Initial State: Pong - Game Screen\\
+Input: The user pauses the game\\
+Output: This will display the Pause Game Screen.\\
+How test will be performed: While the game is running, the user presses the key to pause the game.}\\
+
+\item{FR-MGF-10\\}
+\textcolor{red}{Type: FDM\\
+Initial State: Pong - Pause Game Screen\\
+Input: The user chooses to resume the current game\\
+Output: This will redisplay the Game Screen at the same point where the Pause Game Screen was invoked.\\
+How test will be performed: While on the Pause Game Screen, the user clicks on the Resume Game button.}\\
+
+\item{FR-MGF-11\\}
+\textcolor{red}{Type: FDM\\
+Initial State: Pong - Pause Game Screen\\
+Input: The user chooses to start a new game\\
+Output: This will take the user back to the Main Menu Screen.\\
+How test will be performed: While on the Pause Game Screen, the user clicks on the New Game button.}\\
     
 \end{enumerate}
 
