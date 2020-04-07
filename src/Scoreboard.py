@@ -81,7 +81,7 @@ class Scoreboard:
         quitButton.set_painter(painter1)
         quitButton.finish()
         quitButton.set_font_size(17)
-        quitButton.set_font_color_hover((57,197,187))
+        quitButton.set_font_color_hover((255,255,255))
         
         # Create texts
         contentString = ""
@@ -245,7 +245,7 @@ class Scoreboard:
             button.set_painter(painter1)
             button.finish()
             button.set_font_size(17)
-            button.set_font_color_hover((57,197,187))
+            button.set_font_color_hover((255,255,255))
         else: # Non-clickable Button
             button = thorpy.Element(title)
             button.set_painter(painter2)

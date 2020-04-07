@@ -1,0 +1,487 @@
+\documentclass[12pt, titlepage]{article}
+
+\usepackage{fullpage}
+\usepackage[round]{natbib}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage[normalem]{ulem}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=red,
+    urlcolor=blue
+}
+\usepackage[round]{natbib}
+\usepackage{array}
+\usepackage{ulem}
+
+\title{SE 3XA3: Software Requirements Specification\\Mini-Arcade}
+
+\author{Team \#104
+		\\ Andrew Hum, 400138826
+		\\ Arshan Khan, 400145605
+		\\ Jame Tran, 400144141
+		\\ William Lei, 400125240
+}
+
+\date{\today}
+
+%\input{../Comments}
+
+\begin{document}
+
+\maketitle
+
+\pagenumbering{roman}
+\tableofcontents
+\listoftables
+
+\begin{itemize}
+\item Table 1: Revision History
+\item Table 2: Work Partitioning Events
+\item Table 3: Work Partitioning Event Summaries
+\end{itemize}
+
+\listoffigures
+
+\begin{itemize}
+    \item Figure 1: System Use Case Diagram
+\end{itemize}
+
+\begin{table}[bp]
+\caption{\bf Revision History}
+\begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
+\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
+\midrule
+2/3/2020 & 1.0 & Project Drivers and Project Issues\\
+2/8/2020 & 1.1 & Completed Functional Requirements\\
+2/8/2020 & 1.2 & Completed Non Functional Requirements\\
+2/9/2020 & 1.3 & Revision 0\\
+4/1/2020 & 1.4 & Edit section 1, 2, and 4\\
+4/4/2020 & 1.5 & Edit Section 3\\
+4/4/2020 & 1.6 & Edit Section 3\\
+
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\newpage
+
+\pagenumbering{arabic}
+
+%This document describes the requirements for ....  The template for the Software Requirements Specification (SRS) is a subset of the Volere template~\citep{RobertsonAndRobertson2012}.  If you make further modifications to the template, you should explicitly state what modifications were made.
+
+\textcolor{red}{This document highlights the Functional and Non-Functional Requirements for Mini-Arcade. This document will be used as a reference for future documents and during software development.}
+
+\section{Project Drivers}
+
+\subsection{The Purpose of the Project}
+
+\textcolor{red}{The purpose of our project is to provide players with} a seamless, satisfying experience when playing the mini games. Thus, we are focusing on making visual, functional, and difficulty enhancements to a pre-existing set of mini games. \textcolor{red}{The mini games that will be recreated are Maze, Pong, and Flappy.}
+
+\subsection{The Stakeholders}
+
+\subsubsection{The Client}
+
+The clients for the product are Dr. Asghar Bokhari and the SFWRENG 3XA3 Teaching Assistants. As clients, they will administer the development of the product as well as offer assistance and clarification wherever possible. They will also determine the degree to which the product delivers on the requirements.
+
+\subsubsection{The Customers}
+
+The intended customers of the product are any individuals with the ability to download the product online. \sout{This includes a child, up to a senior citizen. The product is created to entertain its users and give them a joyful experience.} \textcolor{red}{There is no target demographic for this game, for it is available for anyone who is interested in playing some mini games.}
+
+\subsubsection{Other Stakeholders}
+
+All other stakeholders include all current developers as well as any future developers who wish to further improve upon the open-source project themselves.
+
+\subsection{Mandated Constraints}
+
+The system is to be built under the following constraints
+
+\begin{itemize}
+    \item The product must run successfully on at least Windows and MacOS.
+    \item The product must be able to be run by running Launcher.py in the command line
+    \item The product must not require any specialized hardware which the common user may not have.
+    \item The product must be free of cost to all users.
+    \item The product must be sufficiently complete by March 28, 2020.
+    \item The product must contain at least \sout{one} \textcolor{red}{two} playable mini-games.
+    \item Development cost of the product must not exceed \$0.
+    \item The mini-game(s) must have a visual and/or difficulty improvement to be considered "updated".
+\end{itemize}
+
+\subsection{Naming Conventions and Terminology}
+
+\textcolor{red}{\textbf{Mini-Game} - a simple game that can be played for a short or long amount of time.}
+
+\subsection{Relevant Facts and Assumptions}
+
+\textcolor{red}{There will be approximately 2000 lines of code for the entire program. 5 main modules: Launcher, Scoreboard, Maze, Pong, Flappy, with 4 sub-modules per game}
+
+It is assumed that the pygame and thorpy libraries are sufficient to update the mini games. Also, the mini games will be either visually enhanced or with new difficulty levels; both will be true only if time permits the developers to achieve this. \textcolor{red}{Other assumptions are that the user will have a working computer, understand English and is familiar with the use of a computer.}
+
+\section{Functional Requirements}
+
+\subsection{The Scope of the Work and the Product}
+
+The Current Situation:
+
+Currently no launcher. To run the games you need to install the code from using Ubuntu, and running each game individually.
+\begin{itemize}
+    \item \textcolor{red}{To launch a game you must first install the python freegames library using a command line}
+    \item \textcolor{red}{You then must launch each game indvidually that you want to play.}
+\end{itemize}
+
+\textcolor{red}{The three games we are planning to modify are Maze, Flappy, and Pong. These games are very simple with minimal functionality and poor performance.}
+\begin{itemize}
+    \item Maze: a minimal 2-dimensional maze with one preset maze that is generated that can be navigated through single mouse clicks with little-to-no difficulty.
+    \item Flappy: a simplistic game where the user utilizes the mouse-click to prevent their character from colliding with randomly generated objects, and loses when the collide
+    \item Pong: a very simple game that resembles the classic game Pong. It is a two-player game that has contains minimal physics aspect as well as poor graphics and poor performance.
+\end{itemize}
+
+\subsubsection{The Context of the Work}
+\begin{itemize}
+    \item This mini game launcher is developed for the course, SFWRENG 3XA3, professor Dr. Asghar Bokahri and the teaching assistants assigned to our group, Thien Tandinh and Oluwaseum Owojaiye.
+    \item \textcolor{red}{Before development, we will need to create several documents to effectively plan out the project. These documents include: the Test Plan, the Development Plan, the Module Guide, and the Module Interface Specification.}
+    \item \textcolor{red}{We will need to re-develop and add additional functionality to the Maze, Pong, and Flappy game}
+    \item \textcolor{red}{We will also develop a launcher that contains a scoreboard, and acts as a central hub for the user to access and easily run any of the developed mini-games.}
+\end{itemize}
+\subsubsection{Work Partitioning}
+
+\begin{table}[H]
+\caption{Work Partitioning Events}
+\begin{center}
+\setlength{\tabcolsep}{3pt}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{|c|c|c|c|}
+\hline
+Event Number & Event Name & Input & Output \\
+\hline
+1 & Selecting/Launching a Game & Mouse/Keyboard & Selected Game \\
+\hline
+2 & Accessing the Scoreboards & Mouse/Keyboard & Display Scoreboard\\
+\hline
+3 & Playing the Maze & Mouse/Keyboard & Final Score\\
+\hline
+4 & Playing Flappy & Keyboard & Final Score\\
+\hline
+5 & Playing Pong & \textcolor{red}{Mouse/}Keyboard & Final Score\\
+\hline
+\end{tabular}%
+}
+\end{center}
+\label{wpe}
+\end{table}%
+
+\begin{table}[H]
+\caption{Work Partitioning Event Summaries}
+\begin{center}
+\setlength{\tabcolsep}{3pt}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{|c|c|}
+\hline
+Event Number & Summary\\
+\hline
+1 & Based on the user’s input, launch the specified game\\
+\hline
+2 & If the user chooses to access the scoreboard, a list of the high\\ &scores will be listed and will have the option to be sorted by each\\ &game.\\
+\hline
+3 & The user will select the difficulty of the maze and navigate their\\ &object through the maze using the keyboard. Once completed the system\\ &will provide the user with their final score which is the time it took\\ &to complete the maze.\\
+\hline
+4 & The user will start a new game and use the space-bar to avoid\\ &obstacles. The system will provide their final score once they collide\\ &with an obstacle based on the time elapsed.\\
+\hline
+5 & The user will use the keyboard to play against an opponent controlled\\ &by the system to try to score against them. They will play till\\ &either they or their opponent reaches a desired score. \\&The system will then display the final score and record their score.\\
+\hline
+\end{tabular}%
+}
+\end{center}
+\label{wps}
+\end{table}%
+
+
+\subsubsection{Individual Product Use Cases}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=6in]{Images/UseCaseDiagram.png} 
+    \caption{System Use Case Diagram}
+    \label{fig:example}
+ \end{figure}
+ 
+
+\subsection{Functional Requirements}
+    BE1. The user wants to play a game
+    \begin{itemize}
+    \item FR1. The system shall provide the user with several different mini-game options
+    \item \textcolor{red}{FC1. The launcher will display the button for launching Maze, Flappy, and Pong}
+    \item FR2. The system shall launch the desired mini-game in the same window
+    \item \textcolor{red}{FC2. The software will display the mini-game in the same window}
+    \item FR3. The system shall provide an option to close the application
+    \item \textcolor{red}{FC3. The software will display the button for closing the application}
+    \end{itemize}
+    BE2. The user wants to view their scores
+    \begin{itemize}
+        \item FR4. The system shall provide the user with the ability to view the scoreboards from the launcher
+        \item \textcolor{red}{FC4. The launcher will display the button for launching scoreboard}
+        \item FR5. The system shall provide the user with the ability to sort their scores based on the game
+        \item \textcolor{red}{FC5. The scoreboard will display 3 buttons used to toggle the scoreboard between Maze, Flappy, and Pong}
+        \item \sout{FR6. The system shall provide the user the ability to view the current game’s scoreboards from the game home screen}
+        \item \textcolor{red}{\sout{FC6. In the menu screen of each game, a button that will launch the scoreboard for that game will be displayed.}}
+    \end{itemize}
+    BE3. The user wants to play Maze
+    \begin{itemize}
+        \item FR7. The system shall provide the user with different difficulty levels
+        \item \textcolor{red}{FC7. The game will have an easy, medium, and hard difficulty as options}
+        \item FR8. The system shall record the user’s current score based on the time elapsed
+        \item \textcolor{red}{FC8. A time elapsed counter will be presented during the maze execution}
+        \item FR9. The system shall randomly generate a maze based on the selected difficulty
+        \item \textcolor{red}{FC9. Each time a difficulty is chosen, a different maze will appear of the selected size}
+        \item FR10. The system shall provide a home button to \sout{exit the game at any time} \textcolor{red}{return to the launcher from the main menu screen}
+        \item \textcolor{red}{FC10. Pressing the home button will return to the user to the launcher}
+        \item FR11. The system shall display the user’s current score and high score once the\textcolor{red}{y} complete the maze
+        \item \textcolor{red}{FC11. Once the maze is completed, the times will appear at the end screen.}
+        \item FR12. The user shall be able to control the objects movement with the keyboard
+        \item \textcolor{red}{FC12. Keys will result in the player's character moving in the desired direction}
+        \item FR13. The system shall provide an option to proceed to another maze once completed
+        \item \textcolor{red}{FC13. Button to return to the main menu to start again upon completion}
+        \item \sout{FR14. The system shall provide an option to return to the launcher}
+    \end{itemize}
+    BE4. The user wants to play Flappy
+    \begin{itemize}
+        \item FR15. The system shall provide the user with the option to start a new game
+        \item FR16. The user shall use the space-bar to control their character
+        \item FR17. The system shall randomly generate objects to interfere with the character
+        \item FR18. The system shall increase speed as the time elapsed increases
+        \item FR19. The system shall generate more objects as the time elapsed increases
+        \item FR20. The system shall provide the user with the final time elapsed once the game is over
+        \item \sout{FR21. The system shall provide the option to view the score boards for Flappy}
+        \item FR22. The system shall provide the user the option to play again
+        \item FR23. The system shall provide the user with the option to return to the launcher
+    \end{itemize}
+    BE5. The user wants to play Pong
+    \begin{itemize}
+        \item \textcolor{red}{FP1. The user shall be able to choose from three difficulty levels}
+        \item \textcolor{red}{FP2. The user shall be able to choose the maximum score of the game}
+        \item \sout{FR24. The system shall provide the user with the option to play alone or with a friend}
+        \item FR25. The \sout{user(s)} \textcolor{red}{user} shall use the \sout{keyboard} \textcolor{red}{up and down arrow keys} to navigate their paddle
+        \item FR26. The system shall add a point to the side that scores
+        \item \sout{FR27. The system shall require a final score to play up to}
+        \item FR28. The system shall end the game once the final score is reached by either side
+        \item \textcolor{red}{FP3. The system shall allow the user to pause the game during playtime}
+        \item FR29. The system shall provide the option to play again
+        \item FR30. The system shall provide the option to return to the main menu or launcher \textcolor{red}{at any time}
+    \end{itemize}
+    \textcolor{red}{BE6. The user is done playing}
+    \begin{itemize}
+        \item \textcolor{red}{FR31. The system shall provide an option to quit the current game, and close the application}
+        \item \textcolor{red}{FC31. A button that will allow the user to quit the game}
+    \end{itemize}
+
+
+\section{Non-functional Requirements}
+\subsection{Look and Feel Requirements}
+NFR1
+\begin{itemize}
+    \item DESCRIPTION: The games should run at a suitable, fast, stable frame rate 
+    \item RATIONALE: In order for the game's performance feels responsive and the animations feel "smooth", a high frame rate is needed
+    \item FIT CRITERION: The game should run at a consistent 30 fps or more
+    \item PRIORITY: HIGH
+\end{itemize}
+
+NFR2 
+\begin{itemize}
+    \item DESCRIPTION: The overall theme of our arcade app should be visually appealing
+    \item RATIONALE: The colours of the games should capture the user's attention to keep their interest 
+    \item FIT CRITERION: The colours used by our games should abide by the color theory, to ensure important areas of the game stands out. Colours used for the player character should be complementary to the background and the obstacles, in order for the player to quickly find the player model. The score should also be complementary to the background for the player to view the score quickly. 
+    \item PRIORITY: HIGH
+\end{itemize}
+
+
+\subsection{Usability and Humanity Requirements}
+NFR3
+\begin{itemize}
+    \item DESCRIPTION: The UI should be non intrusive and easy to use
+    \item RATIONALE: In a fast paced, competitive game the UI should not interfere with the user's 
+ability to play the game as much as possible
+    \item FIT CRITERION: Ensure that 70\% or more of the screen is dedicated to the game.
+    \item PRIORITY: HIGH
+\end{itemize}
+
+NFR4
+\begin{itemize}
+    \item DESCRIPTION: The game-play should be intuitive and easy to learn. Instructions will be quickly provided in the game manual or alternatively on the menu screen.
+    \item RATIONALE: In order to attract an large, diverse user-base, the games should be very easy to understand with minimal instructions
+    \item FIT CRITERION: The game should use word-minimal tutorials, have easy to understand game-play and appropriate visual effects. Visual effects should be highly visible, and indicate in-game events. 
+    \item PRIORITY: MEDIUM
+\end{itemize}
+
+\subsection{Performance Requirements}
+NFR5
+\begin{itemize}
+    \item DESCRIPTION: The game should load quickly and effortlessly
+    \item RATIONALE: In order to ensure a pleasant user experience, the app should keep any
+"non-gaming" time to a minimum
+    \item FIT CRITERION: Ensure that the game is properly optimized to keep loading times under 20 seconds
+    \item PRIORITY: MEDIUM
+\end{itemize}
+
+NFR6
+\begin{itemize}
+    \item DESCRIPTION: The game should have minimal input lag
+    \item RATIONALE: To avoid latency/discrepancies between what the user sees and what the user is doing,
+input lag should be minimized as much as possible
+    \item FIT CRITERION: Ensure that the game is updated within a quarter of a second of user input
+    \item PRIORITY: HIGH
+\end{itemize}
+
+\subsection{Operational and Environmental Requirements}
+NFR7
+\begin{itemize}
+    \item DESCRIPTION: The arcade app should be easily accessible to the end user on any OS and machine
+    \item RATIONALE: Many end users will have a wide variety of computers with different processors and operating systems
+    \item FIT CRITERION: The arcade app needs to be able to run on a wide variety of end user computers, running Windows 7 or Windows 10.
+    \item PRIORITY: HIGH
+\end{itemize}
+
+\subsection{Maintainability and Support Requirements}
+NFR8
+\begin{itemize}
+    \item DESCRIPTION:  Maintenance should be kept to a minimum
+    \item RATIONALE: Maintenance of the app will be kept to a minimum, in order to not
+interfere with the user or to split the user-base between different software versions
+    \item FIT CRITERION: The game arcade app should be released with commonly occurring issues and problems resolved
+    \item PRIORITY: LOW
+\end{itemize}
+
+\subsection{Security Requirements}
+NFR9
+\begin{itemize}
+    \item DESCRIPTION: Games app should not allow players to modify any in game data, attributes or properties 
+that are not intended to be tampered with
+    \item RATIONALE:  Cheating should be prohibited in a competitive setting
+    \item FIT CRITERION: An experienced player should know the result of any actions in the game
+    \item PRIORITY: LOW
+\end{itemize}
+
+\subsection{Cultural Requirements}
+NFR10
+\begin{itemize}
+    \item DESCRIPTION: The product will not purposefully be offensive to any religious or ethnic group
+    \item RATIONALE: Being offensive to any racial or religious groups will limit the player base
+    \item FIT CRITERION: The content of the game will not include any material that may be offensive to any religious or ethnic groups
+    \item PRIORITY: HIGH
+\end{itemize}
+\subsection{Legal Requirements}
+NFR11
+\begin{itemize}
+    \item DESCRIPTION: The product must not break \sout{the law} \textcolor{red}{any international laws}
+    \item RATIONALE: \sout{Mini-Arcade must not break the law} \textcolor{red}{This ensures the player-base and accessibility in many countries is maximized}
+    \item FIT CRITERION: Do not break any laws
+    \item PRIORITY: HIGH
+\end{itemize}
+
+\subsection{Health and Safety Requirements}
+NFR12
+\begin{itemize}
+    \item DESCRIPTION: The product must not cause any adverse health effects
+    \item RATIONALE: Playing games on a screen can cause various injuries, such as repetitive strain injuries
+or eye strain which we should take care to avoid
+    \item FIT CRITERION: \sout{We will have popups to alert the user that they should take a 
+break after an extended period of play (1 hour or more)} \textcolor{red}{The average length of a game will be kept under ten minutes}
+    \item PRIORITY: MEDIUM
+\end{itemize}
+
+\section{Project Issues}
+
+\subsection{Open Issues}
+
+The following describes issues that has been raised , but have not yet solved:
+\begin{enumerate}
+    \item The current program is still in the form of python scripts, which make it relatively hard for beginners to run the game (due to the need to installing 2 external libraries). Therefore, it would be easier for access if it is compiled into a standalone executable. But this require the use of external libraries and also there will be problems with reading and writing files in standalone executable.
+\end{enumerate}
+
+\subsection{Off-the-Shelf Solutions}
+
+As some of the mini-games are based on commonly spread ideas, there is a decent amount of similar games out there \sout{, such as pac-man, flappy bird, pong, etc}.
+
+\subsection{New Problems}
+
+Our project provides an all-in-one package to some of the common mini-games, with a launcher providing access to the mini-games without the need of internet connection on computers.
+
+\subsection{Tasks}
+
+\begin{center}
+\begin{tabular}{ |c|c| } 
+\hline
+\textbf{Task} & \textbf{Timeline}\\
+\hline
+Launcher Model Implementation and  & February 13\textsuperscript{th}\\
+Partial Graphic Library Adaptation &\\
+\hline
+Adopt New Graphic Library & February 23\textsuperscript{th}\\
+\hline
+Launcher Development and Game Remake & March 15\textsuperscript{th}\\
+\hline
+Testing and Revision & March 29\textsuperscript{th}\\
+\hline
+\end{tabular}
+\end{center}
+
+\textcolor{white}{...}\\ %remove awkward indent
+Task 1: Basic model for launcher and partially modify the mini-game to adapt with new graphic library (at least modify the main menu).\\
+Task 2: Finish the adaptation to the new graphic library.\\
+Task 3: Finish development of the launcher and remake the mini-games to provide more functionality to each mini-game.\\
+Task 4: Test the launcher and mini-game, fix bugs found during testing and optimizes the mini-games.
+
+\subsection{Migration to the New Product}
+
+Not applicable.
+
+\subsection{Risks}
+
+Risks are inherent in the development of any product. The following information highlights possible risks for this project:
+\begin{itemize}
+    \item Complexity of Graphic Library
+    \item Over-estimated Project Size
+    \item Difficult Testing
+    \item Bad Programming Practices
+    \item Improper Git Usage
+\end{itemize}
+
+\subsection{Costs}
+
+There is no monetary cost to this project as all resources are free of charge. The original code this project is based on is a open-source project, and all technologies required in the development of the project such as graphic libraries and programming tools are all free, resulting in no monetary cost.\\
+The labour cost required for this project is relatively high, as each team member will require to dedicate around 5 to 7 hours minimum per week in the development of this project.
+
+\subsection{User Documentation and Training}
+
+Inside the project, there will be a README.MD file inside the repository which contains the information
+With each mini-game having different controls and playing method, there will be a help section integrated into each mini-game containing help information.
+
+\subsection{Waiting Room}
+
+As this project only re-made part of the mini-games in the original open source project, the future plan will be remaking all mini-games in the original open source project and integrate them into the launcher.
+
+\subsection{Ideas for Solutions}
+
+The following are purposed solution to some of the issues stated in section 4.1:
+\begin{itemize}
+    \item Pyinstaller is a library that can compile python script into a standalone executable. The use of library is still pending due to the need of further investigation of the library to determine if it meets all of our need.
+\end{itemize}
+
+\bibliographystyle{plainnat}
+
+\bibliography{SRS}
+
+\newpage
+
+\subsection{Symbolic Parameters}
+
+The definition of the requirements will likely call for SYMBOLIC\_CONSTANTS.
+Their values are defined in this section for easy maintenance.
+
+
+\end{document}
