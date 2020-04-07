@@ -6,7 +6,8 @@ from flappy.flappy_game import main_game
 from flappy.draw_game import *
 import time
 
-
+## @brief This function displays the main menu
+#  @details This function is an infinite while loop that displays the main menu sprites. Upon starting the game or closing the application, the loop breaks
 def main_menu():
     while True:
         for event in pygame.event.get():

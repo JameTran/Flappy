@@ -9,7 +9,8 @@ import random
 import Scoreboard
 import time
 
-
+## @brief A function that works as the main game loop for flappy
+#  @details This function runs as an infinite while loop, running until the game ends. In this loop all gameplay events, such as moving and collision will be handled
 def main_game():
     score = 0
     playerx = int(SCREENWIDTH/5)
@@ -17,17 +18,16 @@ def main_game():
     pipeVelX = -4
     playerVelY = -9
     playerMaxVelY = 10
-    playerMinVelY = -8
     playerAccY = 1
-    playerFlapAccv = -8  # velocity while flapping
-    playerFlapped = False  # It is true only when the bird is flapping
+    playerFlapAccv = -8  
+    playerFlapped = False  
 
 
-    # Create 2 pipes for blitting on the screen
+    # Create 2 pipes for the first pair of pipes
     newPipe1 = getRandomPipe()
     newPipe2 = getRandomPipe()
 
-    # my List of upper pipes
+    # a list of tuples containing the current pipes on screen, for both upper and lower respectively
     upperPipes = [
         {'x': SCREENWIDTH+200, 'y':newPipe1[0]['y']},
         {'x': SCREENWIDTH+200+(SCREENWIDTH/2), 'y':newPipe2[0]['y']},
@@ -38,6 +38,7 @@ def main_game():
         {'x': SCREENWIDTH+200+(SCREENWIDTH/2), 'y':newPipe2[1]['y']},
     ]
 
+# main game loop
     while True:
         for event in pygame.event.get():
             if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
@@ -57,12 +58,13 @@ def main_game():
         
         playery = update_bird(playery, playerVelY)
 
-        crashTest = isCollide(playerx, playery, upperPipes, lowerPipes) # This function will return true if the player is crashed
+        crashTest = isCollide(playerx, playery, upperPipes, lowerPipes) # This function will return true if the player crashed
         if crashTest:
             print('{}{}'.format("Your score is: ", score))
             # save score to scoreboard
             Scoreboard.Scoreboard.updateScore("Flappy", score)
             while True:
+                # draws the end game screen
                 pygame.draw.rect(SCREEN, WHITE, [0,0,1280,800])
                 draw_back_ground()
                 pygame.draw.rect(SCREEN, WHITE, [280,0,991,800])
@@ -82,9 +84,7 @@ def main_game():
                 pygame.display.update()
                 FPSCLOCK.tick(FPS)
                     
-
         score = get_score(playerx, upperPipes, score)
-        # move pipes to the left
         move_pipes(upperPipes, lowerPipes, pipeVelX)
 
         # Add a new pipe when the first is about to cross the leftmost part of the screen
@@ -97,7 +97,7 @@ def main_game():
         if upperPipes[0]['x'] < -GAME_SPRITES['pipe'][0].get_width():
             remove_pipes(upperPipes, lowerPipes)
 
-        ## DRAW BACKGROUND FIRST
+        # Draws the sprites on to the screen
         pygame.draw.rect(SCREEN, WHITE, [0,0,1280,800])
         draw_back_ground()
         pygame.draw.rect(SCREEN, WHITE, [280,0,991,800])
@@ -113,6 +113,12 @@ def main_game():
         FPSCLOCK.tick(FPS)
 
 
+## @brief A function to determine whether the player has collided with an object
+#  @details This function is called in the main game loop
+#  @param playerx The x position of the player
+#  @param playery The y position of the player
+#  @param upperPipes The list of upper pipe objects currently on the screen
+#  @param lowerPipes The list of lower pipe objects currently on the screen
 def isCollide(playerx, playery, upperPipes, lowerPipes):
     if playery> GROUNDY - 25  or playery<0:
         GAME_SOUNDS['hit'].play()
@@ -131,6 +137,8 @@ def isCollide(playerx, playery, upperPipes, lowerPipes):
 
     return False
 
+## @brief A function that returns a pair of upper and lower pipes with random length
+#  @details This function is called to randomize the size of the pipe pairs the player is facing
 def getRandomPipe():
     """
     Generate positions of two pipes(one bottom straight and one top rotated ) for blitting on the screen
