@@ -4,6 +4,7 @@ from pygame.locals import *
 from flappy.flappy_constants import *
 from flappy.player_movement import *
 from flappy.draw_game import *
+from flappy.score_tracking import *
 import random
 import Scoreboard
 import time
@@ -146,14 +147,5 @@ def getRandomPipe():
     return pipe
 
  
-def get_score(playerx, upperPipes, score):
-    playerMidPos = playerx + GAME_SPRITES['player'].get_width()/2
-    for pipe in upperPipes:
-        pipeMidPos = pipe['x'] + GAME_SPRITES['pipe'][0].get_width()/2
-        if pipeMidPos<= playerMidPos < pipeMidPos +4:
-            score +=1
-            GAME_SOUNDS['point'].play()
-            return score
-        else:
-            return score
+
         
